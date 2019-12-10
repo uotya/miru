@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 
 @NgModule({
   declarations: [
+    // ここにぶら下げるModuleを追加
     AppComponent
   ],
   imports: [
