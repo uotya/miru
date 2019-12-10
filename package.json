@@ -1,5 +1,9 @@
 {
+<<<<<<< HEAD
   "name": "miru",
+=======
+  "name": "maiden-service",
+>>>>>>> origin/master
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -12,16 +16,25 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "~8.2.14",
+<<<<<<< HEAD
     "@angular/cdk": "~8.2.3",
+=======
+>>>>>>> origin/master
     "@angular/common": "~8.2.14",
     "@angular/compiler": "~8.2.14",
     "@angular/core": "~8.2.14",
     "@angular/forms": "~8.2.14",
+<<<<<<< HEAD
     "@angular/material": "^8.2.3",
     "@angular/platform-browser": "~8.2.14",
     "@angular/platform-browser-dynamic": "~8.2.14",
     "@angular/router": "~8.2.14",
     "hammerjs": "^2.0.8",
+=======
+    "@angular/platform-browser": "~8.2.14",
+    "@angular/platform-browser-dynamic": "~8.2.14",
+    "@angular/router": "~8.2.14",
+>>>>>>> origin/master
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"
