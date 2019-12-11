@@ -3,15 +3,15 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 0 8px rgba(0,0,0,0.2);
-  background-color: #FAFAFA;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+  background-color: #fafafa;
   p {
     display: flex;
     align-items: center;
   }
 }
 .logo {
-    height: 60px;
+  height: 60px;
 }
 .search {
   width: 40%;
@@ -21,7 +21,7 @@
   &__box {
     width: 100%;
     height: 100%;
-    padding:0 16px;
+    padding: 0 16px;
     border-radius: 12px;
     border: 1px solid #ccc;
     outline: none;
@@ -32,10 +32,10 @@
     position: absolute;
     top: 5px;
     right: 20px;
-    color: #0D568B;
+    color: #0d568b;
   }
 }
 .btn {
-  background-color: #0D568B;
+  background-color: #0d568b;
   color: white;
 }

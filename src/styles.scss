@@ -1,7 +1,6 @@
-
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
-@import '~@angular/material/theming';
+@import "~@angular/material/theming";
 // Plus imports for other components in your app.
 
 // Include the common styles for Angular Material. We include this here so that you only
@@ -13,7 +12,7 @@
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
 $miru-primary: mat-palette($mat-gray, 50);
-$miru-accent: mat-palette($mat-indigo,400);
+$miru-accent: mat-palette($mat-indigo, 400);
 // The warn palette is optional (defaults to red).
 $miru-warn: mat-palette($mat-red);
 
@@ -27,13 +26,17 @@ $miru-theme: mat-light-theme($miru-primary, $miru-accent, $miru-warn);
 
 /* You can add global styles to this file, and also import other style files */
 
-html, body {
+html,
+body {
   height: 100%;
 }
 body {
-   margin: 0 auto;
-   font-family: 'Avenir','Helvetica Neue','Helvetica','Arial','Hiragino Sans','ヒラギノ角ゴシック',YuGothic,'Yu Gothic','メイリオ', Meiryo,'ＭＳ Ｐゴシック','MS PGothic';
-   background-color: #CFDDE2;
+  margin: 0 auto;
+  font-family: "Avenir", "Helvetica Neue", "Helvetica", "Arial", "Hiragino Sans",
+    "ヒラギノ角ゴシック", YuGothic, "Yu Gothic", "メイリオ", Meiryo,
+    "ＭＳ Ｐゴシック", "MS PGothic";
+  background-color: #cfdde2;
+  color: #376C91;
 }
 [type="search"]::-webkit-search-cancel-button,
 [type="search"]::-webkit-search-decoration {
@@ -41,4 +44,7 @@ body {
 }
 a {
   text-decoration: none;
+}
+li {
+  list-style: none;
 }
