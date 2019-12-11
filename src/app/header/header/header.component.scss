@@ -1,9 +1,10 @@
 .header {
-  height: 70px;
+  height: 80px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 0 6px rgba(0,0,0,0.2);
+  box-shadow: 0 0 8px rgba(0,0,0,0.2);
+  background-color: #FAFAFA;
   p {
     display: flex;
     align-items: center;
@@ -31,8 +32,10 @@
     position: absolute;
     top: 5px;
     right: 20px;
+    color: #0D568B;
   }
-  a {
-    color: #212121;
-  }
+}
+.btn {
+  background-color: #0D568B;
+  color: white;
 }
