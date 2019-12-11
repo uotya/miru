@@ -1,0 +1,22 @@
+.footer {
+  height: 120px;
+  border-top: 2px dotted #376C91;
+  margin-top: 100px;
+  padding: 20px 30px;
+}
+ul {
+  margin: 0;
+  display: flex;
+  align-items: flex-start;
+  li {
+    margin-right: 30px;
+    a {
+      display: block;
+      color: #376C91;
+    }
+  }
+}
+.copyright {
+  margin-top: 60px;
+  text-align: center;
+}
