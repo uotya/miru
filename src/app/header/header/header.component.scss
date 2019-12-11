@@ -1,0 +1,38 @@
+.header {
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 0 6px rgba(0,0,0,0.2);
+  p {
+    display: flex;
+    align-items: center;
+  }
+}
+.logo {
+    height: 60px;
+}
+.search {
+  width: 40%;
+  max-width: 800px;
+  height: 36px;
+  position: relative;
+  &__box {
+    width: 100%;
+    height: 100%;
+    padding:0 16px;
+    border-radius: 12px;
+    border: 1px solid #ccc;
+    outline: none;
+    font-size: 18px;
+    letter-spacing: 0.02em;
+  }
+  &__icon {
+    position: absolute;
+    top: 5px;
+    right: 20px;
+  }
+  a {
+    color: #212121;
+  }
+}
