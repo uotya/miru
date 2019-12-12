@@ -24,4 +24,3 @@ const Routes = [
   ]
 })
 export class HeaderModule { }
-export class MyAppModule {}
