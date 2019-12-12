@@ -2,12 +2,18 @@
   height: 120px;
   border-top: 2px dotted #376C91;
   margin-top: 100px;
-  padding: 20px 30px;
+  padding: 40px 30px 30px;
+  font-size: 1.6rem;
+  @media screen and (max-width: 700px) {
+    font-size: 1.2rem;
+    padding: 30px 15px 15px;
+    white-space: nowrap;
+  }
 }
 ul {
   margin: 0;
   display: flex;
-  align-items: flex-start;
+  justify-content: center;
   li {
     margin-right: 30px;
     a {
