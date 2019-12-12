@@ -5,13 +5,6 @@ import { HeaderRoutingModule } from './header-routing.module';
 import { HeaderComponent } from './header/header.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
-const Routes = [
-  {
-    path: '',
-    pathMatch: 'full',
-    component: HeaderComponent
-  }
-];
 
 @NgModule({
   declarations: [HeaderComponent],
@@ -24,4 +17,3 @@ const Routes = [
   ]
 })
 export class HeaderModule { }
-export class MyAppModule {}
