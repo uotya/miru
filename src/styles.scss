@@ -37,7 +37,15 @@ body {
     "ヒラギノ角ゴシック", YuGothic, "Yu Gothic", "メイリオ", Meiryo,
     "ＭＳ Ｐゴシック", "MS PGothic";
   background-color: #cfdde2;
-  color: #376C91;
+  color: #376c91;
+}
+.container {
+  margin: 0 auto;
+  max-width: 1000px;
+  padding: 0 24px;
+  @media screen and (max-width: 700px) {
+    padding: 0 16px;
+  }
 }
 [type="search"]::-webkit-search-cancel-button,
 [type="search"]::-webkit-search-decoration {
