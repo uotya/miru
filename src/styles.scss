@@ -26,11 +26,12 @@ $miru-theme: mat-light-theme($miru-primary, $miru-accent, $miru-warn);
 
 /* You can add global styles to this file, and also import other style files */
 
-html,
-body {
+html {
   height: 100%;
+  font-size: 62.5%;
 }
 body {
+  height: 100%;
   margin: 0 auto;
   font-family: "Avenir", "Helvetica Neue", "Helvetica", "Arial", "Hiragino Sans",
     "ヒラギノ角ゴシック", YuGothic, "Yu Gothic", "メイリオ", Meiryo,
