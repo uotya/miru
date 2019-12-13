@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { WelcomeComponent } from './welcome/welcome/welcome.component';
 
 
 const routes: Routes = [
   {
-    path: 'welcome',
-    loadChildren: () =>
-      import('./welcome/welcome.module').then(m => m.WelcomeModule)
+    path: '',
+    pathMatch: 'full',
+    component: WelcomeComponent
   },
   {
     path: 'tos',

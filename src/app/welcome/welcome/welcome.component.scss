@@ -1,0 +1,54 @@
+.mv-container {
+  background-image: radial-gradient(
+    circle 506px at 50.6% 16.5%,
+    rgba(239, 252, 250, 1) 5.5%,
+    rgba(154, 192, 206, 1) 100.2%
+  );
+  height: 500px;
+}
+.top {
+  text-align: center;
+  padding-top: 100px;
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  h1 {
+    margin: 0 auto;
+    font-size: 3.6rem;
+    letter-spacing: 0.01em;
+    line-height: 2;
+    position: relative;
+    text-shadow: 0px 2px 3px #ffffff;
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+    }
+  }
+  button {
+    margin-top: 80px;
+    font-size: 2.4rem;
+    font-weight: bold;
+    color: white;
+    background-color: #0d568b;
+    padding: 20px 30px;
+    border-radius: 12px;
+    font-family: "M PLUS Rounded 1c", sans-serif;
+    border-bottom: solid 5px #093f66;
+  }
+}
+.ranking {
+  text-align: center;
+  padding: 80px 0 20px;
+  h2 {
+    font-size: 2.6rem;
+    color: #f2e383;
+    //color: #546e7a;
+  }
+}
+.cards {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 60px;
+}
+.card {
+  max-width: 400px;
+}
