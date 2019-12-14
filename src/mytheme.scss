@@ -1,0 +1,8 @@
+@import "~@angular/material/theming";
+
+$custom-typography: mat-typography-config(
+  $font-family:
+    "'Hiragino Sans','ヒラギノ角ゴシック','YuGothic','メイリオ','Meiryo','ＭＳ Ｐゴシック','MS PGothic','sans-serif'"
+);
+
+@include mat-core($custom-typography);

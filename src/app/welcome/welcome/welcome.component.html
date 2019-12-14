@@ -1,83 +1,153 @@
-<div class="mv-container">
+<div class="container">
   <div class="top">
     <h1>
-      MIRUは、Twitterアカウントだけで<br />
-      リンク集の作成と共有が手軽にできるサイトです
+      <span>リンク集メーカーMIRUなら</span>
+      <span>TwitterアカウントがあればOK！</span>
+      <span>神速でリンク集が作れます😎</span>
     </h1>
     <button mat-raised-button>作ってみる</button>
   </div>
-</div>
-<div class="ranking">
-  <h2>人気の投稿</h2>
-  <div class="cards">
-    <mat-card class="card">
-      <mat-card-header>
-        <div mat-card-avatar></div>
-        <mat-card-title>Shiba Inu</mat-card-title>
-        <mat-card-subtitle>Dog Breed</mat-card-subtitle>
-      </mat-card-header>
-      <img
-        mat-card-image
-        src="https://material.angular.io/assets/img/examples/shiba2.jpg"
-        alt="Photo of a Shiba Inu"
-      />
-      <mat-card-content>
-        <p>
-          The Shiba Inu is the smallest of the six original and distinct spitz
-          breeds of dog from Japan. A small, agile dog that copes very well with
-          mountainous terrain, the Shiba Inu was originally bred for hunting.
+  <div class="ranking">
+    <h2>人気の投稿</h2>
+    <div class="cards">
+      <mat-card class="cards__card">
+        <mat-card-header>
+          <div mat-card-avatar class="avatar"></div>
+          <mat-card-title class="name">しばいぬ</mat-card-title>
+        </mat-card-header>
+        <p class="title">
+          初めて犬を飼うときに役に立つリンクをまとめました初めて犬を飼うときに役に立つリンクをまとめました
         </p>
-      </mat-card-content>
-      <mat-card-actions>
-        <button mat-button>LIKE</button>
-        <button mat-button>SHARE</button>
-      </mat-card-actions>
-    </mat-card>
-    <mat-card class="card">
-      <mat-card-header>
-        <div mat-card-avatar></div>
-        <mat-card-title>Shiba Inu</mat-card-title>
-        <mat-card-subtitle>Dog Breed</mat-card-subtitle>
-      </mat-card-header>
-      <img
-        mat-card-image
-        src="https://material.angular.io/assets/img/examples/shiba2.jpg"
-        alt="Photo of a Shiba Inu"
-      />
-      <mat-card-content>
-        <p>
-          The Shiba Inu is the smallest of the six original and distinct spitz
-          breeds of dog from Japan. A small, agile dog that copes very well with
-          mountainous terrain, the Shiba Inu was originally bred for hunting.
+        <img
+          mat-card-image
+          src="https://saruwakakun.com/wp-content/uploads/2017/06/dogg-03-min.png"
+          alt=""
+        />
+        <div class="actions">
+          <div class="actions__action share">
+            <mat-icon class="share__icon">share</mat-icon>
+          </div>
+          <div class="actions__action favorite">
+            <mat-icon class="favorite__icon">favorite_border</mat-icon>
+            <span>100</span>
+          </div>
+        </div>
+      </mat-card>
+      <mat-card class="cards__card">
+        <mat-card-header>
+          <div mat-card-avatar class="avatar"></div>
+          <mat-card-title class="name">しばいぬ</mat-card-title>
+        </mat-card-header>
+        <p class="title">
+          初めて犬を飼うときに役に立つリンクをまとめました初めて犬を飼うときに役に立つリンクをまとめました
         </p>
-      </mat-card-content>
-      <mat-card-actions>
-        <button mat-button>LIKE</button>
-        <button mat-button>SHARE</button>
-      </mat-card-actions>
-    </mat-card>
-    <mat-card class="card">
-      <mat-card-header>
-        <div mat-card-avatar></div>
-        <mat-card-title>Shiba Inu</mat-card-title>
-        <mat-card-subtitle>Dog Breed</mat-card-subtitle>
-      </mat-card-header>
-      <img
-        mat-card-image
-        src="https://material.angular.io/assets/img/examples/shiba2.jpg"
-        alt="Photo of a Shiba Inu"
-      />
-      <mat-card-content>
-        <p>
-          The Shiba Inu is the smallest of the six original and distinct spitz
-          breeds of dog from Japan. A small, agile dog that copes very well with
-          mountainous terrain, the Shiba Inu was originally bred for hunting.
+        <img
+          mat-card-image
+          src="https://saruwakakun.com/wp-content/uploads/2017/06/dogg-03-min.png"
+          alt=""
+        />
+        <div class="actions">
+          <div class="actions__action share">
+            <mat-icon class="share__icon">share</mat-icon>
+          </div>
+          <div class="actions__action favorite">
+            <mat-icon class="favorite__icon">favorite_border</mat-icon>
+            <span>100</span>
+          </div>
+        </div>
+      </mat-card>
+      <mat-card class="cards__card">
+        <mat-card-header>
+          <div mat-card-avatar class="avatar"></div>
+          <mat-card-title class="name">しばいぬ</mat-card-title>
+        </mat-card-header>
+        <p class="title">
+          初めて犬を飼うときに役に立つリンクをまとめました初めて犬を飼うときに役に立つリンクをまとめました
         </p>
-      </mat-card-content>
-      <mat-card-actions>
-        <button mat-button>LIKE</button>
-        <button mat-button>SHARE</button>
-      </mat-card-actions>
-    </mat-card>
+        <img
+          mat-card-image
+          src="https://saruwakakun.com/wp-content/uploads/2017/06/dogg-03-min.png"
+          alt=""
+        />
+        <div class="actions">
+          <div class="actions__action share">
+            <mat-icon class="share__icon">share</mat-icon>
+          </div>
+          <div class="actions__action favorite">
+            <mat-icon class="favorite__icon">favorite_border</mat-icon>
+            <span>100</span>
+          </div>
+        </div>
+      </mat-card>
+      <mat-card class="cards__card">
+        <mat-card-header>
+          <div mat-card-avatar class="avatar"></div>
+          <mat-card-title class="name">しばいぬ</mat-card-title>
+        </mat-card-header>
+        <p class="title">
+          初めて犬を飼うときに準備するものをまとめました初めて犬を飼うときに準備するものをまとめました
+        </p>
+        <img
+          mat-card-image
+          src="https://saruwakakun.com/wp-content/uploads/2017/06/dogg-03-min.png"
+          alt=""
+        />
+        <div class="actions">
+          <div class="actions__action share">
+            <mat-icon class="share__icon">share</mat-icon>
+          </div>
+          <div class="actions__action favorite">
+            <mat-icon class="favorite__icon">favorite_border</mat-icon>
+            <span>100</span>
+          </div>
+        </div>
+      </mat-card>
+      <mat-card class="cards__card">
+        <mat-card-header>
+          <div mat-card-avatar class="avatar"></div>
+          <mat-card-title class="name">しばいぬ</mat-card-title>
+        </mat-card-header>
+        <p class="title">
+          初めて犬を飼うときに準備するものをまとめました初めて犬を飼うときに準備するものをまとめました
+        </p>
+        <img
+          mat-card-image
+          src="https://saruwakakun.com/wp-content/uploads/2017/06/dogg-03-min.png"
+          alt=""
+        />
+        <div class="actions">
+          <div class="actions__action share">
+            <mat-icon class="share__icon">share</mat-icon>
+          </div>
+          <div class="actions__action favorite">
+            <mat-icon class="favorite__icon">favorite_border</mat-icon>
+            <span>100</span>
+          </div>
+        </div>
+      </mat-card>
+      <mat-card class="cards__card">
+        <mat-card-header>
+          <div mat-card-avatar class="avatar"></div>
+          <mat-card-title class="name">しばいぬ</mat-card-title>
+        </mat-card-header>
+        <p class="title">
+          初めて犬を飼うときに準備するものをまとめました初めて犬を飼うときに準備するものをまとめました
+        </p>
+        <img
+          mat-card-image
+          src="https://saruwakakun.com/wp-content/uploads/2017/06/dogg-03-min.png"
+          alt=""
+        />
+        <div class="actions">
+          <div class="actions__action share">
+            <mat-icon class="share__icon">share</mat-icon>
+          </div>
+          <div class="actions__action favorite">
+            <mat-icon class="favorite__icon">favorite_border</mat-icon>
+            <span>100</span>
+          </div>
+        </div>
+      </mat-card>
+    </div>
   </div>
 </div>
