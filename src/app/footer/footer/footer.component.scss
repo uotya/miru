@@ -1,12 +1,9 @@
 .footer {
   height: 120px;
-  border-top: 2px dotted #376C91;
-  margin-top: 100px;
-  padding: 40px 30px 30px;
+  padding: 80px 0 40px;
   font-size: 1.6rem;
-  @media screen and (max-width: 700px) {
-    font-size: 1.2rem;
-    padding: 30px 15px 15px;
+  @media screen and (max-width: 559px) {
+    padding: 80px 14px 40px;
     white-space: nowrap;
   }
 }
@@ -18,11 +15,12 @@ ul {
     margin-right: 30px;
     a {
       display: block;
-      color: #376C91;
+      color: #0d568b;
     }
   }
 }
 .copyright {
   margin-top: 60px;
   text-align: center;
+  color: #0d568b;
 }

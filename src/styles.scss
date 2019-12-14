@@ -29,22 +29,31 @@ $miru-theme: mat-light-theme($miru-primary, $miru-accent, $miru-warn);
 html {
   height: 100%;
   font-size: 62.5%;
+  @media screen and (max-width: 959px) {
+    font-size: 56%;
+  }
+  @media screen and (max-width: 559px) {
+    font-size: 49%;
+  }
 }
 body {
   height: 100%;
   margin: 0 auto;
   font-family: "Hiragino Sans", "ヒラギノ角ゴシック", YuGothic, "Yu Gothic",
     "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
-  background-color: #f2f9fb;
-  //background-color: #e4f1f6;
-  color: #376c91;
+  //background-color: #f2f9fb;
+  background-color: #fff;
+  color: #1f2c38;
 }
 .container {
   margin: 0 auto;
-  max-width: 1000px;
+  max-width: 1200px;
   padding: 0 24px;
-  @media screen and (max-width: 700px) {
-    padding: 0 16px;
+  @media screen and (max-width: 559px) {
+    padding: 20px;
+  }
+  @media screen and (max-width: 959px) {
+    padding: 16px;
   }
 }
 [type="search"]::-webkit-search-cancel-button,
@@ -53,6 +62,7 @@ body {
 }
 a {
   text-decoration: none;
+  color: #1f2c38;
 }
 li {
   list-style: none;

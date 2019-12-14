@@ -1,22 +1,24 @@
-.mv-container {
-  background-image: radial-gradient(
-    circle 506px at 50.6% 16.5%,
-    rgba(239, 252, 250, 1) 5.5%,
-    rgba(154, 192, 206, 1) 100.2%
-  );
-  height: 500px;
-}
 .top {
   text-align: center;
-  padding-top: 100px;
-  font-family: "M PLUS Rounded 1c", sans-serif;
+  padding-top: 80px;
+  font-family: "M PLUS 1p", sans-serif;
   h1 {
     margin: 0 auto;
-    font-size: 3.6rem;
-    letter-spacing: 0.01em;
+    max-width: 800px;
+    font-size: 3.2rem;
+    letter-spacing: 0.02em;
     line-height: 2;
     position: relative;
-    text-shadow: 0px 2px 3px #ffffff;
+    color: #376c91;
+    @media screen and (max-width: 959px) {
+      font-size: 26px;
+    }
+    @media screen and (max-width: 559px) {
+      font-size: 20px;
+    }
+    span {
+      display: block;
+    }
     &::after {
       content: "";
       position: absolute;
@@ -24,8 +26,9 @@
     }
   }
   button {
-    margin-top: 80px;
+    margin-top: 70px;
     font-size: 2.4rem;
+    letter-spacing: 0.03em;
     font-weight: bold;
     color: white;
     background-color: #0d568b;
@@ -33,22 +36,102 @@
     border-radius: 12px;
     font-family: "M PLUS Rounded 1c", sans-serif;
     border-bottom: solid 5px #093f66;
+    @media screen and (max-width: 959px) {
+      padding: 15px 25px;
+    }
+    @media screen and (max-width: 559px) {
+      padding: 13px 23px;
+    }
   }
 }
 .ranking {
   text-align: center;
-  padding: 80px 0 20px;
+  padding: 60px 0 20px;
   h2 {
     font-size: 2.6rem;
-    color: #f2e383;
-    //color: #546e7a;
+    letter-spacing: 0.04em;
+    color: #3d4a57;
+    position: relative;
+    display: inline-block;
+    &:before {
+      content: "";
+      position: absolute;
+      bottom: -30px;
+      display: inline-block;
+      width: 60px;
+      height: 5px;
+      left: 50%;
+      -webkit-transform: translateX(-50%);
+      transform: translateX(-50%);
+      background-color: #3d4a57;
+      border-radius: 2px;
+    }
   }
 }
 .cards {
+  padding-top: 70px;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
-  margin-top: 60px;
+  display: inline-block;
+  margin: -30px -15px 0;
+  &__card {
+    font-weight: bold;
+    max-width: 300px;
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    background-color: #3d4a57;
+    color: #fafafa;
+    margin: 30px 15px 0;
+    /* &:not(:last-child) {
+      margin-right: 30px;
+    }
+    */
+    &:hover {
+      opacity: 0.8;
+    }
+  }
 }
-.card {
-  max-width: 400px;
+.content {
+  display: flex;
+}
+.thumb {
+  width: 40%;
+}
+.title {
+  font-size: 1.6rem;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-align: justify;
+  text-justify: inter-ideograph;
+}
+.avatar {
+  background-image: url("https://saruwakakun.com/wp-content/uploads/2017/06/bdrArtwork.jpg");
+  background-size: cover;
+}
+.name {
+  font-size: 1.8rem;
+  padding-top: 5px;
+}
+.actions {
+  &__action {
+    display: inline-block;
+    &:not(:last-child) {
+      margin-right: 80px;
+    }
+  }
+  .favorite {
+    position: relative;
+    &:hover {
+      color: #e0245e;
+    }
+    span {
+      position: absolute;
+      left: 30px;
+      font-size: 1.5rem;
+    }
+  }
 }
