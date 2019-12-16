@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { WelcomeComponent } from './welcome/welcome/welcome.component';
 
-
 const routes: Routes = [
   {
     path: '',
@@ -10,13 +9,13 @@ const routes: Routes = [
     component: WelcomeComponent
   },
   {
-    path: 'tos',
-    loadChildren: () => import('./tos/tos.module').then(m => m.TosModule)
-  },
+    path: 'intl',
+    loadChildren: () => import('./intl/intl.module').then(m => m.IntlModule)
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
