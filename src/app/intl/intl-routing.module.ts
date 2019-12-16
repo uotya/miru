@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { TosComponent } from './tos/tos.component';
 import { LegalComponent } from './legal/legal.component';
+import { HelpComponent } from './help/help.component';
 
 const routes: Routes = [
   {
@@ -13,6 +14,11 @@ const routes: Routes = [
     path: 'legal',
     pathMatch: 'full',
     component: LegalComponent
+  },
+  {
+    path: 'help',
+    pathMatch: 'full',
+    component: HelpComponent
   }
 ];
 
