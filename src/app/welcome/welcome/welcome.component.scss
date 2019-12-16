@@ -1,3 +1,5 @@
+@import '~@angular/material/theming';
+
 .top {
   text-align: center;
   padding-top: 80px;
@@ -74,7 +76,7 @@
   justify-content: space-between;
   display: inline-block;
   margin: -30px -15px 0;
-  &__card {
+  .card {
     font-weight: bold;
     max-width: 300px;
     cursor: pointer;
@@ -83,12 +85,9 @@
     background-color: #3d4a57;
     color: #fafafa;
     margin: 30px 15px 0;
-    /* &:not(:last-child) {
-      margin-right: 30px;
-    }
-    */
+    transition: 0.4s;
     &:hover {
-      opacity: 0.8;
+      @include mat-elevation(18);
     }
   }
 }
