@@ -1,8 +1,8 @@
 .top {
   text-align: center;
   padding-top: 80px;
-  font-family: "M PLUS 1p", sans-serif;
   h1 {
+    font-family: 'M PLUS 1p', sans-serif;
     margin: 0 auto;
     max-width: 800px;
     font-size: 3.2rem;
@@ -20,7 +20,7 @@
       display: block;
     }
     &::after {
-      content: "";
+      content: '';
       position: absolute;
       top: 0;
     }
@@ -34,7 +34,6 @@
     background-color: #0d568b;
     padding: 20px 30px;
     border-radius: 12px;
-    font-family: "M PLUS Rounded 1c", sans-serif;
     border-bottom: solid 5px #093f66;
     @media screen and (max-width: 959px) {
       padding: 15px 25px;
@@ -54,7 +53,7 @@
     position: relative;
     display: inline-block;
     &:before {
-      content: "";
+      content: '';
       position: absolute;
       bottom: -30px;
       display: inline-block;
@@ -109,7 +108,7 @@
   text-justify: inter-ideograph;
 }
 .avatar {
-  background-image: url("https://saruwakakun.com/wp-content/uploads/2017/06/bdrArtwork.jpg");
+  background-image: url('https://saruwakakun.com/wp-content/uploads/2017/06/bdrArtwork.jpg');
   background-size: cover;
 }
 .name {
