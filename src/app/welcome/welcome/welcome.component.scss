@@ -1,5 +1,3 @@
-@import '~@angular/material/theming';
-
 .top {
   text-align: center;
   padding-top: 80px;
@@ -53,7 +51,7 @@
     letter-spacing: 0.04em;
     color: #3d4a57;
     position: relative;
-    display: inline-block;
+    display: block;
     &:before {
       content: '';
       position: absolute;
@@ -76,60 +74,4 @@
   justify-content: space-between;
   display: inline-block;
   margin: -30px -15px 0;
-  .card {
-    font-weight: bold;
-    max-width: 300px;
-    cursor: pointer;
-    position: relative;
-    display: inline-block;
-    background-color: #3d4a57;
-    color: #fafafa;
-    margin: 30px 15px 0;
-    transition: 0.4s;
-    &:hover {
-      @include mat-elevation(18);
-    }
-  }
-}
-.content {
-  display: flex;
-}
-.thumb {
-  width: 40%;
-}
-.title {
-  font-size: 1.6rem;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-  overflow: hidden;
-  text-align: justify;
-  text-justify: inter-ideograph;
-}
-.avatar {
-  background-image: url('https://saruwakakun.com/wp-content/uploads/2017/06/bdrArtwork.jpg');
-  background-size: cover;
-}
-.name {
-  font-size: 1.8rem;
-  padding-top: 5px;
-}
-.actions {
-  &__action {
-    display: inline-block;
-    &:not(:last-child) {
-      margin-right: 80px;
-    }
-  }
-  .favorite {
-    position: relative;
-    &:hover {
-      color: #e0245e;
-    }
-    span {
-      position: absolute;
-      left: 30px;
-      font-size: 1.5rem;
-    }
-  }
 }
