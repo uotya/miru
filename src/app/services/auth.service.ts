@@ -1,12 +1,25 @@
 import { Injectable } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
+/*
+import { auth, User } from 'firebase';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class AuthService {
-  constructor() {}
+  afUser = Observable < User > = this.afAuth.user;
 
-  login() {}
+constructor(
+  private afAuth: AngularFireAuth
+) { }
 
-  logout() {}
+login() {
+  this.afAuth.auth.signInWithPopup(
+    new auth.TwitterAuthProvider()
+  );
 }
+
+logout() { }
+}
+*/
