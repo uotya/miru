@@ -14,7 +14,6 @@ import { environment } from '../environments/environment';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent, FooterComponent],
@@ -28,8 +27,7 @@ import { MatCardModule } from '@angular/material/card';
     AngularFireAuthModule,
     MatToolbarModule,
     MatButtonModule,
-    MatIconModule,
-    MatCardModule
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]
