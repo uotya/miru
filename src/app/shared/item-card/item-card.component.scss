@@ -37,19 +37,23 @@
 .actions {
   &__action {
     display: inline-block;
+    background-origin: 5px;
+    border-radius: 50%;
     &:not(:last-child) {
       margin-right: 80px;
     }
   }
   .favorite {
+    text-align-last: left;
+    width: 95px;
     position: relative;
     &:hover {
       color: #e0245e;
     }
     span {
       position: absolute;
-      left: 30px;
-      font-size: 15px;
+      left: 45px;
+      font-size: 16px;
       @media screen and (max-width: 559px) {
         font-size: 14px;
         top: 1px;
