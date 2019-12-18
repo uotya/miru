@@ -1,0 +1,53 @@
+@import '~@angular/material/theming';
+
+.card {
+  font-weight: bold;
+  max-width: 300px;
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  background-color: #3d4a57;
+  color: #fafafa;
+  transition: 0.4s;
+  &:hover {
+    @include mat-elevation(8);
+  }
+}
+.thumb {
+  width: 40%;
+}
+.title {
+  font-size: 1.6rem;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-align: justify;
+  text-justify: inter-ideograph;
+}
+.avatar {
+  background-image: url('https://saruwakakun.com/wp-content/uploads/2017/06/bdrArtwork.jpg');
+  background-size: cover;
+}
+.name {
+  font-size: 1.8rem;
+  padding-top: 5px;
+}
+.actions {
+  &__action {
+    &:not(:last-child) {
+      margin-right: 80px;
+    }
+    &--favorite {
+      width: 95px;
+      position: relative;
+      &:hover {
+        color: #e0245e;
+      }
+      span {
+        margin-left: 5px;
+        font-size: 16px;
+      }
+    }
+  }
+}

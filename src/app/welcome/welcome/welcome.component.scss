@@ -1,8 +1,8 @@
 .top {
   text-align: center;
   padding-top: 80px;
-  font-family: "M PLUS 1p", sans-serif;
   h1 {
+    font-family: 'M PLUS 1p', sans-serif;
     margin: 0 auto;
     max-width: 800px;
     font-size: 3.2rem;
@@ -20,7 +20,7 @@
       display: block;
     }
     &::after {
-      content: "";
+      content: '';
       position: absolute;
       top: 0;
     }
@@ -34,7 +34,6 @@
     background-color: #0d568b;
     padding: 20px 30px;
     border-radius: 12px;
-    font-family: "M PLUS Rounded 1c", sans-serif;
     border-bottom: solid 5px #093f66;
     @media screen and (max-width: 959px) {
       padding: 15px 25px;
@@ -52,9 +51,9 @@
     letter-spacing: 0.04em;
     color: #3d4a57;
     position: relative;
-    display: inline-block;
+    display: block;
     &:before {
-      content: "";
+      content: '';
       position: absolute;
       bottom: -30px;
       display: inline-block;
@@ -70,68 +69,15 @@
 }
 .cards {
   padding-top: 70px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(1fr));
+  gap: 30px;
+  max-width: 800px;
+  margin: 0 auto;
+  /*
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  display: inline-block;
   margin: -30px -15px 0;
-  &__card {
-    font-weight: bold;
-    max-width: 300px;
-    cursor: pointer;
-    position: relative;
-    display: inline-block;
-    background-color: #3d4a57;
-    color: #fafafa;
-    margin: 30px 15px 0;
-    /* &:not(:last-child) {
-      margin-right: 30px;
-    }
-    */
-    &:hover {
-      opacity: 0.8;
-    }
-  }
-}
-.content {
-  display: flex;
-}
-.thumb {
-  width: 40%;
-}
-.title {
-  font-size: 1.6rem;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-  overflow: hidden;
-  text-align: justify;
-  text-justify: inter-ideograph;
-}
-.avatar {
-  background-image: url("https://saruwakakun.com/wp-content/uploads/2017/06/bdrArtwork.jpg");
-  background-size: cover;
-}
-.name {
-  font-size: 1.8rem;
-  padding-top: 5px;
-}
-.actions {
-  &__action {
-    display: inline-block;
-    &:not(:last-child) {
-      margin-right: 80px;
-    }
-  }
-  .favorite {
-    position: relative;
-    &:hover {
-      color: #e0245e;
-    }
-    span {
-      position: absolute;
-      left: 30px;
-      font-size: 1.5rem;
-    }
-  }
+  */
 }
