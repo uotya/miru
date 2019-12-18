@@ -69,9 +69,15 @@
 }
 .cards {
   padding-top: 70px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(1fr));
+  gap: 30px;
+  max-width: 800px;
+  margin: 0 auto;
+  /*
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  display: inline-block;
   margin: -30px -15px 0;
+  */
 }
