@@ -9,6 +9,12 @@ const routes: Routes = [
       import('./welcome/welcome.module').then(m => m.WelcomeModule)
   },
   {
+    path: 'create',
+    pathMatch: 'full',
+    loadChildren: () =>
+      import('./create/create.module').then(m => m.CreateModule)
+  },
+  {
     path: 'intl',
     pathMatch: 'full',
     loadChildren: () => import('./intl/intl.module').then(m => m.IntlModule)
