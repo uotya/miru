@@ -1,9 +1,12 @@
+@import '~@angular/material/theming';
+
 .header {
   height: 80px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+  //box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+  @include mat-elevation(2);
   background-color: #fafafa;
   p {
     display: flex;
