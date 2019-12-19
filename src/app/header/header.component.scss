@@ -5,8 +5,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  //box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
-  @include mat-elevation(2);
+  @include mat-elevation(1);
   background-color: #fafafa;
   p {
     display: flex;
