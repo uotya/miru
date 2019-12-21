@@ -3,17 +3,20 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { auth, User } from 'firebase/app';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import { tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  afUser$: Observable<User> = this.afAuth.user;
+  afUser$: Observable<User> = this.afAuth.user.pipe(
+    tap(user => console.log(user))
+  );
 
   constructor(private afAuth: AngularFireAuth, private router: Router) {}
 
   login() {
-    this.afAuth.auth.signInWithPopup(new auth.TwitterAuthProvider());
+    return this.afAuth.auth.signInWithPopup(new auth.TwitterAuthProvider());
   }
 
   logout() {
