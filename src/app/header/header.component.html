@@ -8,9 +8,8 @@
       <mat-icon>search</mat-icon>
     </button>
   </div>
-  <div *ngIf="user$ | async; else default">
+  <div *ngIf="user$ | async as user; else default">
     <button
-      *ngIf="user$ | async as user"
       class="avatar"
       mat-mini-fab
       [matMenuTriggerFor]="menu"
