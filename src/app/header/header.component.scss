@@ -5,6 +5,10 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
   @include mat-elevation(1);
   background-color: #fafafa;
   p {
@@ -13,13 +17,20 @@
   }
 }
 .logo {
-  height: 60px;
+  height: 58px;
+  @media screen and (max-width: 559px) {
+    height: 46px;
+  }
 }
 .search {
-  width: 40%;
-  max-width: 800px;
+  width: 55%;
   height: 36px;
   position: relative;
+  margin-left: -18px;
+  @media screen and (max-width: 559px) {
+    width: 40%;
+    margin-left: 0;
+  }
   &__input {
     width: 100%;
     height: 100%;
@@ -28,7 +39,11 @@
     border: 1px solid #ccc;
     outline: none;
     font-size: 18px;
-    letter-spacing: 0.02em;
+    letter-spacing: 0.01em;
+    @media screen and (max-width: 559px) {
+      font-size: 14px;
+      padding-right: 38px;
+    }
   }
   &__btn {
     position: absolute;
@@ -44,11 +59,18 @@
     align-items: center;
     justify-content: center;
     color: #376c91;
+    @media screen and (max-width: 559px) {
+      top: 2px;
+      right: 4px;
+    }
   }
 }
 .btn {
   background-color: #0d568b;
   color: white;
+  @media screen and (max-width: 559px) {
+    font-size: 11px;
+  }
 }
 .avatar {
   background: center/cover;
