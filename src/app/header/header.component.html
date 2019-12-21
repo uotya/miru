@@ -1,8 +1,48 @@
 <mat-toolbar class="header" color="primary">
-  <a href="#"><img class="logo" src="/assets/images/logo.png" alt=""/></a>
+  <a routerLink="/create"
+    ><img class="logo" src="/assets/images/logo.png" alt="リンク集メーカーMIRU"
+  /></a>
   <div class="search">
-    <input type="search" class="search__box" />
-    <a class="search__icon" href="#"><mat-icon>search</mat-icon></a>
+    <input class="search__input" type="search" />
+    <button class="search__btn" routerLink="/search">
+      <mat-icon>search</mat-icon>
+    </button>
   </div>
-  <button (click)="login()" class="btn" mat-raised-button>ログイン</button>
+  <div *ngIf="user$ | async; else default">
+    <button
+      *ngIf="user$ | async as user"
+      class="avatar"
+      mat-mini-fab
+      [matMenuTriggerFor]="menu"
+      [style.background-image]="
+        'url(' + user.photoURL.replace('_normal', '') + ')'
+      "
+    ></button>
+    <mat-menu #menu="matMenu">
+      <button (click)="logout()" mat-menu-item>
+        <mat-icon> exit_to_app</mat-icon>
+        <span>ログアウト</span>
+      </button>
+      <mat-divider></mat-divider>
+      <button mat-menu-item routerLink="/setting">
+        <mat-icon>settings</mat-icon>
+        <span>設定</span>
+      </button>
+      <button mat-menu-item routerLink="/intl/help">
+        <mat-icon>help</mat-icon>
+        <span>ヘルプ</span>
+      </button>
+    </mat-menu>
+  </div>
+  <ng-template #default>
+    <button
+      (click)="login()"
+      [disabled]="isLoading"
+      class="btn"
+      id="default"
+      mat-raised-button
+    >
+      ログイン
+    </button>
+  </ng-template>
 </mat-toolbar>
