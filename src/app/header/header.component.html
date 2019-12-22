@@ -3,12 +3,14 @@
     ><img class="logo" src="/assets/images/logo.png" alt="リンク集メーカーMIRU"
   /></a>
   <div class="search">
-    <input class="search__input" type="search" autocomplete="off" />
-    <button class="search__btn" routerLink="/search">
-      <mat-icon>search</mat-icon>
-    </button>
+    <div class="search__wrap">
+      <input class="search__input" type="search" autocomplete="off" />
+      <button class="search__btn" routerLink="/search">
+        <mat-icon>search</mat-icon>
+      </button>
+    </div>
   </div>
-  <div *ngIf="user$ | async as user; else default">
+  <div class="btn-wrap" *ngIf="user$ | async as user; else default">
     <button
       class="avatar"
       mat-mini-fab
@@ -37,6 +39,7 @@
     <button
       (click)="login()"
       [disabled]="isLoading"
+      *ngIf="isUserChecked"
       class="btn"
       id="default"
       mat-raised-button
