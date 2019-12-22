@@ -1,6 +1,6 @@
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
-@import "~@angular/material/theming";
+@import '~@angular/material/theming';
 // Plus imports for other components in your app.
 
 // Include the common styles for Angular Material. We include this here so that you only
@@ -25,45 +25,32 @@ $miru-theme: mat-light-theme($miru-primary, $miru-accent, $miru-warn);
 @include angular-material-theme($miru-theme);
 
 /* You can add global styles to this file, and also import other style files */
+@import 'reset';
+@import 'mixins';
 
 html {
   height: 100%;
   font-size: 62.5%;
-  @media screen and (max-width: 959px) {
+  @include tab {
     font-size: 56%;
   }
-  @media screen and (max-width: 559px) {
+  @include sp {
     font-size: 49%;
   }
 }
 body {
   height: 100%;
   margin: 0 auto;
-  font-family: "Hiragino Sans", "ヒラギノ角ゴシック", YuGothic, "Yu Gothic",
-    "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
-  //background-color: #f2f9fb;
+  font-family: 'Hiragino Sans', 'ヒラギノ角ゴシック', YuGothic, 'Yu Gothic',
+    'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
   background-color: #fff;
   color: #1f2c38;
 }
 .container {
   margin: 0 auto;
   max-width: 1200px;
-  padding: 0 24px;
-  @media screen and (max-width: 559px) {
-    padding: 20px;
+  padding: 150px 24px 0;
+  @include sp {
+    padding: 200px 16px 0;
   }
-  @media screen and (max-width: 959px) {
-    padding: 16px;
-  }
-}
-[type="search"]::-webkit-search-cancel-button,
-[type="search"]::-webkit-search-decoration {
-  -webkit-appearance: none;
-}
-a {
-  text-decoration: none;
-  color: #1f2c38;
-}
-li {
-  list-style: none;
 }

@@ -1,4 +1,5 @@
 @import '~@angular/material/theming';
+@import 'mixins';
 
 .header {
   height: 80px;
@@ -11,6 +12,15 @@
   left: 0;
   @include mat-elevation(1);
   background-color: #fafafa;
+  @include sp {
+    padding-top: 5px;
+    height: 130px;
+    display: grid;
+    justify-content: space-between;
+    align-items: center;
+    grid-template-columns: 1fr;
+    grid-template-rows: 60px 60px;
+  }
   p {
     display: flex;
     align-items: center;
@@ -18,18 +28,20 @@
 }
 .logo {
   height: 58px;
-  @media screen and (max-width: 559px) {
-    height: 46px;
+  padding-top: 5px;
+  @include sp {
+    height: 50px;
+    grid-row: 1 / 2;
+    grid-column: 1 / 2;
   }
 }
 .search {
   width: 55%;
   height: 36px;
   position: relative;
-  margin-left: -18px;
-  @media screen and (max-width: 559px) {
-    width: 40%;
-    margin-left: 0;
+  @include sp {
+    width: 100%;
+    grid-column: 1 / 4;
   }
   &__input {
     width: 100%;
@@ -40,7 +52,7 @@
     outline: none;
     font-size: 18px;
     letter-spacing: 0.01em;
-    @media screen and (max-width: 559px) {
+    @include sp {
       font-size: 14px;
       padding-right: 38px;
     }
@@ -59,7 +71,7 @@
     align-items: center;
     justify-content: center;
     color: #376c91;
-    @media screen and (max-width: 559px) {
+    @include sp {
       top: 2px;
       right: 4px;
     }
@@ -68,8 +80,10 @@
 .btn {
   background-color: #0d568b;
   color: white;
-  @media screen and (max-width: 559px) {
-    font-size: 11px;
+  @include sp {
+    font-size: 12px;
+    grid-row: 1 / 2;
+    grid-column: 2 / 4;
   }
 }
 .avatar {

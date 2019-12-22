@@ -1,6 +1,7 @@
+@import 'mixins';
+
 .top {
   text-align: center;
-  padding-top: 150px;
   h1 {
     font-family: 'M PLUS 1p', sans-serif;
     margin: 0 auto;
@@ -10,10 +11,10 @@
     line-height: 2;
     position: relative;
     color: #376c91;
-    @media screen and (max-width: 959px) {
+    @include tab {
       font-size: 26px;
     }
-    @media screen and (max-width: 559px) {
+    @include sp {
       font-size: 20px;
     }
     span {
@@ -35,17 +36,17 @@
     padding: 20px 30px;
     border-radius: 12px;
     border-bottom: solid 5px #093f66;
-    @media screen and (max-width: 959px) {
+    @include tab {
       padding: 15px 25px;
     }
-    @media screen and (max-width: 559px) {
+    @include sp {
       padding: 13px 23px;
     }
   }
 }
 .ranking {
   text-align: center;
-  padding: 60px 0 20px;
+  padding-top: 90px;
   h2 {
     font-size: 2.6rem;
     letter-spacing: 0.04em;
@@ -68,7 +69,7 @@
   }
 }
 .cards {
-  padding-top: 70px;
+  padding-top: 90px;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 300px));
   justify-content: center;

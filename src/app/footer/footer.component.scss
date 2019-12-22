@@ -1,8 +1,10 @@
+@import 'mixins';
+
 .footer {
   height: 120px;
-  padding: 80px 0 40px;
+  padding: 100px 0 40px;
   font-size: 1.6rem;
-  @media screen and (max-width: 559px) {
+  @include sp {
     padding: 80px 14px 40px;
     white-space: nowrap;
   }
@@ -12,15 +14,18 @@ ul {
   display: flex;
   justify-content: center;
   li {
-    margin-right: 30px;
+    &:not(:last-child) {
+      margin-right: 30px;
+    }
     a {
       display: block;
       color: #0d568b;
     }
   }
 }
+
 .copyright {
   margin-top: 60px;
-  text-align: center;
   color: #0d568b;
+  text-align: center;
 }

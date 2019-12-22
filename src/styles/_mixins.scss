@@ -1,0 +1,15 @@
+/* size */
+$sp: 559px;
+$tab: 959px;
+
+/* mixins */
+@mixin sp {
+  @media (max-width: ($sp)) {
+    @content;
+  }
+}
+@mixin tab {
+  @media (max-width: ($tab)) {
+    @content;
+  }
+}
