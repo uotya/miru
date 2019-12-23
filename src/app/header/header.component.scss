@@ -1,16 +1,25 @@
 @import '~@angular/material/theming';
+@import 'mixins';
 
 .header {
   height: 80px;
-  display: flex;
+  position: fixed;
+  display: grid;
   justify-content: space-between;
   align-items: center;
-  position: fixed;
+  grid-template-columns: 100px 1fr 100px;
   z-index: 1000;
   top: 0;
   left: 0;
   @include mat-elevation(1);
   background-color: #fafafa;
+  @include sp {
+    padding-top: 5px;
+    height: 130px;
+    display: grid;
+    grid-template-columns: 100px 100px;
+    grid-template-rows: 60px 60px;
+  }
   p {
     display: flex;
     align-items: center;
@@ -18,29 +27,37 @@
 }
 .logo {
   height: 58px;
-  @media screen and (max-width: 559px) {
-    height: 46px;
+  padding-top: 5px;
+  @include sp {
+    height: 50px;
+    grid-row: 1 / 1;
+    grid-column: 1 / 2;
   }
 }
 .search {
-  width: 55%;
-  height: 36px;
-  position: relative;
-  margin-left: -18px;
-  @media screen and (max-width: 559px) {
-    width: 40%;
-    margin-left: 0;
+  flex: 1;
+  @include sp {
+    width: 100%;
+    grid-column: 1 / 3;
+  }
+  &__wrap {
+    max-width: 70%;
+    margin: 0 auto;
+    position: relative;
+    @include sp {
+      max-width: 100%;
+    }
   }
   &__input {
     width: 100%;
-    height: 100%;
+    height: 36px;
     padding: 0 42px 0 16px;
     border-radius: 12px;
     border: 1px solid #ccc;
     outline: none;
     font-size: 18px;
     letter-spacing: 0.01em;
-    @media screen and (max-width: 559px) {
+    @include sp {
       font-size: 14px;
       padding-right: 38px;
     }
@@ -48,8 +65,8 @@
   &__btn {
     position: absolute;
     cursor: pointer;
-    top: 0;
-    right: 8px;
+    top: 2px;
+    right: 6px;
     outline: 0;
     background: 0 0;
     border: none;
@@ -59,17 +76,27 @@
     align-items: center;
     justify-content: center;
     color: #376c91;
-    @media screen and (max-width: 559px) {
+    @include sp {
       top: 2px;
       right: 4px;
     }
   }
 }
+.btn-wrap {
+  margin-left: auto;
+  @include sp {
+    grid-row: 1 / 1;
+    grid-column: 2 / 3;
+  }
+}
 .btn {
   background-color: #0d568b;
   color: white;
-  @media screen and (max-width: 559px) {
-    font-size: 11px;
+  margin-left: auto;
+  @include sp {
+    font-size: 12px;
+    grid-row: 1 / 1;
+    grid-column: 2 / 3;
   }
 }
 .avatar {

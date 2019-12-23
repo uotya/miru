@@ -25,7 +25,10 @@
             "aot": false,
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": ["src/styles.scss", "src/mytheme.scss"],
-            "scripts": []
+            "scripts": [],
+            "stylePreprocessorOptions": {
+              "includePaths": ["src/styles"]
+            }
           },
           "configurations": {
             "production": {
