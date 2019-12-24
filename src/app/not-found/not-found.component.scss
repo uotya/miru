@@ -1,9 +1,15 @@
+:host {
+  text-align: center;
+}
 h1 {
   font-size: 4.8rem;
-  text-align: center;
 }
 p {
   font-size: 2rem;
   margin-top: 40px;
-  text-align: center;
+}
+button {
+  margin-top: 40px;
+  background-color: #0d568b;
+  color: white;
 }
