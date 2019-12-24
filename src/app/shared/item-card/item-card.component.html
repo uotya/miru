@@ -1,24 +1,25 @@
 <mat-card class="card">
   <mat-card-header>
-    <div mat-card-avatar class="avatar"></div>
-    <mat-card-title class="name">しばいぬ</mat-card-title>
+    <div
+      mat-card-avatar
+      class="avatar"
+      [style.background-image]="
+        'url(' + ItemCard.avatarURL.replace('_normal', '') + ')'
+      "
+    ></div>
+    <mat-card-title class="name">{{ ItemCard.userName }}</mat-card-title>
   </mat-card-header>
   <p class="title">
-    初めて犬を飼うときに役に立つリンクをまとめました初めて犬を飼うときに役に立つリンクをまとめました
+    {{ ItemCard.title }}
   </p>
-  <img
-    class="thumb"
-    mat-card-image
-    src="https://saruwakakun.com/wp-content/uploads/2017/06/dogg-03-min.png"
-    alt=""
-  />
+  <img class="thumb" [src]="ItemCard.thumbURL" mat-card-image alt="" />
   <div class="actions">
     <button mat-icon-button class="actions__action">
       <mat-icon>share</mat-icon>
     </button>
     <button mat-button class="actions__action actions__action--favorite">
       <mat-icon>favorite_border</mat-icon>
-      <span>100</span>
+      <span>{{ ItemCard.favorite }}</span>
     </button>
   </div>
 </mat-card>
