@@ -10,15 +10,18 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   providedIn: 'root'
 })
 export class AuthService {
-  afUser$: Observable<User> = this.afAuth.user.pipe(
-    tap(user => console.log(user))
-  );
+  afUser$: Observable<User> = this.afAuth.user;
+  uid: string;
 
   constructor(
     private afAuth: AngularFireAuth,
     private router: Router,
     private snackBar: MatSnackBar
-  ) {}
+  ) {
+    this.afUser$.subscribe(user => {
+      this.uid = user && user.uid;
+    });
+  }
 
   login() {
     return this.afAuth.auth.signInWithPopup(new auth.TwitterAuthProvider());
