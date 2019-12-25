@@ -1,0 +1,66 @@
+@import 'mixins';
+
+h2 {
+  @include head;
+}
+form {
+  margin-top: 80px;
+}
+mat-form-field,
+button {
+  display: block;
+}
+input,
+textarea {
+  color: $black;
+}
+.title {
+  &__content {
+    font-size: 1.6rem;
+  }
+  &__description {
+    font-size: 1.6rem;
+    textarea {
+      height: 80px;
+    }
+  }
+}
+.section {
+  &__content {
+    font-size: 1.4rem;
+  }
+  &__description {
+    font-size: 1.4rem;
+    textarea {
+      height: 60px;
+    }
+  }
+}
+mat-divider {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+.add {
+  margin-left: auto;
+  mat-icon {
+    font-size: 35px;
+    padding-right: 10px;
+  }
+}
+.submit {
+  @include button-color;
+  font-size: 1.6rem;
+  padding: 4px 20px;
+  margin: 30px auto 0;
+}
+.mylist {
+  margin-top: 90px;
+}
+.cards {
+  padding-top: 90px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 300px));
+  justify-content: center;
+  margin: 0 auto;
+  gap: 30px;
+}

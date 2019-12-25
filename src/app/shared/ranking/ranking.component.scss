@@ -1,10 +1,12 @@
+@import 'mixins';
+
 .ranking {
   text-align: center;
   padding-top: 90px;
   h2 {
     font-size: 2.6rem;
     letter-spacing: 0.04em;
-    color: #3d4a57;
+    color: $black;
     position: relative;
     display: block;
     &:before {
@@ -29,5 +31,4 @@
   justify-content: center;
   margin: 0 auto;
   gap: 30px;
-  max-width: 1000px;
 }
