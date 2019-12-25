@@ -6,7 +6,7 @@
   cursor: pointer;
   position: relative;
   display: inline-block;
-  background-color: #3d4a57;
+  background-color: #97adbd;
   color: #fafafa;
   transition: 0.4s;
   &:hover {
@@ -44,7 +44,6 @@
     }
     &--favorite {
       width: 95px;
-      position: relative;
       &:hover {
         color: #e0245e;
       }

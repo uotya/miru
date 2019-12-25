@@ -2,7 +2,7 @@
   <h2>記事の作成🤔</h2>
   <form [formGroup]="form" (ngSubmit)="create()">
     <div class="title">
-      <mat-form-field class="title__content" appearance="standard">
+      <mat-form-field class="title__content" appearance="outline">
         <mat-label>記事のタイトル</mat-label>
         <input
           formControlName="title"
@@ -18,7 +18,7 @@
           >長すぎます</mat-error
         >
       </mat-form-field>
-      <mat-form-field class="title__description" appearance="standard">
+      <mat-form-field class="title__description" appearance="outline">
         <mat-label>記事の説明</mat-label>
         <textarea
           formControlName="description"
@@ -46,7 +46,7 @@
         >
       </mat-form-field>
       <mat-form-field class="section__description" appearance="outline">
-        <mat-label>詳細</mat-label>
+        <mat-label>コメント</mat-label>
         <textarea
           formControlName="text"
           matInput
