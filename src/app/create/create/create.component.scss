@@ -1,0 +1,84 @@
+@import 'mixins';
+@import '~@angular/material/theming';
+
+h2 {
+  @include head;
+}
+form {
+  margin-top: 80px;
+  padding: 50px 5px;
+  background: linear-gradient(to bottom, #d5dee7 0%, #e8ebf2 50%, #e2e7ed 100%),
+    linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.02) 50%,
+      rgba(255, 255, 255, 0.02) 61%,
+      rgba(0, 0, 0, 0.02) 73%
+    ),
+    linear-gradient(33deg, rgba(255, 255, 255, 0.2) 0%, rgba(0, 0, 0, 0.2) 100%);
+  background-blend-mode: normal, color-burn;
+  @include mat-elevation(3);
+  border-radius: 20px;
+}
+mat-form-field,
+button {
+  display: block;
+}
+input,
+textarea {
+  color: $black;
+}
+.title {
+  &__content {
+    font-size: 1.7rem;
+    font-weight: bold;
+  }
+  &__description {
+    font-size: 1.7rem;
+    textarea {
+      height: 80px;
+    }
+  }
+}
+.section {
+  &__content {
+    font-size: 1.4rem;
+    font-weight: bold;
+  }
+  &__description {
+    font-size: 1.5rem;
+    textarea {
+      height: 60px;
+    }
+  }
+}
+mat-divider {
+  margin-top: 40px;
+  margin-bottom: 40px;
+  background-color: #d5e7f5;
+  border-width: 1px;
+}
+.add {
+  margin-left: auto;
+  mat-icon {
+    font-size: 35px;
+    padding-right: 10px;
+  }
+}
+.submit {
+  @include button-color;
+  font-size: 1.6rem;
+  padding: 4px 20px;
+  margin: 30px auto 0;
+}
+.mylist {
+  margin-top: 90px;
+}
+.cards {
+  padding-top: 90px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 300px));
+  justify-content: center;
+  margin: 0 auto;
+  gap: 30px;
+  text-align: center;
+}

@@ -90,8 +90,7 @@
   }
 }
 .btn {
-  background-color: #0d568b;
-  color: white;
+  @include button-color;
   margin-left: auto;
   @include sp {
     font-size: 12px;

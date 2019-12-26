@@ -1,1 +1,77 @@
-<p>create works!</p>
+<div class="container">
+  <h2>記事の作成🤔</h2>
+  <form [formGroup]="form" (ngSubmit)="create()">
+    <div class="title">
+      <mat-form-field class="title__content" appearance="outline">
+        <mat-label>記事のタイトル</mat-label>
+        <input
+          formControlName="title"
+          matInput
+          placeholder="タイトルを入力（60文字以内）"
+          autocomplete="off"
+          required
+        />
+        <mat-error *ngIf="titleControl.hasError('required')"
+          >必須入力です</mat-error
+        >
+        <mat-error *ngIf="titleControl.hasError('maxlength')"
+          >長すぎます</mat-error
+        >
+      </mat-form-field>
+      <mat-form-field class="title__description" appearance="outline">
+        <mat-label>記事の説明</mat-label>
+        <textarea
+          formControlName="description"
+          matInput
+          placeholder="説明を入力（200文字以内）"
+          autocomplete="off"
+        ></textarea>
+        <mat-error *ngIf="descriptionControl.hasError('maxlength')"
+          >長すぎます</mat-error
+        >
+      </mat-form-field>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="section">
+      <mat-form-field class="section__content" appearance="outline">
+        <mat-label>リンク</mat-label>
+        <input
+          formControlName="link"
+          matInput
+          placeholder="追加したいリンクのURLを入力 (テキストも可)"
+          autocomplete="off"
+        />
+        <mat-error *ngIf="linkControl.hasError('maxlength')"
+          >長すぎます</mat-error
+        >
+      </mat-form-field>
+      <mat-form-field class="section__description" appearance="outline">
+        <mat-label>コメント</mat-label>
+        <textarea
+          formControlName="text"
+          matInput
+          placeholder="リンクの詳細を入力 (300文字以内)"
+          autocomplete="off"
+        ></textarea>
+        <mat-error *ngIf="textControl.hasError('maxlength')"
+          >長すぎます</mat-error
+        >
+      </mat-form-field>
+    </div>
+    <button class="add" mat-icon-button matTooltip="リンクを追加する">
+      <mat-icon>add_circle</mat-icon>
+    </button>
+    <button class="submit" [disabled]="form.invalid" mat-raised-button>
+      公開する
+    </button>
+  </form>
+  <div class="mylist">
+    <h2>マイリスト</h2>
+    <div class="cards">
+      <app-item-card [ItemCard]="card"></app-item-card>
+      <app-item-card [ItemCard]="card"></app-item-card>
+      <app-item-card [ItemCard]="card"></app-item-card>
+    </div>
+  </div>
+  <app-ranking></app-ranking>
+</div>

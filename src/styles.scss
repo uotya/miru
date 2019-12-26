@@ -11,10 +11,10 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$miru-primary: mat-palette($mat-gray, 50);
-$miru-accent: mat-palette($mat-indigo, 400);
+$miru-primary: mat-palette($mat-indigo, 200);
+$miru-accent: mat-palette($mat-blue-grey, 600);
 // The warn palette is optional (defaults to red).
-$miru-warn: mat-palette($mat-red);
+$miru-warn: mat-palette($mat-red, 300);
 
 // Create the theme object (a Sass map containing all of the palettes).
 $miru-theme: mat-light-theme($miru-primary, $miru-accent, $miru-warn);
@@ -48,7 +48,7 @@ body {
 }
 .container {
   margin: 0 auto;
-  max-width: 1200px;
+  max-width: 1000px;
   padding: 150px 24px 0;
   @include sp {
     padding: 200px 16px 0;
