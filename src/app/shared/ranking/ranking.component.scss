@@ -17,7 +17,6 @@
       width: 60px;
       height: 5px;
       left: 50%;
-      -webkit-transform: translateX(-50%);
       transform: translateX(-50%);
       background-color: #3d4a57;
       border-radius: 2px;
@@ -25,10 +24,9 @@
   }
 }
 .cards {
-  padding-top: 90px;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 300px));
   justify-content: center;
-  margin: 0 auto;
+  margin: 90px auto 0;
   gap: 30px;
 }

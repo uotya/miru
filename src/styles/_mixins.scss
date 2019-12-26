@@ -1,11 +1,11 @@
-/*color*/
+// color
 $black: #3d4a57;
 
-/* size */
+// size
 $sp: 559px;
 $tab: 959px;
 
-/* mixins */
+// mixins
 @mixin sp {
   @media (max-width: ($sp)) {
     @content;
