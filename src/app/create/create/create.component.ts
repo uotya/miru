@@ -52,20 +52,20 @@ export class CreateComponent implements OnInit {
 
   constructor(private fb: FormBuilder) {}
 
-  addLink(i: number) {
+  addLink(index: number) {
     const linkFormGroup = this.fb.group({
       link: ['', [Validators.maxLength(600)]],
       comment: ['', [Validators.maxLength(300)]]
     });
 
-    this.links.insert(i + 1, linkFormGroup);
+    this.links.insert(index + 1, linkFormGroup);
 
     if (matchMedia('(max-width: 559px)').matches) {
-      scrollBy({ top: +288, behavior: 'smooth' });
+      scrollBy({ top: 288, behavior: 'smooth' });
     } else if (matchMedia('(max-width: 959px)').matches) {
-      scrollBy({ top: +303, behavior: 'smooth' });
+      scrollBy({ top: 303, behavior: 'smooth' });
     } else {
-      scrollBy({ top: +318, behavior: 'smooth' });
+      scrollBy({ top: 318, behavior: 'smooth' });
     }
   }
 
