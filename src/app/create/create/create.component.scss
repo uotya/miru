@@ -54,31 +54,36 @@ textarea {
 mat-divider {
   margin-top: 40px;
   margin-bottom: 40px;
-  background-color: #d5e7f5;
-  border-width: 1px;
+  border-width: 3px;
 }
-.add {
-  margin-left: auto;
+.actions {
+  display: flex;
+  justify-content: flex-end;
   mat-icon {
     font-size: 35px;
-    padding-right: 10px;
+    padding: 0 10.5px 1.5px 0;
+  }
+  .remove {
+    margin-left: 20px;
   }
 }
 .submit {
   @include button-color;
   font-size: 1.6rem;
   padding: 4px 20px;
-  margin: 30px auto 0;
+  margin: 50px auto 0;
 }
 .mylist {
   margin-top: 90px;
 }
+app-ranking {
+  margin-top: 120px;
+}
 .cards {
-  padding-top: 90px;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 300px));
   justify-content: center;
-  margin: 0 auto;
+  margin: 90px auto 0;
   gap: 30px;
   text-align: center;
 }
