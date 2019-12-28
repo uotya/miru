@@ -4,22 +4,22 @@
       mat-card-avatar
       class="avatar"
       [style.background-image]="
-        'url(' + ItemCard.avatarURL.replace('_normal', '') + ')'
+        'url(' + Card.avatarURL.replace('_normal', '') + ')'
       "
     ></div>
-    <mat-card-title class="name">{{ ItemCard.userName }}</mat-card-title>
+    <mat-card-title class="name">{{ Card.userName }}</mat-card-title>
   </mat-card-header>
   <p class="title">
-    {{ ItemCard.title }}
+    {{ Card.title }}
   </p>
-  <img class="thumb" [src]="ItemCard.thumbURL" mat-card-image alt="" />
+  <img class="thumb" [src]="Card.thumbURL" mat-card-image alt="" />
   <div class="actions">
     <button mat-icon-button class="actions__action">
       <mat-icon>share</mat-icon>
     </button>
     <button mat-button class="actions__action actions__action--favorite">
       <mat-icon>favorite_border</mat-icon>
-      <span>{{ ItemCard.favorite }}</span>
+      <span>{{ Card.favorite }}</span>
     </button>
   </div>
 </mat-card>
