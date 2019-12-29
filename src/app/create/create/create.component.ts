@@ -6,6 +6,8 @@ import {
   FormArray
 } from '@angular/forms';
 import { Card } from 'src/app/interfaces/card';
+import { CardService } from 'src/app/services/card.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-create',
@@ -50,7 +52,11 @@ export class CreateComponent implements OnInit {
     return this.form.get('links') as FormArray;
   }
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private cardService: CardService,
+    private authService: AuthService
+  ) {}
 
   addLink(index: number) {
     const linkFormGroup = this.fb.group({
