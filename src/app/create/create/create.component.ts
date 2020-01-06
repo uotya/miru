@@ -5,8 +5,8 @@ import {
   FormControl,
   FormArray
 } from '@angular/forms';
-import { Card } from 'src/app/interfaces/card';
-import { CardService } from 'src/app/services/card.service';
+import { Article } from 'src/app/interfaces/article';
+import { ArticleService } from 'src/app/services/article.service';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -43,7 +43,7 @@ export class CreateComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private cardService: CardService,
+    private articleService: ArticleService,
     private authService: AuthService
   ) {}
 

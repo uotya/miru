@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Card } from 'src/app/interfaces/card';
+import { Article } from 'src/app/interfaces/article';
 
 @Component({
   selector: 'app-mylist',
@@ -7,7 +7,7 @@ import { Card } from 'src/app/interfaces/card';
   styleUrls: ['./mylist.component.scss']
 })
 export class MylistComponent implements OnInit {
-  card: Card = {
+  card: Article = {
     avatarURL:
       'https://saruwakakun.com/wp-content/uploads/2017/06/bdrArtwork.jpg',
     userName: 'しばいぬ',

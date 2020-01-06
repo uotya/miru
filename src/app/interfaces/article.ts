@@ -1,4 +1,4 @@
-export interface Card {
+export interface Article {
   avatarURL: string;
   userName: string;
   title: string;

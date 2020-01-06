@@ -1,19 +1,19 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { Card } from '../interfaces/card';
+import { Article } from '../interfaces/article';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CardService {
+export class ArticleService {
   constructor(private db: AngularFirestore, private snackBar: MatSnackBar) {}
 
-  createCard(card: Card) {
+  createArticle(article: Article) {
     const id = this.db.createId();
     return this.db
-      .doc(`cards/${id}`)
-      .set(card)
+      .doc(`articles/${id}`)
+      .set(article)
       .then(() => {
         this.snackBar.open('公開されました🥳', null, {
           duration: 2000
