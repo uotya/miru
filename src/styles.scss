@@ -54,3 +54,11 @@ body {
     padding: 200px 16px 0;
   }
 }
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 300px));
+  justify-content: center;
+  margin: 90px auto 0;
+  gap: 30px;
+  text-align: center;
+}

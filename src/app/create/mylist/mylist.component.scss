@@ -1,8 +1,8 @@
 @import 'mixins';
 
-.ranking {
+.mylist {
   padding-top: 90px;
-  h2 {
-    @include head;
-  }
+}
+h2 {
+  @include head;
 }

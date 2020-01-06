@@ -73,17 +73,3 @@ mat-divider {
   padding: 4px 20px;
   margin: 50px auto 0;
 }
-.mylist {
-  margin-top: 90px;
-}
-app-ranking {
-  margin-top: 120px;
-}
-.cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 300px));
-  justify-content: center;
-  margin: 90px auto 0;
-  gap: 30px;
-  text-align: center;
-}
