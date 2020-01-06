@@ -9,7 +9,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class ArticleService {
   constructor(private db: AngularFirestore, private snackBar: MatSnackBar) {}
 
-  createArticle(article: Article) {
+  createArticle(article: Omit<Article, ''>) {
     const id = this.db.createId();
     return this.db
       .doc(`articles/${id}`)

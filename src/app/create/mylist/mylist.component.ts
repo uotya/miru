@@ -7,7 +7,7 @@ import { Article } from 'src/app/interfaces/article';
   styleUrls: ['./mylist.component.scss']
 })
 export class MylistComponent implements OnInit {
-  card: Article = {
+  card: Omit<Article, 'userId' | 'description' | 'link' | 'comment'> = {
     avatarURL:
       'https://saruwakakun.com/wp-content/uploads/2017/06/bdrArtwork.jpg',
     userName: 'しばいぬ',

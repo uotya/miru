@@ -79,6 +79,19 @@ export class CreateComponent implements OnInit {
   ngOnInit() {}
 
   create() {
-    console.log(this.form.value);
+    const formData = this.form.value;
+    const user = this.authService.afUser$.subscribe();
+    this.articleService.createArticle({
+      avatarURL: this.authService.avatarUrl,
+      userName: this.authService.userName,
+      userId: this.authService.uid,
+      title: formData.title,
+      description: formData.description,
+      link: formData.link,
+      comment: formData.comment,
+      thumbURL:
+        'https://saruwakakun.com/wp-content/uploads/2017/06/dogg-03-min.png',
+      favorite: 0
+    });
   }
 }
