@@ -54,6 +54,27 @@ body {
     padding: 200px 16px 0;
   }
 }
+.heading {
+  text-align: center;
+  font-size: 2.6rem;
+  letter-spacing: 0.04em;
+  color: $black;
+  position: relative;
+  display: block;
+  &:before {
+    content: '';
+    position: absolute;
+    bottom: -30px;
+    display: inline-block;
+    width: 60px;
+    height: 5px;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    background-color: #3d4a57;
+    border-radius: 2px;
+  }
+}
 .cards {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 300px));
@@ -61,4 +82,8 @@ body {
   margin: 90px auto 0;
   gap: 30px;
   text-align: center;
+}
+.btn-blue {
+  background-color: #0d568b;
+  color: white;
 }

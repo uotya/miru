@@ -1,8 +1,3 @@
-@import 'mixins';
-
 .ranking {
   padding-top: 90px;
-  h2 {
-    @include head;
-  }
 }
