@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Article } from 'src/app/interfaces/article';
 
 @Component({
-  selector: 'app-ranking',
-  templateUrl: './ranking.component.html',
-  styleUrls: ['./ranking.component.scss']
+  selector: 'app-mylist',
+  templateUrl: './mylist.component.html',
+  styleUrls: ['./mylist.component.scss']
 })
-export class RankingComponent implements OnInit {
+export class MylistComponent implements OnInit {
   card: Article = {
     avatarURL:
       'https://saruwakakun.com/wp-content/uploads/2017/06/bdrArtwork.jpg',

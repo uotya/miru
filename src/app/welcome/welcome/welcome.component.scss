@@ -26,8 +26,7 @@
       top: 0;
     }
   }
-  button {
-    @include button-color;
+  .btn {
     margin-top: 70px;
     font-size: 2.4rem;
     letter-spacing: 0.03em;

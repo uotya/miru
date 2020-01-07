@@ -1,5 +1,5 @@
 <div class="container">
-  <h2>記事の作成🤔</h2>
+  <h2 class="heading">記事の作成🤔</h2>
   <form [formGroup]="form" (ngSubmit)="create()">
     <div class="title">
       <mat-form-field class="title__content" appearance="outline">
@@ -85,17 +85,10 @@
       </div>
     </div>
     <mat-divider></mat-divider>
-    <button class="submit" [disabled]="form.invalid" mat-raised-button>
+    <button class="btn-blue submit" [disabled]="form.invalid" mat-raised-button>
       公開する
     </button>
   </form>
-  <div class="mylist">
-    <h2>マイリスト</h2>
-    <div class="cards">
-      <app-item-card [ItemCard]="card"></app-item-card>
-      <app-item-card [ItemCard]="card"></app-item-card>
-      <app-item-card [ItemCard]="card"></app-item-card>
-    </div>
-  </div>
+  <app-mylist></app-mylist>
   <app-ranking></app-ranking>
 </div>

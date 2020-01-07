@@ -5,7 +5,9 @@ import {
   FormControl,
   FormArray
 } from '@angular/forms';
-import { Card } from 'src/app/interfaces/card';
+import { Article } from 'src/app/interfaces/article';
+import { ArticleService } from 'src/app/services/article.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-create',
@@ -23,17 +25,6 @@ export class CreateComponent implements OnInit {
     links: this.fb.array([this.linkFormGroup])
   });
 
-  card: Card = {
-    avatarURL:
-      'https://saruwakakun.com/wp-content/uploads/2017/06/bdrArtwork.jpg',
-    userName: 'しばいぬ',
-    title:
-      '初めて犬を飼うときに役に立つリンクをまとめました初めて犬を飼うときに役に立つリンクをまとめました',
-    thumbURL:
-      'https://saruwakakun.com/wp-content/uploads/2017/06/dogg-03-min.png',
-    favorite: 100
-  };
-
   get titleControl() {
     return this.form.get('title') as FormControl;
   }
@@ -50,7 +41,11 @@ export class CreateComponent implements OnInit {
     return this.form.get('links') as FormArray;
   }
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private articleService: ArticleService,
+    private authService: AuthService
+  ) {}
 
   addLink(index: number) {
     const linkFormGroup = this.fb.group({
@@ -84,6 +79,19 @@ export class CreateComponent implements OnInit {
   ngOnInit() {}
 
   create() {
-    console.log(this.form.value);
+    const formData = this.form.value;
+    const user = this.authService.afUser$.subscribe();
+    this.articleService.createArticle({
+      avatarURL: this.authService.avatarUrl,
+      userName: this.authService.userName,
+      userId: this.authService.uid,
+      title: formData.title,
+      description: formData.description,
+      link: formData.link,
+      comment: formData.comment,
+      thumbURL:
+        'https://saruwakakun.com/wp-content/uploads/2017/06/dogg-03-min.png',
+      favorite: 0
+    });
   }
 }

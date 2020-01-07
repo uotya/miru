@@ -90,7 +90,6 @@
   }
 }
 .btn {
-  @include button-color;
   margin-left: auto;
   @include sp {
     font-size: 12px;
