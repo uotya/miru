@@ -10,14 +10,8 @@ export class ArticleService {
   constructor(private db: AngularFirestore, private snackBar: MatSnackBar) {}
 
   createArticle(article: Article) {
+    console.log(article);
     const id = this.db.createId();
-    return this.db
-      .doc(`articles/${id}`)
-      .set(article)
-      .then(() => {
-        this.snackBar.open('公開されました🥳', null, {
-          duration: 2000
-        });
-      });
+    return this.db.doc(`articles/${id}`).set(article);
   }
 }
