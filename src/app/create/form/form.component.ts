@@ -8,8 +8,11 @@ import {
 import { ArticleService } from 'src/app/services/article.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { Article } from 'src/app/interfaces/article';
+import { OGP } from 'src/app/interfaces/ogp';
 import { CreateComponent } from 'src/app/create/create/create.component';
+import { HttpClient } from '@angular/common/http';
 
+const API = 'https://ogp-api.appspot.com/?url=';
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
@@ -26,11 +29,14 @@ export class FormComponent implements OnInit {
     comment: ['', [Validators.maxLength(300)]]
   });
 
+  ogp: OGP;
+
   constructor(
     private fb: FormBuilder,
     private articleService: ArticleService,
     private authService: AuthService,
-    private createComponent: CreateComponent
+    private createComponent: CreateComponent,
+    private http: HttpClient
   ) {}
 
   ngOnInit() {
@@ -66,8 +72,6 @@ export class FormComponent implements OnInit {
         scrollBy({ top: 318, behavior: 'smooth' });
       }
     }
-    console.log(this.links);
-    console.log(index);
   }
 
   removeLink(index: number) {
@@ -84,16 +88,19 @@ export class FormComponent implements OnInit {
 
   create() {
     const formData = this.form.value;
-    const sendData: Article = {
-      userId: this.authService.uid,
-      title: formData.title,
-      links: this.form.get('links').valid ? formData.links : [],
-      description: formData.description,
-      thumbURL:
-        'https://saruwakakun.com/wp-content/uploads/2017/06/dogg-03-min.png',
-      favorite: 0
-    };
-    this.articleService.createArticle(sendData);
-    this.createComponent.created = true;
+    this.http.get(API + formData.links[0].link).subscribe(ogp => {
+      this.ogp = ogp as OGP;
+      const sendData: Article = {
+        userId: this.authService.uid,
+        title: formData.title,
+        links: this.form.get('links').valid ? formData.links : [],
+        description: formData.description,
+        thumbURL: this.ogp.ogImage.url,
+        favorite: 0
+      };
+      this.articleService.createArticle(sendData);
+
+      this.createComponent.created = true;
+    });
   }
 }
