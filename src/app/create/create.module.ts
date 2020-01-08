@@ -14,6 +14,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MylistComponent } from './mylist/mylist.component';
 import { FormComponent } from './form/form.component';
 import { CreatedComponent } from './created/created.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { CreatedComponent } from './created/created.component';
     MatButtonModule,
     MatIconModule,
     MatDividerModule,
-    MatTooltipModule
+    MatTooltipModule,
+    HttpClientModule
   ]
 })
 export class CreateModule {}
