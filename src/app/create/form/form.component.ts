@@ -88,19 +88,26 @@ export class FormComponent implements OnInit {
 
   create() {
     const formData = this.form.value;
-    this.http.get(API + formData.links[0].link).subscribe(ogp => {
-      this.ogp = ogp as OGP;
-      const sendData: Article = {
-        userId: this.authService.uid,
-        title: formData.title,
-        links: this.form.get('links').valid ? formData.links : [],
-        description: formData.description,
-        thumbURL: this.ogp.ogImage.url,
-        favorite: 0
-      };
-      this.articleService.createArticle(sendData);
+    const firstLink = formData.links[0].link;
+    this.createComponent.created = true;
+    scrollTo({ top: 0, behavior: 'smooth' });
 
-      this.createComponent.created = true;
-    });
+    const sendData: Article = {
+      userId: this.authService.uid,
+      title: formData.title,
+      links: this.form.get('links').valid ? formData.links : [],
+      description: formData.description,
+      favorite: 0
+    };
+
+    if (firstLink.match(/http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w-.\/?%&=]*)?/)) {
+      this.http.get(API + firstLink).subscribe(ogp => {
+        this.ogp = ogp as OGP;
+        sendData.thumbURL = this.ogp.ogImage.url;
+        this.articleService.createArticle(sendData);
+      });
+    } else {
+      this.articleService.createArticle(sendData);
+    }
   }
 }

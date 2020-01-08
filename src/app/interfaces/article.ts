@@ -4,6 +4,6 @@ export interface Article {
   description?: string;
   links: [];
   comment?: string;
-  thumbURL: string;
+  thumbURL?: string;
   favorite: number;
 }
