@@ -1,11 +1,3 @@
-export interface ArticleWithUser {
-  userId: string;
-  title: string;
-  description?: string;
-  links: [];
-  comment?: string;
-  thumbURL?: string;
-  favorite: number;
-  avatarURL: string;
-  userName: string;
-}
+import { Article } from '../interfaces/article';
+import { UserData } from '../interfaces/user';
+export interface ArticleWithUser extends Article, UserData {}
