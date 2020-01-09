@@ -24,10 +24,6 @@ export class FormComponent implements OnInit {
     description: ['', [Validators.maxLength(200)]],
     links: this.fb.array([])
   });
-  linkFormGroup = this.fb.group({
-    link: ['', [Validators.required, Validators.maxLength(600)]],
-    comment: ['', [Validators.maxLength(300)]]
-  });
 
   ogp: OGP;
 
@@ -52,18 +48,16 @@ export class FormComponent implements OnInit {
   get links(): FormArray {
     return this.form.get('links') as FormArray;
   }
-  get linkControl() {
-    return this.linkFormGroup.get('link') as FormControl;
-  }
-  get commentControl() {
-    return this.linkFormGroup.get('comment') as FormControl;
-  }
 
   addLink(index?: number) {
+    const linkFormGroup = this.fb.group({
+      link: ['', [Validators.required, Validators.maxLength(600)]],
+      comment: ['', [Validators.maxLength(300)]]
+    });
     if (!index) {
-      this.links.push(this.linkFormGroup);
+      this.links.push(linkFormGroup);
     } else {
-      this.links.insert(index + 1, this.linkFormGroup);
+      this.links.insert(index + 1, linkFormGroup);
       if (matchMedia('(max-width: 559px)').matches) {
         scrollBy({ top: 288, behavior: 'smooth' });
       } else if (matchMedia('(max-width: 959px)').matches) {

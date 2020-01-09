@@ -41,7 +41,10 @@
             placeholder="追加したいリンクのURLを入力 (テキストも可)"
             autocomplete="off"
           />
-          <mat-error *ngIf="linkControl.hasError('maxlength')"
+          <mat-error
+            *ngIf="
+              link.get('link').touched && link.get('link').hasError('maxlength')
+            "
             >長すぎます</mat-error
           >
         </mat-form-field>
@@ -52,7 +55,11 @@
             matInput
             placeholder="リンクの詳細を入力 (300文字以内)"
           ></textarea>
-          <mat-error *ngIf="commentControl.hasError('maxlength')"
+          <mat-error
+            *ngIf="
+              link.get('comment').touched &&
+              link.get('comment').hasError('maxlength')
+            "
             >長すぎます</mat-error
           >
         </mat-form-field>
