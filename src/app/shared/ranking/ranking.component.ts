@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Article } from 'src/app/interfaces/article';
+import { User } from 'src/app/interfaces/user';
 
 @Component({
   selector: 'app-ranking',
@@ -7,7 +8,7 @@ import { Article } from 'src/app/interfaces/article';
   styleUrls: ['./ranking.component.scss']
 })
 export class RankingComponent implements OnInit {
-  card: Article = {
+  card: Article | User = {
     avatarURL:
       'https://saruwakakun.com/wp-content/uploads/2017/06/bdrArtwork.jpg',
     userName: 'しばいぬ',
@@ -15,8 +16,7 @@ export class RankingComponent implements OnInit {
     title:
       '初めて犬を飼うときに役に立つリンクをまとめました初めて犬を飼うときに役に立つリンクをまとめました',
     description: 'temporary',
-    link: 'temporary',
-    comment: 'temporary',
+    links: [],
     thumbURL:
       'https://saruwakakun.com/wp-content/uploads/2017/06/dogg-03-min.png',
     favorite: 100

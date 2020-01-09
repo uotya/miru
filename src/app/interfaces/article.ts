@@ -1,11 +1,9 @@
 export interface Article {
-  avatarURL: string;
-  userName: string;
   userId: string;
   title: string;
   description?: string;
-  link?: string;
+  links: [];
   comment?: string;
-  thumbURL: string;
+  thumbURL?: string;
   favorite: number;
 }

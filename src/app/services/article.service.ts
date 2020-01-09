@@ -11,13 +11,6 @@ export class ArticleService {
 
   createArticle(article: Article) {
     const id = this.db.createId();
-    return this.db
-      .doc(`articles/${id}`)
-      .set(article)
-      .then(() => {
-        this.snackBar.open('公開されました🥳', null, {
-          duration: 2000
-        });
-      });
+    return this.db.doc(`articles/${id}`).set(article);
   }
 }

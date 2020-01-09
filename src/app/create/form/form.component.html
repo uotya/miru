@@ -1,0 +1,94 @@
+<h2 class="heading">記事の作成🤔</h2>
+<form [formGroup]="form" (ngSubmit)="create()">
+  <div class="title">
+    <mat-form-field class="title__content" appearance="outline">
+      <mat-label>記事のタイトル</mat-label>
+      <input
+        formControlName="title"
+        matInput
+        placeholder="タイトルを入力（60文字以内）"
+        autocomplete="off"
+        required
+      />
+      <mat-error *ngIf="titleControl.hasError('required')"
+        >必須入力です</mat-error
+      >
+      <mat-error *ngIf="titleControl.hasError('maxlength')"
+        >長すぎます</mat-error
+      >
+    </mat-form-field>
+    <mat-form-field class="title__description" appearance="outline">
+      <mat-label>記事の説明</mat-label>
+      <textarea
+        formControlName="description"
+        matInput
+        placeholder="説明を入力（200文字以内）"
+      ></textarea>
+      <mat-error *ngIf="descriptionControl.hasError('maxlength')"
+        >長すぎます</mat-error
+      >
+    </mat-form-field>
+  </div>
+  <div formArrayName="links">
+    <div *ngFor="let link of links.controls; let i = index" [formGroupName]="i">
+      <mat-divider></mat-divider>
+      <div class="section">
+        <mat-form-field class="section__content" appearance="outline">
+          <mat-label>リンク</mat-label>
+          <input
+            formControlName="link"
+            matInput
+            placeholder="追加したいリンクのURLを入力 (テキストも可)"
+            autocomplete="off"
+          />
+          <mat-error
+            *ngIf="
+              link.get('link').touched && link.get('link').hasError('maxlength')
+            "
+            >長すぎます</mat-error
+          >
+        </mat-form-field>
+        <mat-form-field class="section__description" appearance="outline">
+          <mat-label>コメント</mat-label>
+          <textarea
+            formControlName="comment"
+            matInput
+            placeholder="リンクの詳細を入力 (300文字以内)"
+          ></textarea>
+          <mat-error
+            *ngIf="
+              link.get('comment').touched &&
+              link.get('comment').hasError('maxlength')
+            "
+            >長すぎます</mat-error
+          >
+        </mat-form-field>
+      </div>
+      <div class="actions">
+        <button
+          type="button"
+          class="add"
+          mat-icon-button
+          (click)="addLink(i + 1)"
+          matTooltip="リンクを下に追加する"
+        >
+          <mat-icon>add_circle</mat-icon>
+        </button>
+        <button
+          *ngIf="i >= 1"
+          type="button"
+          class="remove"
+          mat-icon-button
+          (click)="removeLink(i)"
+          matTooltip="このリンクを削除する"
+        >
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+  <mat-divider></mat-divider>
+  <button class="btn-blue submit" [disabled]="form.invalid" mat-raised-button>
+    公開する
+  </button>
+</form>
