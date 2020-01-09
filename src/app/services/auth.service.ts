@@ -5,8 +5,7 @@ import { auth, User } from 'firebase/app';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Article } from '../interfaces/article';
-
+import { UserData } from '../interfaces/user';
 @Injectable({
   providedIn: 'root'
 })
@@ -25,7 +24,7 @@ export class AuthService {
     this.afUser$.subscribe(user => {
       this.uid = user && user.uid;
       this.userName = user && user.displayName;
-      this.avatarUrl = user && user.photoURL;
+      this.avatarUrl = user && user.photoURL.replace('_normal', '');
       console.log(user);
     });
   }
@@ -33,10 +32,13 @@ export class AuthService {
   login() {
     return this.afAuth.auth.signInWithPopup(new auth.TwitterAuthProvider());
   }
+  createUser(userData: UserData) {
+    return this.db.doc(`users/${this.uid}`).set(userData);
+  }
 
   logout() {
     this.afAuth.auth.signOut().then(() => {
-      this.snackBar.open('ログアウトしました 👋🏻', null, {
+      this.snackBar.open('ログアウトしました！ 🕊', null, {
         duration: 2000
       });
     });
