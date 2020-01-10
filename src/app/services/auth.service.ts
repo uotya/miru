@@ -32,9 +32,6 @@ export class AuthService {
   login() {
     return this.afAuth.auth.signInWithPopup(new auth.TwitterAuthProvider());
   }
-  createUser(userData: UserData) {
-    return this.db.doc(`users/${this.uid}`).set(userData);
-  }
 
   logout() {
     this.afAuth.auth.signOut().then(() => {

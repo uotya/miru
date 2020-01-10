@@ -15,11 +15,6 @@ export class HeaderComponent implements OnInit {
   user$ = this.authService.afUser$.pipe(
     tap(() => {
       this.isUserChecked = true;
-      const sendData: UserData = {
-        userName: this.authService.userName,
-        avatarURL: this.authService.avatarUrl
-      };
-      this.authService.createUser(sendData);
     })
   );
 
