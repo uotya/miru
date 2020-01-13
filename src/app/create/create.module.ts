@@ -11,18 +11,12 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { MylistComponent } from './mylist/mylist.component';
 import { FormComponent } from './form/form.component';
 import { CreatedComponent } from './created/created.component';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
-  declarations: [
-    CreateComponent,
-    MylistComponent,
-    FormComponent,
-    CreatedComponent
-  ],
+  declarations: [CreateComponent, FormComponent, CreatedComponent],
   imports: [
     CommonModule,
     CreateRoutingModule,
