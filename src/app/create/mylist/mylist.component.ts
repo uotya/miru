@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Article } from 'src/app/interfaces/article';
-import { User } from 'src/app/interfaces/user';
+import { ArticleWithUser } from 'src/app/interfaces/article-with-user';
 
 @Component({
   selector: 'app-mylist',
@@ -8,7 +7,7 @@ import { User } from 'src/app/interfaces/user';
   styleUrls: ['./mylist.component.scss']
 })
 export class MylistComponent implements OnInit {
-  card: Article | User = {
+  card: ArticleWithUser = {
     avatarURL:
       'https://saruwakakun.com/wp-content/uploads/2017/06/bdrArtwork.jpg',
     userName: 'しばいぬ',
