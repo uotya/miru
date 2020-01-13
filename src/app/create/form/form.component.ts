@@ -87,7 +87,7 @@ export class FormComponent implements OnInit {
     scrollTo({ top: 0, behavior: 'smooth' });
 
     const sendData: Article = {
-      userId: this.authService.uid,
+      userId: this.authService.user.uid,
       title: formData.title,
       links: this.form.get('links').valid ? formData.links : [],
       description: formData.description,

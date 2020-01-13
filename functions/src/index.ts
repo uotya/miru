@@ -9,9 +9,8 @@ admin.initializeApp();
 const db = admin.firestore();
 
 exports.createUser = functions.auth.user().onCreate(user => {
-  const sendData = {
+  db.doc(`users/${user.uid}`).set({
     userName: user.displayName,
-    avatarURL: user.photoURL
-  };
-  db.doc(`users/${user.uid}`).set(sendData);
+    avatarURL: user.photoURL?.replace('_normal', '')
+  });
 });
