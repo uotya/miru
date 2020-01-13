@@ -21,6 +21,20 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
+    path: 'mylist',
+    loadChildren: () =>
+      import('./mylist/mylist.module').then(m => m.MylistModule),
+    canLoad: [AuthGuard],
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'ranking',
+    loadChildren: () =>
+      import('./shared/shared.module').then(m => m.SharedModule),
+    canLoad: [AuthGuard],
+    canActivate: [AuthGuard]
+  },
+  {
     path: 'intl',
     loadChildren: () => import('./intl/intl.module').then(m => m.IntlModule)
   },
