@@ -39,4 +39,10 @@ export class HeaderComponent implements OnInit {
   logout() {
     this.authService.logout();
   }
+
+  addSelected($event) {
+    const selected = document.getElementById('selected');
+    selected.removeAttribute('id');
+    $event.target.setAttribute('id', 'selected');
+  }
 }

@@ -18,7 +18,12 @@
         routerLink="/create"
         matTooltip="記事の作成"
       >
-        <mat-icon>create</mat-icon>
+        <mat-icon
+          (click)="addSelected($event)"
+          id="selected"
+          class="stretched-icon"
+          >create</mat-icon
+        >
       </button>
       <button
         class="icons__button"
@@ -26,7 +31,9 @@
         routerLink="/mylist"
         matTooltip="過去の投稿"
       >
-        <mat-icon>folder</mat-icon>
+        <mat-icon (click)="addSelected($event)" class="stretched-icon"
+          >folder</mat-icon
+        >
       </button>
       <button
         class="icons__button"
@@ -34,7 +41,9 @@
         routerLink="/ranking"
         matTooltip="人気の投稿"
       >
-        <mat-icon>whatshot</mat-icon>
+        <mat-icon (click)="addSelected($event)" class="stretched-icon"
+          >whatshot</mat-icon
+        >
       </button>
     </div>
     <button
