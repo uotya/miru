@@ -50,6 +50,9 @@ body {
   margin: 0 auto;
   max-width: 1000px;
   padding: 150px 24px 0;
+  @include tab {
+    padding: 200px 24px 0;
+  }
   @include sp {
     padding: 200px 16px 0;
   }

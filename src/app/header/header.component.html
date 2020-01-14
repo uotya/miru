@@ -10,7 +10,42 @@
       </button>
     </div>
   </div>
-  <div class="btn-wrap" *ngIf="user$ | async as user; else default">
+  <div class="loggedIn" *ngIf="user$ | async as user; else default">
+    <div class="icons">
+      <button
+        class="icons__button"
+        mat-button
+        routerLink="/create"
+        matTooltip="記事の作成"
+      >
+        <mat-icon
+          (click)="addSelected($event)"
+          id="selected"
+          class="stretched-icon"
+          >create</mat-icon
+        >
+      </button>
+      <button
+        class="icons__button"
+        mat-button
+        routerLink="/mylist"
+        matTooltip="過去の投稿"
+      >
+        <mat-icon (click)="addSelected($event)" class="stretched-icon"
+          >folder</mat-icon
+        >
+      </button>
+      <button
+        class="icons__button"
+        mat-button
+        routerLink="/ranking"
+        matTooltip="人気の投稿"
+      >
+        <mat-icon (click)="addSelected($event)" class="stretched-icon"
+          >whatshot</mat-icon
+        >
+      </button>
+    </div>
     <button
       class="avatar"
       mat-mini-fab
@@ -40,7 +75,7 @@
       (click)="login()"
       [disabled]="isLoading"
       *ngIf="isUserChecked"
-      class="btn btn-blue"
+      class="default btn-blue"
       id="default"
       mat-raised-button
     >
