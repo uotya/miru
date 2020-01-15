@@ -14,10 +14,10 @@
   </p>
   <img class="thumb" [src]="card.thumbURL" mat-card-image alt="" />
   <div class="actions">
-    <button mat-icon-button class="actions__action">
+    <button mat-icon-button class="actions__action actions__action--share">
       <mat-icon>share</mat-icon>
     </button>
-    <button mat-button class="actions__action actions__action--favorite">
+    <button mat-icon-button class="actions__action actions__action--favorite">
       <mat-icon>favorite_border</mat-icon>
       <span>{{ card.favorite }}</span>
     </button>
