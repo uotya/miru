@@ -1,3 +1,5 @@
 import { Article } from '../interfaces/article';
 import { UserData } from '../interfaces/user';
-export interface ArticleWithUser extends Article, UserData {}
+export interface ArticleWithUser extends Article {
+  author: UserData;
+}

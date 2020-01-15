@@ -1,9 +1,10 @@
 export interface Article {
-  userId: string;
+  authorId: string;
+  createdAt: Date;
   title: string;
   description?: string;
   links: [];
   comment?: string;
-  thumbURL?: string;
+  thumbnailURL?: string;
   favorite: number;
 }
