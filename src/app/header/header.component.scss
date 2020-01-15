@@ -106,7 +106,7 @@
     }
     mat-icon {
       color: #b0b0b0;
-      &#selected {
+      &.active {
         color: #376c91;
       }
       &.stretched-icon::after {

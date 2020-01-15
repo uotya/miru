@@ -2,7 +2,6 @@ import { Component, OnInit, NgZone } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 import { tap } from 'rxjs/operators';
-import { UserData } from '../interfaces/user';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -38,11 +37,5 @@ export class HeaderComponent implements OnInit {
 
   logout() {
     this.authService.logout();
-  }
-
-  addSelected($event) {
-    const selected = document.getElementById('selected');
-    selected.removeAttribute('id');
-    $event.target.setAttribute('id', 'selected');
   }
 }
