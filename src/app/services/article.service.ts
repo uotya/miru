@@ -17,12 +17,6 @@ export class ArticleService {
     return this.db.doc(`articles/${id}`).set(article);
   }
 
-  // getPopularArticles(): Observable<Article[]> {
-  //   return this.db.collection<Article>('articles', ref => {
-  //     return ref.orderBy('favorite').limit(6);
-  //   }).valueChanges();
-  // }
-
   getPopularArticles(): Observable<ArticleWithUser[]> {
     let articles: Article[];
     return this.db
@@ -57,6 +51,9 @@ export class ArticleService {
               ...article,
               author: users.find(user => user.uid === article.authorId)
             };
+            if (result.thumbnailURL == null) {
+              result.thumbnailURL = '/assets/images/thumbnail.png';
+            }
             return result;
           });
         })

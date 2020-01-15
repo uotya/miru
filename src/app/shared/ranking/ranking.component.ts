@@ -12,16 +12,8 @@ import { tap } from 'rxjs/operators';
 })
 export class RankingComponent implements OnInit {
   articles$: Observable<
-    Article[]
-  > = this.articleService.getPopularArticles().pipe(
-    tap(articles => {
-      articles.map(article => {
-        if (article.thumbnailURL == null) {
-          return (article.thumbnailURL = '/assets/images/thumbnail.png');
-        }
-      });
-    })
-  );
+    ArticleWithUser[]
+  > = this.articleService.getPopularArticles();
 
   card: ArticleWithUser = {
     author: {
