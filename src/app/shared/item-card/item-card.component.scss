@@ -15,6 +15,9 @@
 }
 .avatar {
   background-size: cover;
+  &:hover {
+    opacity: 0.6;
+  }
 }
 .name {
   font-size: 1.8rem;
@@ -22,6 +25,9 @@
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
+  &:hover {
+    text-decoration: underline;
+  }
 }
 .title {
   font-size: 1.6rem;
