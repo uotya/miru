@@ -1,0 +1,8 @@
+@import 'mixins';
+
+.container {
+  padding: 120px 24px 0;
+  @include sp {
+    padding: 100px 16px 0;
+  }
+}

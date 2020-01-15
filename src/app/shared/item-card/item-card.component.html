@@ -3,16 +3,14 @@
     <div
       mat-card-avatar
       class="avatar"
-      [style.background-image]="
-        'url(' + card.avatarURL.replace('_normal', '') + ')'
-      "
+      [style.background-image]="'url(' + card.author.avatarURL + ')'"
     ></div>
-    <mat-card-title class="name">{{ card.userName }}</mat-card-title>
+    <mat-card-title class="name">{{ card.author.userName }}</mat-card-title>
   </mat-card-header>
   <p class="title">
     {{ card.title }}
   </p>
-  <img class="thumb" [src]="card.thumbURL" mat-card-image alt="" />
+  <img class="thumb" [src]="card.thumbnailURL" mat-card-image alt="" />
   <div class="actions">
     <button mat-icon-button class="actions__action actions__action--share">
       <mat-icon>share</mat-icon>

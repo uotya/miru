@@ -87,7 +87,8 @@ export class FormComponent implements OnInit {
     scrollTo({ top: 0, behavior: 'smooth' });
 
     const sendData: Article = {
-      userId: this.authService.user.uid,
+      authorId: this.authService.user.uid,
+      createdAt: new Date(),
       title: formData.title,
       links: this.form.get('links').valid ? formData.links : [],
       description: formData.description,
@@ -97,7 +98,7 @@ export class FormComponent implements OnInit {
     if (firstLink.match(/http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w-.\/?%&=]*)?/)) {
       this.http.get(API + firstLink).subscribe(ogp => {
         this.ogp = ogp as OGP;
-        sendData.thumbURL = this.ogp.ogImage.url;
+        sendData.thumbnailURL = this.ogp.ogImage.url;
         this.articleService.createArticle(sendData);
       });
     } else {

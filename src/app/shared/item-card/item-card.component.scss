@@ -19,6 +19,9 @@
 .name {
   font-size: 1.8rem;
   padding-top: 10px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 .title {
   font-size: 1.6rem;
