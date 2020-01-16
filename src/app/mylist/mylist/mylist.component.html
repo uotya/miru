@@ -1,8 +1,17 @@
 <div class="container">
   <h2 class="heading">過去の投稿 📂</h2>
-  <div class="cards">
-    <app-item-card [card]="card"></app-item-card>
-    <app-item-card [card]="card"></app-item-card>
-    <app-item-card [card]="card"></app-item-card>
+  <div class="content" *ngIf="articles$ | async as articles">
+    <ng-container *ngIf="articles.length; else empty">
+      <div class="cards">
+        <app-item-card *ngFor="let article of articles" [card]="article">
+        </app-item-card>
+      </div>
+    </ng-container>
+    <ng-template #empty>
+      <mat-card class="empty-card">
+        <h3>まだ投稿していません😩</h3>
+        <p>投稿するとここに表示されます</p>
+      </mat-card>
+    </ng-template>
   </div>
 </div>

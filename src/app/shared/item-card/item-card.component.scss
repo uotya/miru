@@ -1,4 +1,5 @@
 @import '~@angular/material/theming';
+@import 'mixins';
 
 .card {
   font-weight: bold;
@@ -9,22 +10,31 @@
   background-color: #97adbd;
   color: #fafafa;
   transition: 0.4s;
+  @include mat-elevation(2);
+  -webkit-tap-highlight-color: transparent;
   &:hover {
     @include mat-elevation(8);
   }
 }
 .avatar {
   background-size: cover;
+  &:hover {
+    opacity: 0.6;
+  }
 }
 .name {
-  font-size: 1.8rem;
-  padding-top: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  padding-top: 12px;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
+  &:hover {
+    text-decoration: underline;
+  }
 }
 .title {
-  font-size: 1.6rem;
+  font-size: 16px;
   padding-top: 20px;
   line-height: 1.3;
   display: -webkit-box;
