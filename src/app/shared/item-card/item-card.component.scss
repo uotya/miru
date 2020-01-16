@@ -11,6 +11,7 @@
   color: #fafafa;
   transition: 0.4s;
   @include mat-elevation(2);
+  -webkit-tap-highlight-color: transparent;
   &:hover {
     @include mat-elevation(8);
   }
