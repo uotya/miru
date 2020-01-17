@@ -15,8 +15,18 @@
     <button mat-icon-button class="actions__action actions__action--share">
       <mat-icon>share</mat-icon>
     </button>
-    <button mat-icon-button class="actions__action actions__action--favorite">
-      <mat-icon>favorite_border</mat-icon>
+    <button
+      (click)="clickedLike(card)"
+      [class.liked]="isLiked"
+      mat-icon-button
+      class="actions__action actions__action--favorite"
+    >
+      <ng-container *ngIf="isLiked; else default">
+        <mat-icon class="liked">favorite</mat-icon>
+      </ng-container>
+      <ng-template #default>
+        <mat-icon class="default">favorite_border</mat-icon>
+      </ng-template>
       <span>{{ card.favorite }}</span>
     </button>
   </div>
