@@ -86,9 +86,8 @@ export class FormComponent implements OnInit {
     this.createComponent.created = true;
     scrollTo({ top: 0, behavior: 'smooth' });
 
-    const sendData: Article = {
+    const sendData: Omit<Article, 'articleId' | 'createdAt'> = {
       authorId: this.authService.user.uid,
-      createdAt: new Date(),
       title: formData.title,
       links: this.form.get('links').valid ? formData.links : [],
       description: formData.description,
