@@ -24,9 +24,9 @@
         formControlName="description"
         matInput
         placeholder="説明を入力（200文字以内）"
-        cdkTextareaAutosize
-        cdkAutosizeMinRows="3"
-        cdkAutosizeMaxRows="14"
+        matTextareaAutosize
+        matAutosizeMinRows="3"
+        matAutosizeMaxRows="14"
       ></textarea>
       <mat-error *ngIf="descriptionControl.hasError('maxlength')"
         >長すぎます</mat-error
@@ -58,9 +58,9 @@
             formControlName="comment"
             matInput
             placeholder="リンクの詳細を入力 (300文字以内)"
-            cdkTextareaAutosize
-            cdkAutosizeMinRows="3"
-            cdkAutosizeMaxRows="14"
+            matTextareaAutosize
+            matAutosizeMinRows="3"
+            matAutosizeMaxRows="14"
           ></textarea>
           <mat-error
             *ngIf="
