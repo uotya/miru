@@ -3,6 +3,8 @@ import { ArticleWithUser } from 'src/app/interfaces/article-with-user';
 import { LikeService } from 'src/app/services/like.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { take } from 'rxjs/operators';
+import { MatDialog } from '@angular/material/dialog';
+import { LoginDialogComponent } from 'src/app/welcome/login-dialog/login-dialog.component';
 
 @Component({
   selector: 'app-item-card',
@@ -16,7 +18,8 @@ export class ItemCardComponent implements OnInit {
 
   constructor(
     private likeService: LikeService,
-    private authService: AuthService
+    private authService: AuthService,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit() {
@@ -27,6 +30,7 @@ export class ItemCardComponent implements OnInit {
         .pipe(take(1))
         .subscribe(result => {
           this.isLiked = result;
+          this.favorite = this.card.favorite;
         });
     }
   }
@@ -43,7 +47,7 @@ export class ItemCardComponent implements OnInit {
       this.favorite--;
       this.isLiked = false;
     } else {
-      alert('ログインするといいねが押せます');
+      this.dialog.open(LoginDialogComponent);
     }
   }
 }
