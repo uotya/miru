@@ -29,6 +29,7 @@
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
+  outline: none;
   &:hover {
     text-decoration: underline;
   }

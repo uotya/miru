@@ -4,15 +4,24 @@
       mat-card-avatar
       class="avatar"
       [style.background-image]="'url(' + card.author.avatarURL + ')'"
+      [routerLink]=""
     ></div>
-    <mat-card-title class="name">{{ card.author.userName }}</mat-card-title>
+    <mat-card-title class="name" [routerLink]="">{{
+      card.author.userName
+    }}</mat-card-title>
   </mat-card-header>
-  <p class="title">
-    {{ card.title }}
-  </p>
-  <img class="thumb" [src]="card.thumbnailURL" mat-card-image alt="" />
+  <div [routerLink]="card.articleId">
+    <p class="title">
+      {{ card.title }}
+    </p>
+    <img class="thumb" [src]="card.thumbnailURL" mat-card-image alt="" />
+  </div>
   <div class="actions">
-    <button mat-icon-button class="actions__action actions__action--share">
+    <button
+      mat-icon-button
+      class="actions__action actions__action--share"
+      [routerLink]=""
+    >
       <mat-icon>share</mat-icon>
     </button>
     <button
@@ -20,6 +29,7 @@
       [class.liked]="isLiked"
       mat-icon-button
       class="actions__action actions__action--favorite"
+      [routerLink]=""
     >
       <ng-container *ngIf="isLiked; else default">
         <mat-icon class="liked">favorite</mat-icon>
