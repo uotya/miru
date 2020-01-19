@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ArticleWithUser } from 'src/app/interfaces/article-with-user';
 import { Observable } from 'rxjs';
 import { ArticleService } from 'src/app/services/article.service';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-ranking',
@@ -11,7 +12,7 @@ import { ArticleService } from 'src/app/services/article.service';
 export class RankingComponent implements OnInit {
   articles$: Observable<
     ArticleWithUser[]
-  > = this.articleService.getPopularArticles();
+  > = this.articleService.getPopularArticles().pipe(take(1));
 
   constructor(private articleService: ArticleService) {}
 

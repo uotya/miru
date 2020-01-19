@@ -22,7 +22,7 @@ export class AuthService {
   }
 
   login() {
-    return this.afAuth.auth.signInWithPopup(new auth.TwitterAuthProvider());
+    return this.afAuth.auth.signInWithRedirect(new auth.TwitterAuthProvider());
   }
 
   logout() {

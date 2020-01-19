@@ -7,16 +7,20 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { RankingComponent } from './ranking/ranking.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { LoginDialogComponent } from '../welcome/login-dialog/login-dialog.component';
 
 @NgModule({
-  declarations: [ItemCardComponent, RankingComponent],
+  declarations: [ItemCardComponent, RankingComponent, LoginDialogComponent],
   imports: [
     CommonModule,
     SharedRoutingModule,
     MatButtonModule,
     MatIconModule,
-    MatCardModule
+    MatCardModule,
+    MatDialogModule
   ],
-  exports: [ItemCardComponent, RankingComponent]
+  exports: [ItemCardComponent, RankingComponent],
+  entryComponents: [LoginDialogComponent]
 })
 export class SharedModule {}

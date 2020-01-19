@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Article } from '../interfaces/article';
-import { Observable, combineLatest, of, Subject, Observer } from 'rxjs';
+import { Observable, combineLatest, of } from 'rxjs';
 import { ArticleWithUser } from '../interfaces/article-with-user';
 import { switchMap, map } from 'rxjs/operators';
 import { UserData } from '../interfaces/user';
 import { AuthService } from './auth.service';
+import { firestore } from 'firebase/app';
 
 @Injectable({
   providedIn: 'root'
@@ -13,9 +14,13 @@ import { AuthService } from './auth.service';
 export class ArticleService {
   constructor(private db: AngularFirestore, private authService: AuthService) {}
 
-  createArticle(article: Article) {
-    const id = this.db.createId();
-    return this.db.doc(`articles/${id}`).set(article);
+  createArticle(article: Omit<Article, 'articleId' | 'createdAt'>) {
+    const articleId = this.db.createId();
+    return this.db.doc(`articles/${articleId}`).set({
+      articleId,
+      ...article,
+      createdAt: firestore.Timestamp.now()
+    });
   }
 
   getArticles(sorted): Observable<ArticleWithUser[]> {
@@ -67,7 +72,7 @@ export class ArticleService {
 
   getMyArticles(): Observable<ArticleWithUser[]> {
     const sorted = this.db
-      .collection<Article>(`articles`, ref => {
+      .collection<ArticleWithUser>(`articles`, ref => {
         return ref
           .where('authorId', '==', this.authService.user.uid)
           .orderBy('createdAt', 'desc')

@@ -1,0 +1,21 @@
+h1 {
+  text-align: center;
+  margin-top: 10px;
+  color: #0d568b;
+  font-weight: bold;
+  font-size: 2rem;
+}
+.content {
+  margin-top: 30px;
+  text-align: center;
+  mat-icon {
+    padding-right: 14px;
+    font-size: 4.8rem;
+    color: #e0245e;
+  }
+}
+.buttons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
