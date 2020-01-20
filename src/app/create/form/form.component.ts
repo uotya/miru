@@ -82,7 +82,6 @@ export class FormComponent implements OnInit {
 
   create() {
     const formData = this.form.value;
-    const firstLink = formData.links[0].link;
     this.createComponent.created = true;
     scrollTo({ top: 0, behavior: 'smooth' });
 
@@ -94,14 +93,19 @@ export class FormComponent implements OnInit {
       favorite: 0
     };
 
-    if (firstLink.match(/http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w-.\/?%&=]*)?/)) {
-      this.http.get(API + firstLink).subscribe(ogp => {
-        this.ogp = ogp as OGP;
-        sendData.thumbnailURL = this.ogp.ogImage.url;
+    for (let i = 0; formData.links[i]; i++) {
+      const link = formData.links[i].link;
+      if (link.match(/http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w-.\/?%&=]*)?/)) {
+        this.http.get(API + link).subscribe(ogp => {
+          this.ogp = ogp as OGP;
+          if (this.ogp.ogImage.url) {
+            sendData.thumbnailURL = this.ogp.ogImage.url;
+            this.articleService.createArticle(sendData);
+          }
+        });
+      } else {
         this.articleService.createArticle(sendData);
-      });
-    } else {
-      this.articleService.createArticle(sendData);
+      }
     }
   }
 }
