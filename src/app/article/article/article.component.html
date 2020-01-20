@@ -1,1 +1,40 @@
-<p>article works!</p>
+<div class="container" *ngIf="article">
+  <button class="back btn-blue" mat-icon-button (click)="goBack()">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+  <div class="article">
+    <h1>{{ article.title }}</h1>
+    <p *ngIf="article.description">{{ article.description }}</p>
+    <p>
+      <mat-icon>update</mat-icon>
+      {{ article.createdAt.toDate() | date: 'yyyy年MM月dd日' }}
+    </p>
+    <div class="user">
+      <div
+        class="user__avatar"
+        [style.background-image]="'url(' + article.author.avatarURL + ')'"
+      ></div>
+      <p class="user__name">{{ article.author.userName }}</p>
+    </div>
+    <div class="contents" *ngFor="let content of article.links">
+      <div class="contents__content">
+        <div class="contents__content--link">{{ content.link }}</div>
+        <div class="contents__content--comment">{{ content.comment }}</div>
+      </div>
+    </div>
+    <div class="actions">
+      <button mat-icon-button class="actions__share">
+        <mat-icon>share</mat-icon>
+      </button>
+      <button mat-icon-button class="actions__favorite">
+        <ng-container *ngIf="isLiked; else default">
+          <mat-icon class="liked">favorite</mat-icon>
+        </ng-container>
+        <ng-template #default>
+          <mat-icon class="default">favorite_border</mat-icon>
+        </ng-template>
+        <span>{{ article.favorite }}</span>
+      </button>
+    </div>
+  </div>
+</div>
