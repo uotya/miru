@@ -1,4 +1,4 @@
-<mat-card class="card">
+<mat-card class="card" routerLink="/article/{{ card.articleId }}">
   <mat-card-header>
     <div
       mat-card-avatar
@@ -10,12 +10,8 @@
       card.author.userName
     }}</mat-card-title>
   </mat-card-header>
-  <div [routerLink]="card.articleId">
-    <p class="title">
-      {{ card.title }}
-    </p>
-    <img class="thumb" [src]="card.thumbnailURL" mat-card-image alt="" />
-  </div>
+  <p class="title">{{ card.title }}</p>
+  <img class="thumb" [src]="card.thumbnailURL" mat-card-image alt="" />
   <div class="actions">
     <button
       mat-icon-button
