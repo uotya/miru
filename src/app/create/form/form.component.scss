@@ -51,9 +51,13 @@ mat-divider {
 .actions {
   display: flex;
   justify-content: flex-end;
+  button {
+    width: 34px;
+    height: 34px;
+    line-height: 0;
+  }
   mat-icon {
-    font-size: 35px;
-    padding: 0 10.5px 1.5px 0;
+    font-size: 24px;
   }
   .remove {
     margin-left: 20px;

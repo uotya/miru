@@ -10,6 +10,7 @@
   background-color: #97adbd;
   color: #fafafa;
   transition: 0.4s;
+  outline: none;
   @include mat-elevation(2);
   -webkit-tap-highlight-color: transparent;
   &:hover {

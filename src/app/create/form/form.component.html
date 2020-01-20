@@ -74,17 +74,17 @@
       <div class="actions">
         <button
           type="button"
-          class="add"
+          class="add btn-blue"
           mat-icon-button
           (click)="addLink(i + 1)"
           matTooltip="リンクを下に追加する"
         >
-          <mat-icon>add_circle</mat-icon>
+          <mat-icon>add</mat-icon>
         </button>
         <button
           *ngIf="i >= 1"
           type="button"
-          class="remove"
+          class="remove btn-blue"
           mat-icon-button
           (click)="removeLink(i)"
           matTooltip="このリンクを削除する"
