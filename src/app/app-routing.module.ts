@@ -14,11 +14,6 @@ const routes: Routes = [
     canActivate: [GuestGuard]
   },
   {
-    path: 'article/:articleId',
-    loadChildren: () =>
-      import('./article/article.module').then(m => m.ArticleModule)
-  },
-  {
     path: 'create',
     loadChildren: () =>
       import('./create/create.module').then(m => m.CreateModule),
@@ -42,6 +37,11 @@ const routes: Routes = [
   {
     path: 'intl',
     loadChildren: () => import('./intl/intl.module').then(m => m.IntlModule)
+  },
+  {
+    path: ':articleId',
+    loadChildren: () =>
+      import('./article/article.module').then(m => m.ArticleModule)
   },
   {
     path: '**',

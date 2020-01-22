@@ -49,9 +49,6 @@ export class ArticleComponent implements OnInit {
         }
       });
   }
-
-  stopGetting() {}
-
   isLink(link: string) {
     if (link.match(/http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w-.\/?%&=]*)?/)) {
       return true;

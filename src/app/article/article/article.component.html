@@ -60,22 +60,23 @@
     >
       <ng-container *ngIf="isLiked; else default">
         <mat-icon class="liked">favorite</mat-icon>
+        <span>{{ favorite }}</span>
       </ng-container>
       <ng-template #default>
         <mat-icon class="default">favorite_border</mat-icon>
+        <span>{{ favorite }}</span>
       </ng-template>
-      <span>{{ favorite }}</span>
     </button>
     <button mat-raised-button class="actions__money" matTooltip="50円からOK">
       記事を作った人にお金を渡す 😊
     </button>
     <button mat-icon-button class="actions__share" matTooltip="Twitterでシェア">
       <a
-        href="https://twitter.com/intent/tweet?&ref_src=twsrc%5Etfw"
+        href="https://twitter.com/share?url=https://miru-2ac6c.web.app/{{
+          article.articleId
+        }}/&text={{ article.title }}"
+        rel="nofollow"
         target="_blank"
-        data-show-count="false"
-        data-lang="ja"
-        data-url=""
       >
         <mat-icon>share</mat-icon>
       </a>
