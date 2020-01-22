@@ -112,6 +112,9 @@ export class ArticleService {
             ...articleData,
             author: userData
           };
+          if (result.thumbnailURL == null) {
+            result.thumbnailURL = '/assets/images/thumbnail.png';
+          }
           return result;
         })
       );
