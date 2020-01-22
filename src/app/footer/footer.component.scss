@@ -16,6 +16,9 @@ ul {
   li {
     &:not(:last-child) {
       margin-right: 30px;
+      @include sp {
+        margin-right: 24px;
+      }
     }
     a {
       display: block;
@@ -27,5 +30,10 @@ ul {
 .copyright {
   margin-top: 60px;
   color: #0d568b;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  mat-icon {
+    margin-right: 4px;
+  }
 }

@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,6 +20,10 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AuthGuard } from './guards/auth.guard';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import localeJa from '@angular/common/locales/ja';
+import { registerLocaleData } from '@angular/common';
+
+registerLocaleData(localeJa);
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,7 +47,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatSnackBarModule,
     MatTooltipModule
   ],
-  providers: [AuthGuard],
+  providers: [AuthGuard, { provide: LOCALE_ID, useValue: 'ja-JP' }],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

@@ -17,11 +17,11 @@
     padding-top: 10px;
     height: 105px;
     display: grid;
-    grid-template-columns: 100px 300px;
+    grid-template-columns: 80px 300px;
     grid-template-rows: 40px 30px;
   }
   @include sp {
-    grid-template-columns: 100px 200px;
+    grid-template-columns: 80px 208px;
     grid-template-rows: 40px 30px;
   }
   p {
@@ -105,14 +105,14 @@ a {
     display: inline-block;
     margin-right: 15px;
     @include sp {
-      margin-right: 15px;
+      margin-right: 12px;
     }
     &__button {
       @include sp {
         min-width: 32px;
       }
       &:not(:last-child) {
-        margin-right: 12px;
+        margin-right: 10px;
       }
     }
     mat-icon {

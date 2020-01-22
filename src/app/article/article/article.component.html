@@ -1,0 +1,84 @@
+<div class="container" *ngIf="article">
+  <div
+    class="thumbnail"
+    [style.background-image]="'url(' + article.thumbnailURL + ')'"
+  ></div>
+  <div class="title">
+    <h1>{{ article.title }}</h1>
+    <p>{{ article.description }}</p>
+  </div>
+  <div class="details">
+    <div class="user" routerLink="">
+      <button
+        mat-icon-button
+        class="user__avatar"
+        [style.background-image]="'url(' + article.author.avatarURL + ')'"
+      ></button>
+      <p class="user__name">
+        <a>{{ article.author.userName }}</a>
+      </p>
+    </div>
+    <p class="update">
+      <mat-icon>update</mat-icon>
+      <span>{{ article.createdAt.toDate() | date: 'yyyy年MM月dd日' }}</span>
+    </p>
+  </div>
+  <mat-divider></mat-divider>
+  <div class="contents" *ngFor="let content of article.links; let i = index">
+    <div class="contents__content">
+      <div class="flex">
+        <span class="number">{{ i + 1 }}.</span>
+        <div
+          class="contents__content--link"
+          *ngIf="isLink(content.link); else notLink"
+          [class.isLink]="isLink(content.link)"
+        >
+          <a [href]="content.link" target="_blank">
+            {{ content.link }}
+          </a>
+        </div>
+      </div>
+      <ng-template #notLink>
+        <div class="contents__content--link">
+          <p>{{ content.link }}</p>
+        </div>
+      </ng-template>
+      <div *ngIf="content.comment" class="contents__content--comment">
+        <p>{{ content.comment }}</p>
+      </div>
+    </div>
+    <mat-divider></mat-divider>
+  </div>
+
+  <div class="actions">
+    <button
+      mat-icon-button
+      class="actions__favorite"
+      (click)="clickedLike(article)"
+      [class.liked]="isLiked"
+      matTooltip="いいねする"
+    >
+      <ng-container *ngIf="isLiked; else default">
+        <mat-icon class="liked">favorite</mat-icon>
+      </ng-container>
+      <ng-template #default>
+        <mat-icon class="default">favorite_border</mat-icon>
+      </ng-template>
+      <span>{{ favorite }}</span>
+    </button>
+    <button mat-raised-button class="actions__money" matTooltip="50円からOK">
+      記事を作った人にお金を渡す 😊
+    </button>
+    <button mat-icon-button class="actions__share" matTooltip="Twitterでシェア">
+      <a
+        href="https://twitter.com/intent/tweet?&ref_src=twsrc%5Etfw"
+        target="_blank"
+        data-show-count="false"
+        data-lang="ja"
+        data-url=""
+      >
+        <mat-icon>share</mat-icon>
+      </a>
+    </button>
+  </div>
+</div>
