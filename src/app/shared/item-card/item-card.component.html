@@ -9,7 +9,7 @@
       <p>{{ card.author.userName }}</p>
     </mat-card-title>
   </mat-card-header>
-  <div routerLink="/article/{{ card.articleId }}">
+  <div routerLink="/{{ card.articleId }}">
     <p class="title">{{ card.title }}</p>
     <img class="thumb" [src]="card.thumbnailURL" mat-card-image alt="" />
   </div>
