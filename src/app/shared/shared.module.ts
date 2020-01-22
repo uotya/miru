@@ -20,7 +20,7 @@ import { LoginDialogComponent } from '../welcome/login-dialog/login-dialog.compo
     MatCardModule,
     MatDialogModule
   ],
-  exports: [ItemCardComponent, RankingComponent],
+  exports: [ItemCardComponent, RankingComponent, LoginDialogComponent],
   entryComponents: [LoginDialogComponent]
 })
 export class SharedModule {}

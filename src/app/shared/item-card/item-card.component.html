@@ -1,31 +1,35 @@
-<mat-card class="card" routerLink="/article/{{ card.articleId }}">
+<mat-card class="card">
   <mat-card-header>
     <div
       mat-card-avatar
       class="avatar"
       [style.background-image]="'url(' + card.author.avatarURL + ')'"
-      [routerLink]=""
     ></div>
-    <mat-card-title class="name" [routerLink]="">{{
-      card.author.userName
-    }}</mat-card-title>
+    <mat-card-title class="name">
+      <p>{{ card.author.userName }}</p>
+    </mat-card-title>
   </mat-card-header>
-  <p class="title">{{ card.title }}</p>
-  <img class="thumb" [src]="card.thumbnailURL" mat-card-image alt="" />
+  <div routerLink="/article/{{ card.articleId }}">
+    <p class="title">{{ card.title }}</p>
+    <img class="thumb" [src]="card.thumbnailURL" mat-card-image alt="" />
+  </div>
   <div class="actions">
-    <button
-      mat-icon-button
-      class="actions__action actions__action--share"
-      [routerLink]=""
-    >
-      <mat-icon>share</mat-icon>
+    <button mat-icon-button class="actions__action actions__action--share">
+      <a
+        href="https://twitter.com/intent/tweet?&ref_src=twsrc%5Etfw"
+        target="_blank"
+        data-show-count="false"
+        data-lang="ja"
+        data-url=""
+      >
+        <mat-icon>share</mat-icon></a
+      >
     </button>
     <button
       (click)="clickedLike(card)"
       [class.liked]="isLiked"
       mat-icon-button
       class="actions__action actions__action--favorite"
-      [routerLink]=""
     >
       <ng-container *ngIf="isLiked; else default">
         <mat-icon class="liked">favorite</mat-icon>
@@ -37,3 +41,9 @@
     </button>
   </div>
 </mat-card>
+
+<script
+  async
+  src="https://platform.twitter.com/widgets.js"
+  charset="utf-8"
+></script>
