@@ -9,18 +9,18 @@
       <p>{{ card.author.userName }}</p>
     </mat-card-title>
   </mat-card-header>
-  <div routerLink="/{{ card.articleId }}">
+  <a routerLink="/{{ card.articleId }}">
     <p class="title">{{ card.title }}</p>
     <img class="thumb" [src]="card.thumbnailURL" mat-card-image alt="" />
-  </div>
+  </a>
   <div class="actions">
     <button mat-icon-button class="actions__action actions__action--share">
       <a
-        href="https://twitter.com/intent/tweet?&ref_src=twsrc%5Etfw"
+        href="https://twitter.com/share?url=https://miru-2ac6c.web.app/{{
+          card.articleId
+        }}/&text={{ card.title }}"
+        rel="nofollow"
         target="_blank"
-        data-show-count="false"
-        data-lang="ja"
-        data-url=""
       >
         <mat-icon>share</mat-icon></a
       >
@@ -41,9 +41,3 @@
     </button>
   </div>
 </mat-card>
-
-<script
-  async
-  src="https://platform.twitter.com/widgets.js"
-  charset="utf-8"
-></script>
