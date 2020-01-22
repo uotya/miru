@@ -60,11 +60,12 @@
     >
       <ng-container *ngIf="isLiked; else default">
         <mat-icon class="liked">favorite</mat-icon>
+        <span>{{ favorite }}</span>
       </ng-container>
       <ng-template #default>
         <mat-icon class="default">favorite_border</mat-icon>
+        <span>{{ favorite }}</span>
       </ng-template>
-      <span>{{ favorite }}</span>
     </button>
     <button mat-raised-button class="actions__money" matTooltip="50円からOK">
       記事を作った人にお金を渡す 😊
