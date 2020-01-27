@@ -21,6 +21,13 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
+    path: 'edit',
+    loadChildren: () =>
+      import('./create/create.module').then(m => m.CreateModule),
+    canLoad: [AuthGuard],
+    canActivate: [AuthGuard]
+  },
+  {
     path: 'mylist',
     loadChildren: () =>
       import('./mylist/mylist.module').then(m => m.MylistModule),
