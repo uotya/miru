@@ -11,6 +11,10 @@ import { Article } from 'src/app/interfaces/article';
 import { OGP } from 'src/app/interfaces/ogp';
 import { CreateComponent } from 'src/app/create/create/create.component';
 import { HttpClient } from '@angular/common/http';
+import { ActivatedRoute, Router } from '@angular/router';
+import { take } from 'rxjs/operators';
+import { MatDialog } from '@angular/material/dialog';
+import { DeleteDialogComponent } from 'src/app/create/delete-dialog/delete-dialog.component';
 
 const API = 'https://ogp-api.appspot.com/?url=';
 @Component({
@@ -26,17 +30,22 @@ export class FormComponent implements OnInit {
   });
 
   ogp: OGP;
+  id: string;
+  editing: boolean;
 
   constructor(
     private fb: FormBuilder,
     private articleService: ArticleService,
     private authService: AuthService,
     private createComponent: CreateComponent,
-    private http: HttpClient
+    private http: HttpClient,
+    private route: ActivatedRoute,
+    private dialog: MatDialog,
+    private router: Router
   ) {}
 
   ngOnInit() {
-    this.addLink();
+    this.patchDefaultValue();
   }
 
   get titleControl() {
@@ -49,10 +58,16 @@ export class FormComponent implements OnInit {
     return this.form.get('links') as FormArray;
   }
 
-  addLink(index?: number) {
+  addLink(index?: number, defaultValue?: { link: string; comment: string }) {
     const linkFormGroup = this.fb.group({
-      link: ['', [Validators.required, Validators.maxLength(600)]],
-      comment: ['', [Validators.maxLength(300)]]
+      link: [
+        defaultValue && defaultValue.link,
+        [Validators.required, Validators.maxLength(600)]
+      ],
+      comment: [
+        defaultValue && defaultValue.comment,
+        [Validators.maxLength(300)]
+      ]
     });
     if (!index) {
       this.links.push(linkFormGroup);
@@ -80,7 +95,7 @@ export class FormComponent implements OnInit {
     }
   }
 
-  create() {
+  createArticle() {
     const formData = this.form.value;
     this.createComponent.created = true;
     scrollTo({ top: 0, behavior: 'smooth' });
@@ -107,5 +122,59 @@ export class FormComponent implements OnInit {
         this.articleService.createArticle(sendData);
       }
     }
+  }
+
+  updataArticle() {
+    const formData = this.form.value;
+    const sendData: Pick<
+      Article,
+      'articleId' | 'title' | 'links' | 'description'
+    > = {
+      articleId: this.id,
+      title: formData.title,
+      links: this.form.get('links').valid ? formData.links : [],
+      description: formData.description
+    };
+    this.articleService.updateArticle(sendData).then(() => {
+      this.createComponent.created = true;
+      this.router.navigateByUrl('/mylist');
+    });
+  }
+
+  deleteArticle() {
+    this.dialog
+      .open(DeleteDialogComponent)
+      .afterClosed()
+      .subscribe(result => {
+        if (result === true) {
+          this.articleService.deleteArticle(this.id).then(() => {
+            this.createComponent.deleted = true;
+          });
+        }
+      });
+  }
+
+  patchDefaultValue() {
+    this.route.queryParamMap.pipe(take(1)).subscribe(params => {
+      this.id = params.get('id');
+      if (this.id) {
+        this.editing = true;
+        this.articleService
+          .getDiscreteArticle(this.id)
+          .pipe(take(1))
+          .subscribe(article => {
+            this.form.patchValue({
+              title: article.title,
+              description: article.description
+            });
+            article.links.forEach((link, index) => {
+              this.addLink(index, link);
+            });
+            scrollTo({ top: 0, behavior: 'smooth' });
+          });
+      } else {
+        this.addLink();
+      }
+    });
   }
 }
