@@ -4,8 +4,14 @@
       mat-card-avatar
       class="avatar"
       [style.background-image]="'url(' + card.author.avatarURL + ')'"
+      [routerLink]="['/user']"
+      [queryParams]="{ id: card.author.uid }"
     ></div>
-    <mat-card-title class="name">
+    <mat-card-title
+      class="name"
+      [routerLink]="['/user']"
+      [queryParams]="{ id: card.author.uid }"
+    >
       <p>{{ card.author.userName }}</p>
     </mat-card-title>
   </mat-card-header>

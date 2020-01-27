@@ -3,6 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './guards/auth.guard';
 import { GuestGuard } from './guards/guest.guard';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { UserComponent } from './shared/user/user.component';
+import { RankingComponent } from './shared/ranking/ranking.component';
 
 const routes: Routes = [
   {
@@ -36,10 +38,13 @@ const routes: Routes = [
   },
   {
     path: 'ranking',
-    loadChildren: () =>
-      import('./shared/shared.module').then(m => m.SharedModule),
+    component: RankingComponent,
     canLoad: [AuthGuard],
     canActivate: [AuthGuard]
+  },
+  {
+    path: 'user',
+    component: UserComponent
   },
   {
     path: 'intl',

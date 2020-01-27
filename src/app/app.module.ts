@@ -22,6 +22,7 @@ import { AuthGuard } from './guards/auth.guard';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import localeJa from '@angular/common/locales/ja';
 import { registerLocaleData } from '@angular/common';
+import { SharedModule } from './shared/shared.module';
 
 registerLocaleData(localeJa);
 @NgModule({
@@ -45,7 +46,8 @@ registerLocaleData(localeJa);
     MatMenuModule,
     MatDividerModule,
     MatSnackBarModule,
-    MatTooltipModule
+    MatTooltipModule,
+    SharedModule
   ],
   providers: [AuthGuard, { provide: LOCALE_ID, useValue: 'ja-JP' }],
   bootstrap: [AppComponent]
