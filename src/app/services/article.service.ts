@@ -94,9 +94,23 @@ export class ArticleService {
       return ref
         .where('authorId', '==', this.authService.user.uid)
         .orderBy('createdAt', 'desc')
-        .limit(6);
+        .limit(12);
     });
     return this.getArticles(sorted);
+  }
+
+  getUserArticles(userId: string): Observable<ArticleWithUser[]> {
+    const sorted = this.db.collection<ArticleWithUser>(`articles`, ref => {
+      return ref
+        .where('authorId', '==', userId)
+        .orderBy('createdAt', 'desc')
+        .limit(12);
+    });
+    return this.getArticles(sorted);
+  }
+
+  getUserData(userId: string) {
+    return this.db.doc<UserData>(`users/${userId}`).valueChanges();
   }
 
   getDiscreteArticle(articleId: string): Observable<ArticleWithUser> {
