@@ -179,12 +179,12 @@ mat-divider {
       width: 100%;
       justify-self: center;
     }
-  }
-  &__money {
-    background-color: #ffc400;
-  }
-  &__edit {
-    background-color: #00796b;
+    &--money {
+      background-color: #ffc400;
+    }
+    &--edit {
+      background-color: #00796b;
+    }
   }
   &__share {
     padding-right: 8px;
