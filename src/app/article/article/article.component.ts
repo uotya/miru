@@ -7,7 +7,6 @@ import { AuthService } from 'src/app/services/auth.service';
 import { MatDialog } from '@angular/material/dialog';
 import { LoginDialogComponent } from 'src/app/welcome/login-dialog/login-dialog.component';
 import { take } from 'rxjs/operators';
-
 @Component({
   selector: 'app-article',
   templateUrl: './article.component.html',
@@ -17,6 +16,7 @@ export class ArticleComponent implements OnInit {
   article: ArticleWithUser;
   isLiked: boolean;
   favorite: number;
+  isMyArticle: boolean;
 
   constructor(
     private route: ActivatedRoute,
@@ -38,6 +38,9 @@ export class ArticleComponent implements OnInit {
       .subscribe(article => {
         this.article = article;
         this.favorite = this.article.favorite;
+        if (this.authService.user.uid === this.article.authorId) {
+          this.isMyArticle = true;
+        }
         if (this.authService.user) {
           this.likeService
             .isLiked(this.article.articleId, this.authService.user.uid)
@@ -49,6 +52,7 @@ export class ArticleComponent implements OnInit {
         }
       });
   }
+
   isLink(link: string) {
     if (link.match(/http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w-.\/?%&=]*)?/)) {
       return true;

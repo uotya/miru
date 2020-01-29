@@ -23,6 +23,19 @@ export class ArticleService {
     });
   }
 
+  updateArticle(
+    article: Pick<Article, 'articleId' | 'title' | 'links' | 'description'>
+  ): Promise<void> {
+    return this.db.doc(`articles/${article.articleId}`).update({
+      ...article,
+      createdAt: firestore.Timestamp.now()
+    });
+  }
+
+  deleteArticle(articleId: string): Promise<void> {
+    return this.db.doc(`articles/${articleId}`).delete();
+  }
+
   getArticles(sorted): Observable<ArticleWithUser[]> {
     let articles: Article[];
     return sorted.get({ source: 'server' }).pipe(

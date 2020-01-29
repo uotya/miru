@@ -1,0 +1,11 @@
+<div class="dialog">
+  <h1 mat-dialog-title>
+    本当に削除してよろしいですか？
+  </h1>
+  <div mat-dialog-actions class="buttons">
+    <button mat-button mat-dialog-close>キャンセル</button>
+    <button mat-raised-button color="primary" [mat-dialog-close]="true">
+      削除する
+    </button>
+  </div>
+</div>

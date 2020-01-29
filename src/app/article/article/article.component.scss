@@ -171,14 +171,19 @@ mat-divider {
       font-size: 18px;
     }
   }
-  &__money {
-    background-color: #ffc400;
+  &__bottom {
     color: white;
     @include sp {
       grid-row: 2 / 3;
       grid-column: 1 / 4;
       width: 100%;
       justify-self: center;
+    }
+    &--money {
+      background-color: #ffc400;
+    }
+    &--edit {
+      background-color: #00796b;
     }
   }
   &__share {

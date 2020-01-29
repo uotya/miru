@@ -21,7 +21,7 @@
         matTooltip="記事の作成"
       >
         <mat-icon [class.active]="create.isActive" class="stretched-icon"
-          >create</mat-icon
+          >post_add</mat-icon
         >
       </button>
       <button
@@ -78,9 +78,10 @@
       (click)="login()"
       [disabled]="isLoading"
       *ngIf="isUserChecked"
-      class="default btn-blue"
+      class="default"
       id="default"
       mat-raised-button
+      color="primary"
     >
       ログイン
     </button>

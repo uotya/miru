@@ -1,5 +1,10 @@
-<h2 class="heading">記事の作成 🤔</h2>
-<form [formGroup]="form" (ngSubmit)="create()">
+<ng-container *ngIf="editing; else defaultHeading">
+  <h2 class="heading">記事の編集 🧐</h2>
+</ng-container>
+<ng-template #defaultHeading>
+  <h2 class="heading">記事の作成 🤔</h2>
+</ng-template>
+<form [formGroup]="form" (ngSubmit)="createArticle()">
   <div class="title">
     <mat-form-field class="title__content" appearance="outline">
       <mat-label>記事のタイトル</mat-label>
@@ -44,6 +49,7 @@
             matInput
             placeholder="追加したいリンクのURLを入力 (テキストも可)"
             autocomplete="off"
+            required
           />
           <mat-error
             *ngIf="
@@ -74,8 +80,9 @@
       <div class="actions">
         <button
           type="button"
-          class="add btn-blue"
+          class="add"
           mat-icon-button
+          color="primary"
           (click)="addLink(i + 1)"
           matTooltip="リンクを下に追加する"
         >
@@ -84,8 +91,9 @@
         <button
           *ngIf="i >= 1"
           type="button"
-          class="remove btn-blue"
+          class="remove"
           mat-icon-button
+          color="primary"
           (click)="removeLink(i)"
           matTooltip="このリンクを削除する"
         >
@@ -95,7 +103,36 @@
     </div>
   </div>
   <mat-divider></mat-divider>
-  <button class="btn-blue submit" [disabled]="form.invalid" mat-raised-button>
-    公開する
-  </button>
+  <ng-container *ngIf="editing; else defaultButton">
+    <div class="buttons">
+      <button
+        class="buttons__button"
+        [disabled]="form.invalid"
+        mat-raised-button
+        color="primary"
+        type="button"
+        (click)="updataArticle()"
+      >
+        編集を適用する
+      </button>
+      <button
+        class="buttons__button buttons__button--delete"
+        mat-raised-button
+        type="button"
+        (click)="deleteArticle()"
+      >
+        記事を削除する
+      </button>
+    </div>
+  </ng-container>
+  <ng-template #defaultButton>
+    <button
+      class="submit"
+      [disabled]="form.invalid"
+      mat-raised-button
+      color="primary"
+    >
+      公開する
+    </button>
+  </ng-template>
 </form>

@@ -17,10 +17,16 @@ import { LoginDialogComponent } from '../welcome/login-dialog/login-dialog.compo
     SharedRoutingModule,
     MatButtonModule,
     MatIconModule,
-    MatCardModule,
+    MatCardModule
+  ],
+  exports: [
+    ItemCardComponent,
+    RankingComponent,
+    LoginDialogComponent,
+    MatButtonModule,
+    MatIconModule,
     MatDialogModule
   ],
-  exports: [ItemCardComponent, RankingComponent, LoginDialogComponent],
   entryComponents: [LoginDialogComponent]
 })
 export class SharedModule {}

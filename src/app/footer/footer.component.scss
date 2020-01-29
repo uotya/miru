@@ -26,14 +26,12 @@ ul {
     }
   }
 }
-
-.copyright {
-  margin-top: 60px;
+.myname {
+  margin-top: 48px;
+  text-align: center;
   color: #0d568b;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  mat-icon {
-    margin-right: 4px;
+  a {
+    color: inherit;
+    font-weight: bold;
   }
 }
