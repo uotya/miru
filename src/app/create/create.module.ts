@@ -14,6 +14,7 @@ import { CreatedComponent } from './created/created.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component';
 import { DeletedComponent } from './deleted/deleted.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { DeletedComponent } from './deleted/deleted.component';
     MatFormFieldModule,
     MatDividerModule,
     MatTooltipModule,
-    HttpClientModule
+    HttpClientModule,
+    MatDialogModule
   ],
   entryComponents: [DeleteDialogComponent]
 })

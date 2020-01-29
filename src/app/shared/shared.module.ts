@@ -23,15 +23,15 @@ import { UserComponent } from './user/user.component';
     SharedRoutingModule,
     MatButtonModule,
     MatIconModule,
-    MatCardModule
+    MatCardModule,
+    MatDialogModule
   ],
   exports: [
     ItemCardComponent,
     RankingComponent,
     LoginDialogComponent,
     MatButtonModule,
-    MatIconModule,
-    MatDialogModule
+    MatIconModule
   ],
   entryComponents: [LoginDialogComponent]
 })
