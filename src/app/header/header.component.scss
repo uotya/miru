@@ -11,17 +11,16 @@
   z-index: 1000;
   top: 0;
   left: 0;
-  @include mat-elevation(2);
-  background-color: #fafafa;
+  @include mat-elevation(3);
+  background-color: #eceff1;
   @include tab {
     padding-top: 10px;
-    height: 105px;
+    height: 110px;
     grid-template-columns: 80px 300px;
-    grid-template-rows: 40px 30px;
+    grid-template-rows: 40px 40px;
   }
   @include sp {
     grid-template-columns: 80px 208px;
-    grid-template-rows: 40px 30px;
   }
   p {
     display: flex;
@@ -62,7 +61,7 @@ a {
     border: 1px solid #ccc;
     outline: none;
     font-size: 18px;
-    color: $black;
+    color: $main;
     font-weight: bold;
     letter-spacing: 0.01em;
     @include sp {
@@ -83,10 +82,10 @@ a {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #b0b0b0;
+    color: #ccc;
     -webkit-tap-highlight-color: transparent;
     &.inputted {
-      color: #376c91;
+      color: $black;
     }
     @include sp {
       top: 2px;
@@ -117,7 +116,7 @@ a {
     mat-icon {
       color: #b0b0b0;
       &.active {
-        color: #376c91;
+        color: $black;
       }
       &.stretched-icon::after {
         position: absolute;

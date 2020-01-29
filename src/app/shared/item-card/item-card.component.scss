@@ -7,7 +7,7 @@
   cursor: pointer;
   position: relative;
   display: inline-block;
-  background-color: #97adbd;
+  background-color: #b0bec5;
   color: #fafafa;
   transition: 0.4s;
   outline: none;
@@ -80,10 +80,10 @@ a {
     &--favorite {
       position: relative;
       &:hover {
-        color: #e0245e;
+        color: #e53935;
       }
       &.liked {
-        color: #e0245e;
+        color: #e53935;
       }
       span {
         position: absolute;

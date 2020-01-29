@@ -8,7 +8,11 @@
     <p>{{ article.description }}</p>
   </div>
   <div class="details">
-    <div class="user" routerLink="">
+    <div
+      class="user"
+      [routerLink]="['/user']"
+      [queryParams]="{ id: article.author.uid }"
+    >
       <button
         mat-icon-button
         class="user__avatar"
@@ -80,7 +84,8 @@
     <ng-template #money>
       <button
         mat-raised-button
-        class="actions__bottom actions__bottom--money"
+        color="primary"
+        class="actions__bottom"
         matTooltip="50円からOK"
       >
         記事を作った人にお金を渡す 😊

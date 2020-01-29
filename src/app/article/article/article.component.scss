@@ -157,10 +157,10 @@ mat-divider {
       grid-column: 1 / 3;
     }
     &:hover {
-      color: #e0245e;
+      color: #e53935;
     }
     &.liked {
-      color: #e0245e;
+      color: #e53935;
     }
     mat-icon {
       font-size: 30px;
@@ -179,11 +179,8 @@ mat-divider {
       width: 100%;
       justify-self: center;
     }
-    &--money {
-      background-color: #ffc400;
-    }
     &--edit {
-      background-color: #00796b;
+      background-color: #aed581;
     }
   }
   &__share {
@@ -195,7 +192,7 @@ mat-divider {
     a {
       padding-top: 7px;
       display: block;
-      color: $blue;
+      color: $main;
       &:hover {
         color: #75c4ff;
       }
