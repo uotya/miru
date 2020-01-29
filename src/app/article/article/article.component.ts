@@ -34,7 +34,7 @@ export class ArticleComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('articleId');
     this.articleService
       .getDiscreteArticle(id)
-      .pipe(take(1))
+      .pipe(take(2))
       .subscribe(article => {
         this.article = article;
         this.favorite = this.article.favorite;
@@ -47,7 +47,6 @@ export class ArticleComponent implements OnInit {
             .pipe(take(1))
             .subscribe(result => {
               this.isLiked = result;
-              this.favorite = this.article.favorite;
             });
         }
       });

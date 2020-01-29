@@ -9,9 +9,15 @@ import { MatCardModule } from '@angular/material/card';
 import { RankingComponent } from './ranking/ranking.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { LoginDialogComponent } from '../welcome/login-dialog/login-dialog.component';
+import { UserComponent } from './user/user.component';
 
 @NgModule({
-  declarations: [ItemCardComponent, RankingComponent, LoginDialogComponent],
+  declarations: [
+    ItemCardComponent,
+    RankingComponent,
+    LoginDialogComponent,
+    UserComponent
+  ],
   imports: [
     CommonModule,
     SharedRoutingModule,
