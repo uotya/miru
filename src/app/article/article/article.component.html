@@ -72,7 +72,7 @@
         [routerLink]="['/edit']"
         [queryParams]="{ id: article.articleId }"
         mat-raised-button
-        class="actions__bottom actions__edit"
+        class="actions__bottom actions__bottom--edit"
       >
         この記事を編集する
       </button>
@@ -80,7 +80,7 @@
     <ng-template #money>
       <button
         mat-raised-button
-        class="actions__bottom actions__money"
+        class="actions__bottom actions__bottom--money"
         matTooltip="50円からOK"
       >
         記事を作った人にお金を渡す 😊

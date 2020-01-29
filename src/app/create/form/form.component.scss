@@ -73,12 +73,15 @@ mat-divider {
   margin-top: 50px;
   &__button {
     display: inline-block;
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     padding: 4px 20px;
     &:not(:last-child) {
       margin-right: 24px;
     }
-    .delete {
+    @include sp {
+      padding: 4px 16px;
+    }
+    &--delete {
       color: $black;
     }
   }

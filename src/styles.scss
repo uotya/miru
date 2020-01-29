@@ -11,7 +11,7 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$miru-primary: mat-palette($mat-indigo, 200);
+$miru-primary: mat-palette($mat-light-blue, 900);
 $miru-accent: mat-palette($mat-blue-grey, 600);
 // The warn palette is optional (defaults to red).
 $miru-warn: mat-palette($mat-red, 300);
@@ -85,30 +85,4 @@ body {
   margin: 90px auto 0;
   gap: 30px;
   text-align: center;
-}
-.btn-blue {
-  background-color: #0d568b;
-  color: white;
-}
-.empty-card {
-  margin: 0 auto;
-  height: 200px;
-  margin-top: 100px;
-  max-width: 300px;
-  @include mat-elevation(4);
-  -webkit-tap-highlight-color: transparent;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: #97adbd;
-  color: #fafafa;
-  opacity: 0.5;
-  h3 {
-    font-size: 20px;
-  }
-  p {
-    font-size: 16px;
-    margin-top: 20px;
-  }
 }

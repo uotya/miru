@@ -80,8 +80,9 @@
       <div class="actions">
         <button
           type="button"
-          class="add btn-blue"
+          class="add"
           mat-icon-button
+          color="primary"
           (click)="addLink(i + 1)"
           matTooltip="リンクを下に追加する"
         >
@@ -90,8 +91,9 @@
         <button
           *ngIf="i >= 1"
           type="button"
-          class="remove btn-blue"
+          class="remove"
           mat-icon-button
+          color="primary"
           (click)="removeLink(i)"
           matTooltip="このリンクを削除する"
         >
@@ -104,16 +106,17 @@
   <ng-container *ngIf="editing; else defaultButton">
     <div class="buttons">
       <button
-        class="btn-blue buttons__button"
+        class="buttons__button"
         [disabled]="form.invalid"
         mat-raised-button
+        color="primary"
         type="button"
         (click)="updataArticle()"
       >
         編集を適用する
       </button>
       <button
-        class="buttons__button delete"
+        class="buttons__button buttons__button--delete"
         mat-raised-button
         type="button"
         (click)="deleteArticle()"
@@ -123,7 +126,12 @@
     </div>
   </ng-container>
   <ng-template #defaultButton>
-    <button class="btn-blue submit" [disabled]="form.invalid" mat-raised-button>
+    <button
+      class="submit"
+      [disabled]="form.invalid"
+      mat-raised-button
+      color="primary"
+    >
       公開する
     </button>
   </ng-template>
