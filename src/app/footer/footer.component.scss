@@ -22,14 +22,14 @@ ul {
     }
     a {
       display: block;
-      color: #0d568b;
+      color: $main;
     }
   }
 }
 .myname {
   margin-top: 48px;
   text-align: center;
-  color: #0d568b;
+  color: $main;
   a {
     color: inherit;
     font-weight: bold;

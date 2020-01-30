@@ -14,7 +14,7 @@
     letter-spacing: 0.02em;
     line-height: 2;
     position: relative;
-    color: #376c91;
+    color: #90caf9;
     @include tab {
       font-size: 26px;
     }
@@ -30,19 +30,48 @@
       top: 0;
     }
   }
-  .btn {
-    margin-top: 70px;
-    font-size: 2.4rem;
-    letter-spacing: 0.03em;
-    font-weight: bold;
-    padding: 20px 30px;
-    border-radius: 12px;
-    border-bottom: solid 5px #01467a;
+  .button {
+    margin: 48px auto 0;
+    position: relative;
+    height: 220px;
+    width: 360px;
+    background: url(/assets/images/button.png) no-repeat center/contain;
     @include tab {
-      padding: 15px 25px;
+      height: 160px;
+      width: 300px;
     }
     @include sp {
-      padding: 13px 23px;
+      height: 140px;
+      width: 280px;
+    }
+    &__login {
+      background-color: #fafafa;
+      color: #92bee4;
+      position: absolute;
+      top: 83px;
+      left: 79px;
+      font-size: 24px;
+      letter-spacing: 0.03em;
+      font-weight: bold;
+      padding: 18px 36px;
+      border-radius: 12px;
+      border-bottom: solid 5px #e0e0e0;
+      &:active {
+        transform: translateY(5px);
+        border-bottom: none;
+      }
+      @include tab {
+        font-size: 20px;
+        padding: 12px 30px;
+        top: 57px;
+        left: 66px;
+      }
+      @include sp {
+        font-size: 18px;
+        padding: 10px 28px;
+        top: 48px;
+        left: 63px;
+      }
     }
   }
 }

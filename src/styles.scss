@@ -11,10 +11,10 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$miru-primary: mat-palette($mat-light-blue, 900);
+$miru-primary: mat-palette($mat-blue-grey, 800);
 $miru-accent: mat-palette($mat-blue-grey, 600);
 // The warn palette is optional (defaults to red).
-$miru-warn: mat-palette($mat-red, 300);
+$miru-warn: mat-palette($mat-red, 700);
 
 // Create the theme object (a Sass map containing all of the palettes).
 $miru-theme: mat-light-theme($miru-primary, $miru-accent, $miru-warn);
@@ -44,7 +44,7 @@ body {
   font-family: 'Hiragino Sans', 'ヒラギノ角ゴシック', YuGothic, 'Yu Gothic',
     'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
   background-color: #fff;
-  color: #0d568b;
+  color: $main;
 }
 .container {
   margin: 0 auto;
@@ -61,7 +61,7 @@ body {
   text-align: center;
   font-size: 2.6rem;
   letter-spacing: 0.04em;
-  color: $black;
+  color: $main;
   position: relative;
   display: block;
   &:before {
@@ -74,7 +74,7 @@ body {
     left: 50%;
     -webkit-transform: translateX(-50%);
     transform: translateX(-50%);
-    background-color: #3d4a57;
+    background-color: $main;
     border-radius: 2px;
   }
 }
@@ -85,4 +85,26 @@ body {
   margin: 90px auto 0;
   gap: 30px;
   text-align: center;
+}
+.empty-card {
+  margin: 0 auto;
+  height: 200px;
+  margin-top: 100px;
+  max-width: 300px;
+  @include mat-elevation(4);
+  -webkit-tap-highlight-color: transparent;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #97adbd;
+  color: #fafafa;
+  opacity: 0.5;
+  h3 {
+    font-size: 20px;
+  }
+  p {
+    font-size: 16px;
+    margin-top: 20px;
+  }
 }

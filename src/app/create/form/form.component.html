@@ -1,8 +1,8 @@
 <ng-container *ngIf="editing; else defaultHeading">
-  <h2 class="heading">記事の編集 🧐</h2>
+  <h2 class="heading">記事の編集</h2>
 </ng-container>
 <ng-template #defaultHeading>
-  <h2 class="heading">記事の作成 🤔</h2>
+  <h2 class="heading">記事の作成</h2>
 </ng-template>
 <form [formGroup]="form" (ngSubmit)="createArticle()">
   <div class="title">
@@ -82,7 +82,6 @@
           type="button"
           class="add"
           mat-icon-button
-          color="primary"
           (click)="addLink(i + 1)"
           matTooltip="リンクを下に追加する"
         >
@@ -93,7 +92,6 @@
           type="button"
           class="remove"
           mat-icon-button
-          color="primary"
           (click)="removeLink(i)"
           matTooltip="このリンクを削除する"
         >
@@ -116,8 +114,9 @@
         編集を適用する
       </button>
       <button
-        class="buttons__button buttons__button--delete"
+        class="buttons__button"
         mat-raised-button
+        color="warn"
         type="button"
         (click)="deleteArticle()"
       >
