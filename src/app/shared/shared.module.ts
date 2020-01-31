@@ -10,6 +10,7 @@ import { RankingComponent } from './ranking/ranking.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { LoginDialogComponent } from '../welcome/login-dialog/login-dialog.component';
 import { UserComponent } from './user/user.component';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { UserComponent } from './user/user.component';
     MatButtonModule,
     MatIconModule,
     MatCardModule,
-    MatDialogModule
+    MatDialogModule,
+    InfiniteScrollModule
   ],
   exports: [
     ItemCardComponent,

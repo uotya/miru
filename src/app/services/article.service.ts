@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
+import {
+  AngularFirestore,
+  AngularFirestoreCollection
+} from '@angular/fire/firestore';
 import { Article } from '../interfaces/article';
 import { Observable, combineLatest, of } from 'rxjs';
 import { ArticleWithUser } from '../interfaces/article-with-user';
@@ -36,19 +39,19 @@ export class ArticleService {
     return this.db.doc(`articles/${articleId}`).delete();
   }
 
-  getArticles(sorted): Observable<ArticleWithUser[]> {
+  getArticles(
+    sorted: AngularFirestoreCollection<Article>
+  ): Observable<{
+    latestDoc: firestore.QueryDocumentSnapshot<firestore.DocumentData>;
+    ArticlesData: ArticleWithUser[];
+  }> {
     let articles: Article[];
+    let latestDoc: firestore.QueryDocumentSnapshot<firestore.DocumentData>;
     return sorted.get({ source: 'server' }).pipe(
-      map((actions: any[]) => {
-        const data = [];
-        actions.forEach(a => {
-          const item = a.data() as Article;
-          data.push(item);
-        });
-        return data;
-      }),
-      switchMap((docs: Article[]) => {
-        articles = docs;
+      map(result => result.docs),
+      switchMap(docs => {
+        latestDoc = docs[docs.length - 1];
+        articles = docs.map(doc => doc.data() as Article);
         if (articles.length) {
           const authorIds: string[] = articles
             .filter((article, index, self) => {
@@ -68,7 +71,7 @@ export class ArticleService {
         }
       }),
       map((users: UserData[]) => {
-        return articles.map(article => {
+        const ArticlesData = articles.map(article => {
           const result: ArticleWithUser = {
             ...article,
             author: users.find(user => user.uid === article.authorId)
@@ -78,6 +81,10 @@ export class ArticleService {
           }
           return result;
         });
+        return {
+          ArticlesData,
+          latestDoc
+        };
       })
     );
   }
@@ -86,25 +93,56 @@ export class ArticleService {
     const sorted = this.db.collection<ArticleWithUser>(`articles`, ref => {
       return ref.orderBy('favorite', 'desc').limit(6);
     });
-    return this.getArticles(sorted);
+    return this.getArticles(sorted).pipe(
+      map(result => {
+        return result.ArticlesData;
+      })
+    );
   }
 
-  getMyArticles(): Observable<ArticleWithUser[]> {
+  getMyArticles(
+    startAt: firestore.QueryDocumentSnapshot<firestore.DocumentData>
+  ): Observable<{
+    latestDoc: firestore.QueryDocumentSnapshot<firestore.DocumentData>;
+    ArticlesData: ArticleWithUser[];
+  }> {
     const sorted = this.db.collection<ArticleWithUser>(`articles`, ref => {
-      return ref
-        .where('authorId', '==', this.authService.user.uid)
-        .orderBy('createdAt', 'desc')
-        .limit(12);
+      if (startAt) {
+        return ref
+          .where('authorId', '==', this.authService.user.uid)
+          .orderBy('createdAt', 'desc')
+          .startAfter(startAt)
+          .limit(6);
+      } else {
+        return ref
+          .where('authorId', '==', this.authService.user.uid)
+          .orderBy('createdAt', 'desc')
+          .limit(6);
+      }
     });
     return this.getArticles(sorted);
   }
 
-  getUserArticles(userId: string): Observable<ArticleWithUser[]> {
+  getUserArticles(
+    userId: string,
+    startAt: firestore.QueryDocumentSnapshot<firestore.DocumentData>
+  ): Observable<{
+    latestDoc: firestore.QueryDocumentSnapshot<firestore.DocumentData>;
+    ArticlesData: ArticleWithUser[];
+  }> {
     const sorted = this.db.collection<ArticleWithUser>(`articles`, ref => {
-      return ref
-        .where('authorId', '==', userId)
-        .orderBy('createdAt', 'desc')
-        .limit(12);
+      if (startAt) {
+        return ref
+          .where('authorId', '==', userId)
+          .orderBy('createdAt', 'desc')
+          .startAfter(startAt)
+          .limit(6);
+      } else {
+        return ref
+          .where('authorId', '==', userId)
+          .orderBy('createdAt', 'desc')
+          .limit(6);
+      }
     });
     return this.getArticles(sorted);
   }
