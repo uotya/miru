@@ -5,9 +5,16 @@ import { MylistRoutingModule } from './mylist-routing.module';
 import { MylistComponent } from './mylist/mylist.component';
 import { SharedModule } from '../shared/shared.module';
 import { MatCardModule } from '@angular/material/card';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 @NgModule({
   declarations: [MylistComponent],
-  imports: [CommonModule, MylistRoutingModule, SharedModule, MatCardModule]
+  imports: [
+    CommonModule,
+    MylistRoutingModule,
+    SharedModule,
+    MatCardModule,
+    InfiniteScrollModule
+  ]
 })
 export class MylistModule {}
