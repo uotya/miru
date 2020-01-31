@@ -5,8 +5,6 @@
   font-weight: bold;
   max-width: 300px;
   cursor: pointer;
-  position: relative;
-  display: inline-block;
   background-color: #b0bec5;
   color: #fafafa;
   transition: 0.4s;
@@ -17,24 +15,31 @@
     @include mat-elevation(8);
   }
 }
-.avatar {
-  display: block;
-  background-size: cover;
-  &:hover {
-    opacity: 0.6;
+.user {
+  display: flex;
+  align-items: center;
+  &__avatar {
+    background-size: cover;
+    &:hover {
+      opacity: 0.6;
+    }
+    a {
+      display: block;
+    }
   }
-}
-.name {
-  display: block;
-  font-size: 16px;
-  font-weight: bold;
-  padding-top: 12px;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  outline: none;
-  &:hover {
-    text-decoration: underline;
+  &__name {
+    margin-left: 8px;
+    padding: 4px;
+    min-width: 0;
+    font-size: 16px;
+    font-weight: bold;
+    outline: none;
+    a {
+      display: block;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
   }
 }
 a {
