@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ArticleService } from 'src/app/services/article.service';
 import { ArticleWithUser } from 'src/app/interfaces/article-with-user';
-import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
+import { firestore } from 'firebase';
 
 @Component({
   selector: 'app-user',
@@ -11,8 +11,10 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./user.component.scss']
 })
 export class UserComponent implements OnInit {
-  articles$: Observable<ArticleWithUser[]>;
   userId: string;
+  latestDoc: firestore.QueryDocumentSnapshot<firestore.DocumentData>;
+  articles: ArticleWithUser[] = [];
+  isComplete: boolean;
   userName: string;
 
   constructor(
@@ -23,9 +25,7 @@ export class UserComponent implements OnInit {
   ngOnInit() {
     this.route.queryParamMap.pipe(take(1)).subscribe(params => {
       this.userId = params.get('id');
-      this.articles$ = this.articleService
-        .getUserArticles(this.userId)
-        .pipe(take(1));
+      this.getArticles();
       this.articleService
         .getUserData(this.userId)
         .pipe(take(1))
@@ -33,5 +33,24 @@ export class UserComponent implements OnInit {
           this.userName = data.userName;
         });
     });
+  }
+
+  getArticles() {
+    if (this.isComplete) {
+      return;
+    }
+    this.articleService
+      .getUserArticles(this.userId, this.latestDoc)
+      .pipe(take(1))
+      .subscribe(({ latestDoc, ArticlesData }) => {
+        if (ArticlesData) {
+          if (!ArticlesData.length) {
+            this.isComplete = true;
+            return;
+          }
+          this.latestDoc = latestDoc;
+          ArticlesData.map(doc => this.articles.push(doc));
+        }
+      });
   }
 }
