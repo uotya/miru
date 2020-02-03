@@ -19,7 +19,7 @@
   display: flex;
   align-items: center;
   &__avatar {
-    background-size: cover;
+    background: center / contain no-repeat #fff;
     &:hover {
       opacity: 0.6;
     }
