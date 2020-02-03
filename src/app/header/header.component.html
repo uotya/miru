@@ -56,9 +56,7 @@
       class="avatar"
       mat-mini-fab
       [matMenuTriggerFor]="menu"
-      [style.background-image]="
-        'url(' + user.photoURL.replace('_normal', '') + ')'
-      "
+      [style.background-image]="'url(' + avatarURL + ')'"
     ></button>
     <mat-menu #menu="matMenu">
       <button (click)="logout()" mat-menu-item>
@@ -80,7 +78,7 @@
     <button
       (click)="login()"
       [disabled]="isLoading"
-      *ngIf="isUserChecked"
+      *ngIf="isUser"
       class="default"
       id="default"
       mat-raised-button
