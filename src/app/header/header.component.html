@@ -56,7 +56,7 @@
       class="avatar"
       mat-mini-fab
       [matMenuTriggerFor]="menu"
-      [style.background-image]="'url(' + avatarURL + ')'"
+      [style.background-image]="avatarURL && 'url(' + avatarURL + ')'"
     ></button>
     <mat-menu #menu="matMenu">
       <button (click)="logout()" mat-menu-item>
