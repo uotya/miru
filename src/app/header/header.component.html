@@ -12,9 +12,10 @@
   </div>
   <div class="loggedIn" *ngIf="user$ | async as user; else default">
     <div class="icons">
-      <button
+      <a
         class="icons__button"
         mat-icon-button
+        color="primary"
         routerLink="/create"
         routerLinkActive
         #create="routerLinkActive"
@@ -23,10 +24,11 @@
         <mat-icon [class.active]="create.isActive" class="stretched-icon"
           >post_add</mat-icon
         >
-      </button>
-      <button
+      </a>
+      <a
         class="icons__button"
         mat-icon-button
+        color="primary"
         routerLink="/mylist"
         routerLinkActive
         #mylist="routerLinkActive"
@@ -35,10 +37,11 @@
         <mat-icon [class.active]="mylist.isActive" class="stretched-icon"
           >folder</mat-icon
         >
-      </button>
-      <button
+      </a>
+      <a
         class="icons__button"
         mat-icon-button
+        color="primary"
         routerLink="/ranking"
         routerLinkActive
         #ranking="routerLinkActive"
@@ -47,15 +50,13 @@
         <mat-icon [class.active]="ranking.isActive" class="stretched-icon"
           >whatshot</mat-icon
         >
-      </button>
+      </a>
     </div>
     <button
       class="avatar"
       mat-mini-fab
       [matMenuTriggerFor]="menu"
-      [style.background-image]="
-        'url(' + user.photoURL.replace('_normal', '') + ')'
-      "
+      [style.background-image]="avatarURL && 'url(' + avatarURL + ')'"
     ></button>
     <mat-menu #menu="matMenu">
       <button (click)="logout()" mat-menu-item>
@@ -77,7 +78,7 @@
     <button
       (click)="login()"
       [disabled]="isLoading"
-      *ngIf="isUserChecked"
+      *ngIf="isUser"
       class="default"
       id="default"
       mat-raised-button
