@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ArticleService } from 'src/app/services/article.service';
 import { ArticleWithUser } from 'src/app/interfaces/article-with-user';
@@ -38,7 +38,10 @@ export class ArticleComponent implements OnInit {
       .subscribe(article => {
         this.article = article;
         this.favorite = this.article.favorite;
-        if (this.authService.user.uid === this.article.authorId) {
+        if (
+          this.authService.user &&
+          this.authService.user.uid === this.article.authorId
+        ) {
           this.isMyArticle = true;
         }
         if (this.authService.user) {

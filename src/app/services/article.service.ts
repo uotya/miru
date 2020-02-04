@@ -19,11 +19,12 @@ export class ArticleService {
 
   createArticle(article: Omit<Article, 'articleId' | 'createdAt'>) {
     const articleId = this.db.createId();
-    return this.db.doc(`articles/${articleId}`).set({
+    this.db.doc(`articles/${articleId}`).set({
       articleId,
       ...article,
       createdAt: firestore.Timestamp.now()
     });
+    return articleId;
   }
 
   updateArticle(
@@ -37,6 +38,10 @@ export class ArticleService {
 
   deleteArticle(articleId: string): Promise<void> {
     return this.db.doc(`articles/${articleId}`).delete();
+  }
+
+  getArticleOnly(articleId: string) {
+    return this.db.doc<Article>(`articles/${articleId}`).valueChanges();
   }
 
   getArticles(

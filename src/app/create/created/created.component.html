@@ -1,4 +1,17 @@
 <div class="container">
-  <h1>公開されました！🥳</h1>
-  <button (click)="more()" mat-flat-button color="primary">さらに作る</button>
+  <h1>公開されました 🎉</h1>
+  <div class="share">
+    <a
+      mat-raised-button
+      href="https://twitter.com/share?url=https://miru-2ac6c.web.app/article/{{
+        articleId
+      }}/&text={{ title }}"
+      rel="nofollow"
+      target="_blank"
+      >Twitterでシェアする</a
+    >
+  </div>
+  <button routerLink="/article/create" mat-flat-button color="primary">
+    さらに作る
+  </button>
 </div>

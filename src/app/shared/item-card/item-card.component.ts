@@ -50,4 +50,8 @@ export class ItemCardComponent implements OnInit {
       this.dialog.open(LoginDialogComponent);
     }
   }
+
+  disableAvatar(element) {
+    element.target.remove();
+  }
 }

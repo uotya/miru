@@ -39,7 +39,7 @@ export class HeaderComponent implements OnInit {
     this.authService.login().then(() => {
       this.ngZone.run(() => {
         this.isLoading = false;
-        this.router.navigateByUrl('/create');
+        this.router.navigateByUrl('/article/create');
       });
     });
   }

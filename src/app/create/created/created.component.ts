@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { CreateComponent } from '../create/create.component';
+import { ActivatedRoute } from '@angular/router';
+import { take } from 'rxjs/operators';
+import { ArticleService } from 'src/app/services/article.service';
 
 @Component({
   selector: 'app-created',
@@ -7,11 +9,27 @@ import { CreateComponent } from '../create/create.component';
   styleUrls: ['./created.component.scss']
 })
 export class CreatedComponent implements OnInit {
-  constructor(private createComponent: CreateComponent) {}
+  articleId: string;
+  title: string;
 
-  ngOnInit() {}
+  constructor(
+    private route: ActivatedRoute,
+    private articleService: ArticleService
+  ) {}
 
-  more() {
-    this.createComponent.created = false;
+  ngOnInit() {
+    this.getArticle();
+  }
+
+  getArticle() {
+    this.route.queryParamMap.pipe(take(1)).subscribe(params => {
+      this.articleId = params.get('id');
+      this.articleService
+        .getArticleOnly(this.articleId)
+        .pipe(take(1))
+        .subscribe(result => {
+          this.title = result.title;
+        });
+    });
   }
 }

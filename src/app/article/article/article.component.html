@@ -73,7 +73,7 @@
     </button>
     <ng-container *ngIf="isMyArticle; else money">
       <button
-        [routerLink]="['/edit']"
+        [routerLink]="['/article/edit']"
         [queryParams]="{ id: article.articleId }"
         mat-raised-button
         class="actions__bottom actions__bottom--edit"

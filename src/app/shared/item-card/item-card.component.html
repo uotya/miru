@@ -4,17 +4,22 @@
       mat-card-avatar
       mat-icon-button
       class="user__avatar"
-      [style.background-image]="'url(' + card.author.avatarURL + ')'"
       [routerLink]="['/user']"
       [queryParams]="{ id: card.author.uid }"
-    ></a>
+    >
+      <img
+        [src]="card.author.avatarURL"
+        alt=""
+        (error)="disableAvatar($event)"
+      />
+    </a>
     <button mat-button class="user__name">
       <a [routerLink]="['/user']" [queryParams]="{ id: card.author.uid }">{{
         card.author.userName
       }}</a>
     </button>
   </div>
-  <a [routerLink]="['/article']" [queryParams]="{ id: card.articleId }">
+  <a routerLink="/article/{{ card.articleId }}">
     <p class="title">{{ card.title }}</p>
     <img class="thumb" [src]="card.thumbnailURL" mat-card-image alt="" />
   </a>

@@ -1,12 +1,17 @@
 :host {
   text-align: center;
 }
-.container {
-  padding-top: 0;
-}
 h1 {
-  font-size: 3.6rem;
+  font-size: 3.2rem;
+}
+.share {
+  margin-top: 48px;
+  a {
+    background-color: #75c4ff;
+    color: white;
+    font-weight: bold;
+  }
 }
 button {
-  margin-top: 40px;
+  margin-top: 24px;
 }
