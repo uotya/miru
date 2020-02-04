@@ -2,7 +2,8 @@
   <div class="user">
     <a
       mat-card-avatar
-      class="avatar"
+      mat-icon-button
+      class="user__avatar"
       [routerLink]="['/user']"
       [queryParams]="{ id: card.author.uid }"
     >
@@ -11,15 +12,13 @@
         alt=""
         (error)="disableAvatar($event)"
       />
-    </div>
-    <mat-card-title
-      class="name"
-      [routerLink]="['/user']"
-      [queryParams]="{ id: card.author.uid }"
-    >
-      <p>{{ card.author.userName }}</p>
-    </mat-card-title>
-  </mat-card-header>
+    </a>
+    <button mat-button class="user__name">
+      <a [routerLink]="['/user']" [queryParams]="{ id: card.author.uid }">{{
+        card.author.userName
+      }}</a>
+    </button>
+  </div>
   <a routerLink="/article/{{ card.articleId }}">
     <p class="title">{{ card.title }}</p>
     <img class="thumb" [src]="card.thumbnailURL" mat-card-image alt="" />
