@@ -97,9 +97,6 @@ export class FormComponent implements OnInit {
 
   createArticle() {
     const formData = this.form.value;
-    this.createComponent.created = true;
-    scrollTo({ top: 0, behavior: 'smooth' });
-
     const sendData: Omit<Article, 'articleId' | 'createdAt'> = {
       authorId: this.authService.user.uid,
       title: formData.title,
@@ -115,11 +112,21 @@ export class FormComponent implements OnInit {
           this.ogp = ogp as OGP;
           if (this.ogp.ogImage.url) {
             sendData.thumbnailURL = this.ogp.ogImage.url;
-            this.articleService.createArticle(sendData);
+            const articleId = this.articleService.createArticle(sendData);
+            this.createComponent.created = true;
+            this.router.navigate(['article/created'], {
+              queryParams: { id: articleId }
+            });
+            scrollTo({ top: 0, behavior: 'smooth' });
           }
         });
       } else {
-        this.articleService.createArticle(sendData);
+        const articleId = this.articleService.createArticle(sendData);
+        this.createComponent.created = true;
+        this.router.navigate(['article/created'], {
+          queryParams: { id: articleId }
+        });
+        scrollTo({ top: 0, behavior: 'smooth' });
       }
     }
   }
