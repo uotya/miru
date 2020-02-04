@@ -16,14 +16,7 @@ const routes: Routes = [
     canActivate: [GuestGuard]
   },
   {
-    path: 'create',
-    loadChildren: () =>
-      import('./create/create.module').then(m => m.CreateModule),
-    canLoad: [AuthGuard],
-    canActivate: [AuthGuard]
-  },
-  {
-    path: 'edit',
+    path: 'article',
     loadChildren: () =>
       import('./create/create.module').then(m => m.CreateModule),
     canLoad: [AuthGuard],
@@ -51,7 +44,7 @@ const routes: Routes = [
     loadChildren: () => import('./intl/intl.module').then(m => m.IntlModule)
   },
   {
-    path: ':articleId',
+    path: 'article/:articleId',
     loadChildren: () =>
       import('./article/article.module').then(m => m.ArticleModule)
   },

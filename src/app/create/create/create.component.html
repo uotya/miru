@@ -1,11 +1,8 @@
 <div class="container">
-  <ng-container *ngIf="created">
-    <app-created></app-created>
-  </ng-container>
-  <ng-container *ngIf="deleted">
+  <ng-container *ngIf="deleted; else form">
     <app-deleted></app-deleted>
   </ng-container>
-  <ng-container *ngIf="!created && !deleted">
+  <ng-template #form>
     <app-form #formElement></app-form>
-  </ng-container>
+  </ng-template>
 </div>

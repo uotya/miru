@@ -31,7 +31,7 @@ export class GuestGuard implements CanActivate, CanLoad {
       map(user => !user),
       tap(isGuest => {
         if (!isGuest) {
-          this.router.navigateByUrl('/create');
+          this.router.navigateByUrl('/article/create');
         }
       })
     );
@@ -44,7 +44,7 @@ export class GuestGuard implements CanActivate, CanLoad {
       map(user => !user),
       tap(isGuest => {
         if (!isGuest) {
-          this.router.navigateByUrl('/create');
+          this.router.navigateByUrl('/article/create');
         }
       }),
       take(1)

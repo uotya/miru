@@ -18,7 +18,7 @@ export class WelcomeComponent implements OnInit {
   login() {
     this.authService.login().then(() => {
       this.ngZone.run(() => {
-        this.router.navigateByUrl('/create');
+        this.router.navigateByUrl('/article/create');
       });
     });
   }
