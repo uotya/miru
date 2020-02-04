@@ -3,10 +3,15 @@
     <div
       mat-card-avatar
       class="avatar"
-      [style.background-image]="'url(' + card.author.avatarURL + ')'"
       [routerLink]="['/user']"
       [queryParams]="{ id: card.author.uid }"
-    ></div>
+    >
+      <img
+        [src]="card.author.avatarURL"
+        alt=""
+        (error)="disableAvatar($event)"
+      />
+    </div>
     <mat-card-title
       class="name"
       [routerLink]="['/user']"
@@ -15,7 +20,7 @@
       <p>{{ card.author.userName }}</p>
     </mat-card-title>
   </mat-card-header>
-  <a routerLink="/{{ card.articleId }}">
+  <a routerLink="/article/{{ card.articleId }}">
     <p class="title">{{ card.title }}</p>
     <img class="thumb" [src]="card.thumbnailURL" mat-card-image alt="" />
   </a>

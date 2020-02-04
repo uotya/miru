@@ -23,6 +23,11 @@
   &:hover {
     opacity: 0.6;
   }
+  img {
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+  }
 }
 .name {
   display: block;
