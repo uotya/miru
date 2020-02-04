@@ -98,17 +98,18 @@ mat-divider {
     &--link {
       margin-top: 8px;
       font-weight: bold;
-      font-size: 1.8rem;
+      font-size: 1.6rem;
       line-height: 1.4;
-      letter-spacing: 0.01em;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-      overflow: hidden;
-      max-width: 80%;
+      max-width: 90%;
       color: #fff;
       border-radius: 8px;
       background-color: $black;
       transition: 0.3s;
+      a {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
       &.isLink {
         &:hover {
           opacity: 0.7;
