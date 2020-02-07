@@ -4,6 +4,8 @@ import { auth, User } from 'firebase/app';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFireFunctions } from '@angular/fire/functions';
 @Injectable({
   providedIn: 'root'
 })
@@ -14,10 +16,42 @@ export class AuthService {
   constructor(
     private afAuth: AngularFireAuth,
     private router: Router,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private db: AngularFirestore,
+    private fns: AngularFireFunctions
   ) {
     this.afUser$.subscribe(user => {
       this.user = user && user;
+    });
+  }
+
+  async createUser(userId: string) {
+    this.db
+      .doc(`users/${userId}`)
+      .get()
+      .subscribe(async doc => {
+        if (!doc.exists) {
+          return this.afAuth.auth.getRedirectResult().then(async result => {
+            const { accessToken, secret } = result.credential as any;
+            return this.db
+              .doc(`users/${userId}/private/twitter`)
+              .set({
+                accessToken,
+                secret
+              })
+              .then(() => {
+                return true;
+              });
+          });
+        }
+      });
+  }
+
+  updateAvatar(userId: string) {
+    const updateFn = this.fns.httpsCallable('updateTwitterAvatar');
+    return updateFn({
+      uid: this.user.uid,
+      twitterUid: this.user.providerData[0].uid
     });
   }
 
