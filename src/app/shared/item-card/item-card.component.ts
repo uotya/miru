@@ -51,7 +51,7 @@ export class ItemCardComponent implements OnInit {
     }
   }
 
-  disableAvatar(element) {
-    element.target.remove();
+  updateAvatar() {
+    this.authService.updateAvatar(this.card.authorId);
   }
 }
