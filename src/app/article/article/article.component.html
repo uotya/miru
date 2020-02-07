@@ -8,19 +8,22 @@
     <p class="pre-wrap">{{ article.description }}</p>
   </div>
   <div class="details">
-    <div
-      class="user"
-      [routerLink]="['/user']"
-      [queryParams]="{ id: article.author.uid }"
-    >
-      <button
+    <div class="user">
+      <a
         mat-icon-button
         class="user__avatar"
-        [style.background-image]="'url(' + article.author.avatarURL + ')'"
-      ></button>
-      <p class="user__name">
-        <a>{{ article.author.userName }}</a>
-      </p>
+        [routerLink]="['/user']"
+        [queryParams]="{ id: article.author.uid }"
+      >
+        <img [src]="article.author.avatarURL" alt="" (error)="updateAvatar()" />
+      </a>
+      <button mat-button class="user__name">
+        <a
+          [routerLink]="['/user']"
+          [queryParams]="{ id: article.author.uid }"
+          >{{ article.author.userName }}</a
+        >
+      </button>
     </div>
     <p class="update">
       <mat-icon>update</mat-icon>
