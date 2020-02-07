@@ -5,7 +5,7 @@
   ></div>
   <div class="title">
     <h1>{{ article.title }}</h1>
-    <p>{{ article.description }}</p>
+    <p class="pre-wrap">{{ article.description }}</p>
   </div>
   <div class="details">
     <div
@@ -47,7 +47,7 @@
           <p>{{ content.link }}</p>
         </div>
       </ng-template>
-      <div *ngIf="content.comment" class="contents__content--comment">
+      <div *ngIf="content.comment" class="contents__content--comment pre-wrap">
         <p>{{ content.comment }}</p>
       </div>
     </div>

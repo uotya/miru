@@ -14,6 +14,9 @@
     height: 200px;
   }
 }
+.pre-wrap {
+  white-space: pre-wrap;
+}
 .title {
   margin-top: 32px;
   h1 {
@@ -58,7 +61,6 @@
     }
     &__name {
       font-size: 1.6rem;
-      font-weight: bold;
       white-space: nowrap;
       text-overflow: ellipsis;
       overflow: hidden;

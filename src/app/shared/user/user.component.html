@@ -11,10 +11,10 @@
       (scrolled)="getArticles()"
     ></div>
   </ng-container>
-  <ng-template *ngIf="isComplete && !articles.length">
+  <ng-container *ngIf="isComplete && !articles.length">
     <mat-card class="empty-card mat-elevation-z4">
       <h3>まだ投稿がありません😩</h3>
       <p>投稿されるとここに表示されます</p>
     </mat-card>
-  </ng-template>
+  </ng-container>
 </div>
