@@ -10,6 +10,10 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import {
+  AngularFireFunctionsModule,
+  FUNCTIONS_REGION
+} from '@angular/fire/functions';
 import { environment } from '../environments/environment';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
@@ -40,6 +44,7 @@ registerLocaleData(localeJa);
     AngularFirestoreModule,
     AngularFireStorageModule,
     AngularFireAuthModule,
+    AngularFireFunctionsModule,
     MatToolbarModule,
     MatButtonModule,
     MatIconModule,
@@ -49,7 +54,11 @@ registerLocaleData(localeJa);
     MatTooltipModule,
     SharedModule
   ],
-  providers: [AuthGuard, { provide: LOCALE_ID, useValue: 'ja-JP' }],
+  providers: [
+    AuthGuard,
+    { provide: LOCALE_ID, useValue: 'ja-JP' },
+    { provide: FUNCTIONS_REGION, useValue: 'asia-northeast1' }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

@@ -7,12 +7,16 @@ service cloud.firestore {
       allow update: if request.auth.uid == resource.data.authorId && resource.data.authorId == request.resource.data.authorId;
       allow delete: if request.auth.uid == resource.data.authorId;
     }
+    match /users/{userId} {
+      allow read: if true;
+      allow write: if request.auth.uid == userId;
+    }
     match /users/{userId}/likeArticles/{articleId} {
       allow read: if request.auth.uid == userId;
       allow write: if request.auth.uid == userId;
     }
-    match /users/{userId} {
-      allow read: if true;
+    match /users/{userId}/private/twitter {
+      allow read: if false;
       allow write: if request.auth.uid == userId;
     }
   }
