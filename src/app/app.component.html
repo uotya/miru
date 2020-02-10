@@ -2,7 +2,7 @@
 
 <div class="main" ontouchstart="">
   <router-outlet></router-outlet>
-  <div *ngIf="isloading$ | async">
+  <div *ngIf="isLoading$ | async">
     <div class="container">
       <mat-spinner diameter="50" strokeWidth="4"></mat-spinner>
     </div>

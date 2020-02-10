@@ -8,7 +8,7 @@ import { Router, NavigationStart } from '@angular/router';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  isloading$ = this.loadingService.isLoading$;
+  isLoading$ = this.loadingService.isLoading$;
   title = 'miru';
 
   constructor(private loadingService: LoadingService, private router: Router) {
