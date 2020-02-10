@@ -17,12 +17,10 @@ export class HeaderComponent implements OnInit {
     tap(user => {
       this.isUser = true;
       if (user) {
-        this.articleService
-          .getUserData(user.uid)
-          .pipe(take(1))
-          .subscribe(result => {
-            this.avatarURL = result.avatarURL;
-          });
+        this.articleService.getUserData(user.uid).subscribe(result => {
+          this.avatarURL = result && result.avatarURL;
+        });
+        this.authService.createUser(user.uid);
       }
     })
   );

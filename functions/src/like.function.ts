@@ -4,8 +4,9 @@ import { shouldEventRun, markEventTried } from './utility.function';
 
 const db = admin.firestore();
 
-export const countUpFavorite = functions.firestore
-  .document('users/{userId}/likeArticles/{articleId}')
+export const countUpFavorite = functions
+  .region('asia-northeast1')
+  .firestore.document('users/{userId}/likeArticles/{articleId}')
   .onCreate(async (snap, context) => {
     const eventId = context.eventId;
     return shouldEventRun(eventId).then(async (should: boolean) => {
@@ -20,8 +21,9 @@ export const countUpFavorite = functions.firestore
     });
   });
 
-export const countDownFavorite = functions.firestore
-  .document('users/{userId}/likeArticles/{articleId}')
+export const countDownFavorite = functions
+  .region('asia-northeast1')
+  .firestore.document('users/{userId}/likeArticles/{articleId}')
   .onDelete(async (snap, context) => {
     const eventId = context.eventId;
     return shouldEventRun(eventId).then(async (should: boolean) => {

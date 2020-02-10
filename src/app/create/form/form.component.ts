@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import {
   FormBuilder,
   Validators,
@@ -32,6 +32,14 @@ export class FormComponent implements OnInit {
   ogp: OGP;
   id: string;
   editing: boolean;
+
+  @HostListener('window:beforeunload', ['$event'])
+  unloadNotification($event: any) {
+    if (this.form.dirty) {
+      $event.preventDefault();
+      $event.returnValue = '';
+    }
+  }
 
   constructor(
     private fb: FormBuilder,
@@ -104,29 +112,27 @@ export class FormComponent implements OnInit {
       description: formData.description,
       favorite: 0
     };
+    const create = () => {
+      const articleId = this.articleService.createArticle(sendData);
+      this.createComponent.created = true;
+      this.router.navigate(['article/created'], {
+        queryParams: { id: articleId }
+      });
+      scrollTo({ top: 0, behavior: 'smooth' });
+    };
 
     for (let i = 0; formData.links[i]; i++) {
       const link = formData.links[i].link;
       if (link.match(/http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w-.\/?%&=]*)?/)) {
         this.http.get(API + link).subscribe(ogp => {
           this.ogp = ogp as OGP;
-          if (this.ogp.ogImage.url) {
+          if (this.ogp.ogImage.url && !this.createComponent.created) {
             sendData.thumbnailURL = this.ogp.ogImage.url;
-            const articleId = this.articleService.createArticle(sendData);
-            this.createComponent.created = true;
-            this.router.navigate(['article/created'], {
-              queryParams: { id: articleId }
-            });
-            scrollTo({ top: 0, behavior: 'smooth' });
+            create();
           }
         });
-      } else {
-        const articleId = this.articleService.createArticle(sendData);
-        this.createComponent.created = true;
-        this.router.navigate(['article/created'], {
-          queryParams: { id: articleId }
-        });
-        scrollTo({ top: 0, behavior: 'smooth' });
+      } else if (!this.createComponent.created) {
+        create();
       }
     }
   }

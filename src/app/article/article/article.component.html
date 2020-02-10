@@ -5,22 +5,25 @@
   ></div>
   <div class="title">
     <h1>{{ article.title }}</h1>
-    <p>{{ article.description }}</p>
+    <p class="pre-wrap">{{ article.description }}</p>
   </div>
   <div class="details">
-    <div
-      class="user"
-      [routerLink]="['/user']"
-      [queryParams]="{ id: article.author.uid }"
-    >
-      <button
+    <div class="user">
+      <a
         mat-icon-button
         class="user__avatar"
-        [style.background-image]="'url(' + article.author.avatarURL + ')'"
-      ></button>
-      <p class="user__name">
-        <a>{{ article.author.userName }}</a>
-      </p>
+        [routerLink]="['/user']"
+        [queryParams]="{ id: article.author.uid }"
+      >
+        <img [src]="article.author.avatarURL" alt="" (error)="updateAvatar()" />
+      </a>
+      <button mat-button class="user__name">
+        <a
+          [routerLink]="['/user']"
+          [queryParams]="{ id: article.author.uid }"
+          >{{ article.author.userName }}</a
+        >
+      </button>
     </div>
     <p class="update">
       <mat-icon>update</mat-icon>
@@ -47,7 +50,7 @@
           <p>{{ content.link }}</p>
         </div>
       </ng-template>
-      <div *ngIf="content.comment" class="contents__content--comment">
+      <div *ngIf="content.comment" class="contents__content--comment pre-wrap">
         <p>{{ content.comment }}</p>
       </div>
     </div>

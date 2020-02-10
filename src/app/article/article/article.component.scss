@@ -14,6 +14,9 @@
     height: 200px;
   }
 }
+.pre-wrap {
+  white-space: pre-wrap;
+}
 .title {
   margin-top: 32px;
   h1 {
@@ -38,31 +41,33 @@
   .user {
     display: flex;
     align-items: center;
-    cursor: pointer;
-    padding: 8px 0;
-    border-radius: 6px;
     max-width: 70%;
     @include sp {
       max-width: 100%;
     }
-    &:hover {
-      background-color: rgba(0, 0, 0, 0.1);
-    }
     &__avatar {
       width: 40px;
       height: 40px;
-      background-origin: 50%;
-      background: #cfd8dc center/cover;
-      display: inline-block;
-      margin-right: 8px;
+      background: center / contain no-repeat #cfd8dc;
+      &:hover {
+        opacity: 0.6;
+      }
+      img {
+        border-radius: 50%;
+        width: 100%;
+        height: 100%;
+      }
     }
     &__name {
+      margin-left: 8px;
+      padding: 4px;
       font-size: 1.6rem;
-      font-weight: bold;
       white-space: nowrap;
       text-overflow: ellipsis;
       overflow: hidden;
-      line-height: 1.4;
+      a {
+        color: inherit;
+      }
     }
   }
   .update {

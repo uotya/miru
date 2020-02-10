@@ -7,11 +7,7 @@
       [routerLink]="['/user']"
       [queryParams]="{ id: card.author.uid }"
     >
-      <img
-        [src]="card.author.avatarURL"
-        alt=""
-        (error)="disableAvatar($event)"
-      />
+      <img [src]="card.author.avatarURL" alt="" (error)="updateAvatar()" />
     </a>
     <button mat-button class="user__name">
       <a [routerLink]="['/user']" [queryParams]="{ id: card.author.uid }">{{

@@ -82,4 +82,8 @@ export class ArticleComponent implements OnInit {
       this.dialog.open(LoginDialogComponent);
     }
   }
+
+  updateAvatar() {
+    this.authService.updateAvatar(this.article.authorId);
+  }
 }
