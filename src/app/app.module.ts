@@ -16,10 +16,7 @@ import {
 } from '@angular/fire/functions';
 import { environment } from '../environments/environment';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
-import { MatDividerModule } from '@angular/material/divider';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AuthGuard } from './guards/auth.guard';
@@ -47,10 +44,7 @@ registerLocaleData(localeJa);
     AngularFireAuthModule,
     AngularFireFunctionsModule,
     MatToolbarModule,
-    MatButtonModule,
-    MatIconModule,
     MatMenuModule,
-    MatDividerModule,
     MatSnackBarModule,
     MatTooltipModule,
     SharedModule,

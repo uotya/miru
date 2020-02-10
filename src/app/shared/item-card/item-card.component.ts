@@ -47,7 +47,9 @@ export class ItemCardComponent implements OnInit {
       this.favorite--;
       this.isLiked = false;
     } else {
-      this.dialog.open(LoginDialogComponent);
+      this.dialog.open(LoginDialogComponent, {
+        restoreFocus: false
+      });
     }
   }
 

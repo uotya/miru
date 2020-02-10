@@ -11,6 +11,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { LoginDialogComponent } from '../welcome/login-dialog/login-dialog.component';
 import { UserComponent } from './user/user.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { MatDividerModule } from '@angular/material/divider';
 
 @NgModule({
   declarations: [
@@ -26,14 +27,18 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     MatIconModule,
     MatCardModule,
     MatDialogModule,
-    InfiniteScrollModule
+    InfiniteScrollModule,
+    MatDividerModule
   ],
   exports: [
     ItemCardComponent,
     RankingComponent,
     LoginDialogComponent,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    MatDialogModule,
+    MatDividerModule,
+    MatCardModule
   ],
   entryComponents: [LoginDialogComponent]
 })
