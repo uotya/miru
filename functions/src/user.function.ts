@@ -20,7 +20,7 @@ export const updateTwitterAvatar = functions
         access_token_secret: twitterData.secret
       });
       const twitterProfile = await twitterClient.get('users/show', {
-        user_id: data.twitterUid
+        user_id: twitterData.uid
       });
       const result = twitterProfile.profile_image_url_https.replace(
         '_normal',
