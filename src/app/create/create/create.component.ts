@@ -8,7 +8,7 @@ import { LoadingService } from 'src/app/services/loading.service';
   styleUrls: ['./create.component.scss']
 })
 export class CreateComponent implements OnInit {
-  @ViewChild('formElement', { static: false }) formElement: FormComponent;
+  @ViewChild('formElement') formElement: FormComponent;
   created: boolean;
   deleted: boolean;
 
