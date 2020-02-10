@@ -7,14 +7,12 @@ import { SharedModule } from '../shared/shared.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatDividerModule } from '@angular/material/divider';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { FormComponent } from './form/form.component';
 import { CreatedComponent } from './created/created.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component';
 import { DeletedComponent } from './deleted/deleted.component';
-import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -32,10 +30,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     FormsModule,
     MatInputModule,
     MatFormFieldModule,
-    MatDividerModule,
     MatTooltipModule,
-    HttpClientModule,
-    MatDialogModule
+    HttpClientModule
   ],
   entryComponents: [DeleteDialogComponent]
 })
