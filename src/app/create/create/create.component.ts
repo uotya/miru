@@ -15,8 +15,6 @@ export class CreateComponent implements OnInit {
   constructor(private loadingService: LoadingService) {}
 
   ngOnInit() {
-    setTimeout(() => {
-      this.loadingService.toggleLoading(false);
-    }, 50);
+    this.loadingService.toggleLoading(false);
   }
 }

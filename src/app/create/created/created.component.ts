@@ -20,9 +20,7 @@ export class CreatedComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    setTimeout(() => {
-      this.loadingService.toggleLoading(false);
-    }, 50);
+    this.loadingService.toggleLoading(false);
     this.getArticle();
   }
 
