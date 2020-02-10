@@ -23,6 +23,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import localeJa from '@angular/common/locales/ja';
 import { registerLocaleData } from '@angular/common';
 import { SharedModule } from './shared/shared.module';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 registerLocaleData(localeJa);
 @NgModule({
@@ -47,7 +48,8 @@ registerLocaleData(localeJa);
     MatDividerModule,
     MatSnackBarModule,
     MatTooltipModule,
-    SharedModule
+    SharedModule,
+    MatProgressSpinnerModule
   ],
   providers: [AuthGuard, { provide: LOCALE_ID, useValue: 'ja-JP' }],
   bootstrap: [AppComponent]
