@@ -156,7 +156,7 @@ export class FormComponent implements OnInit {
 
   deleteArticle() {
     this.dialog
-      .open(DeleteDialogComponent)
+      .open(DeleteDialogComponent, { restoreFocus: false })
       .afterClosed()
       .subscribe(result => {
         if (result === true) {
