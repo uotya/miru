@@ -1,9 +1,11 @@
 <div class="container">
   <h2 class="heading">人気の投稿</h2>
-  <div class="cards">
-    <app-item-card
-      *ngFor="let article of articles$ | async"
-      [card]="article"
-    ></app-item-card>
-  </div>
+  <ng-container *ngIf="articles$ | async as articles">
+    <div class="cards">
+      <app-item-card
+        *ngFor="let article of articles"
+        [card]="article"
+      ></app-item-card>
+    </div>
+  </ng-container>
 </div>

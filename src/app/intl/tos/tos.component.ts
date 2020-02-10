@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LoadingService } from 'src/app/services/loading.service';
 
 @Component({
   selector: 'app-tos',
@@ -6,7 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./tos.component.scss']
 })
 export class TosComponent implements OnInit {
-  constructor() {}
+  constructor(private loadingService: LoadingService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    setTimeout(() => {
+      this.loadingService.toggleLoading(false);
+    }, 50);
+  }
 }

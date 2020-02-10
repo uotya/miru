@@ -1,6 +1,7 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
+import { LoadingService } from 'src/app/services/loading.service';
 
 @Component({
   selector: 'app-welcome',
@@ -11,9 +12,14 @@ export class WelcomeComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private ngZone: NgZone
+    private ngZone: NgZone,
+    private loadingService: LoadingService
   ) {}
-  ngOnInit() {}
+  ngOnInit() {
+    setTimeout(() => {
+      this.loadingService.toggleLoading(false);
+    }, 50);
+  }
 
   login() {
     this.authService.login().then(() => {

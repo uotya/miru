@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { LoadingService } from './services/loading.service';
+import { Router, NavigationStart } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  isloading$ = this.loadingService.isLoading$;
   title = 'miru';
+
+  constructor(private loadingService: LoadingService, private router: Router) {
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationStart) {
+        this.loadingService.toggleLoading(true);
+      }
+    });
+  }
 }

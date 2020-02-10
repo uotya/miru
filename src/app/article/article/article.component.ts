@@ -7,6 +7,8 @@ import { AuthService } from 'src/app/services/auth.service';
 import { MatDialog } from '@angular/material/dialog';
 import { LoginDialogComponent } from 'src/app/welcome/login-dialog/login-dialog.component';
 import { take } from 'rxjs/operators';
+import { LoadingService } from 'src/app/services/loading.service';
+
 @Component({
   selector: 'app-article',
   templateUrl: './article.component.html',
@@ -23,7 +25,8 @@ export class ArticleComponent implements OnInit {
     private articleService: ArticleService,
     private likeService: LikeService,
     private authService: AuthService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private loadingService: LoadingService
   ) {}
 
   ngOnInit() {
@@ -37,6 +40,7 @@ export class ArticleComponent implements OnInit {
       .pipe(take(2))
       .subscribe(article => {
         this.article = article;
+        this.loadingService.toggleLoading(false);
         this.favorite = this.article.favorite;
         if (
           this.authService.user &&
