@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { take } from 'rxjs/operators';
 import { ArticleService } from 'src/app/services/article.service';
+import { LoadingService } from 'src/app/services/loading.service';
 
 @Component({
   selector: 'app-created',
@@ -14,10 +15,14 @@ export class CreatedComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private articleService: ArticleService
+    private articleService: ArticleService,
+    private loadingService: LoadingService
   ) {}
 
   ngOnInit() {
+    setTimeout(() => {
+      this.loadingService.toggleLoading(false);
+    }, 50);
     this.getArticle();
   }
 

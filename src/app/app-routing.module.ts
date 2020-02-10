@@ -18,9 +18,7 @@ const routes: Routes = [
   {
     path: 'article',
     loadChildren: () =>
-      import('./create/create.module').then(m => m.CreateModule),
-    canLoad: [AuthGuard],
-    canActivate: [AuthGuard]
+      import('./create/create.module').then(m => m.CreateModule)
   },
   {
     path: 'mylist',

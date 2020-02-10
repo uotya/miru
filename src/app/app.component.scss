@@ -6,3 +6,10 @@
 .main {
   flex: 1;
 }
+.container {
+  display: flex;
+  justify-content: center;
+  mat-spinner {
+    margin-top: 80px;
+  }
+}

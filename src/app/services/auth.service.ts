@@ -32,10 +32,12 @@ export class AuthService {
       .subscribe(async doc => {
         if (!doc.exists) {
           return this.afAuth.auth.getRedirectResult().then(async result => {
+            const uid = result.user.providerData[0].uid;
             const { accessToken, secret } = result.credential as any;
             return this.db
               .doc(`users/${userId}/private/twitter`)
               .set({
+                uid,
                 accessToken,
                 secret
               })
@@ -50,8 +52,7 @@ export class AuthService {
   updateAvatar(userId: string) {
     const updateFn = this.fns.httpsCallable('updateTwitterAvatar');
     return updateFn({
-      uid: this.user.uid,
-      twitterUid: this.user.providerData[0].uid
+      uid: userId
     });
   }
 
