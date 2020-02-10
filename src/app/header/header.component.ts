@@ -16,12 +16,14 @@ export class HeaderComponent implements OnInit {
   user$ = this.authService.afUser$.pipe(
     tap(user => {
       this.isUser = true;
-      this.articleService
-        .getUserData(user.uid)
-        .pipe(take(1))
-        .subscribe(result => {
-          this.avatarURL = result.avatarURL;
-        });
+      if (user) {
+        this.articleService
+          .getUserData(user.uid)
+          .pipe(take(1))
+          .subscribe(result => {
+            this.avatarURL = result.avatarURL;
+          });
+      }
     })
   );
 
