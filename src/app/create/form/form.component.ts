@@ -7,8 +7,8 @@ import {
 } from '@angular/forms';
 import { ArticleService } from 'src/app/services/article.service';
 import { AuthService } from 'src/app/services/auth.service';
-import { Article } from 'src/app/interfaces/article';
-import { OGP } from 'src/app/interfaces/ogp';
+import { Article } from '@interfaces/article';
+import { OGP } from '@interfaces/ogp';
 import { CreateComponent } from 'src/app/create/create/create.component';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
