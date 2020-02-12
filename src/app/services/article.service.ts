@@ -3,11 +3,11 @@ import {
   AngularFirestore,
   AngularFirestoreCollection
 } from '@angular/fire/firestore';
-import { Article } from '../interfaces/article';
+import { Article } from '@interfaces/article';
 import { Observable, combineLatest, of } from 'rxjs';
-import { ArticleWithUser } from '../interfaces/article-with-user';
+import { ArticleWithUser } from '@interfaces/article-with-user';
 import { switchMap, map, tap, take } from 'rxjs/operators';
-import { UserData } from '../interfaces/user';
+import { UserData } from '@interfaces/user';
 import { AuthService } from './auth.service';
 import { firestore } from 'firebase/app';
 

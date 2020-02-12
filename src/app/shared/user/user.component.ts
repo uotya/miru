@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ArticleService } from 'src/app/services/article.service';
-import { ArticleWithUser } from 'src/app/interfaces/article-with-user';
+import { ArticleWithUser } from '@interfaces/article-with-user';
 import { take } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
 import { firestore } from 'firebase';

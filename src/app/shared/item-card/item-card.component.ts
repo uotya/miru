@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ArticleWithUser } from 'src/app/interfaces/article-with-user';
+import { ArticleWithUser } from '@interfaces/article-with-user';
 import { LikeService } from 'src/app/services/like.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { take } from 'rxjs/operators';

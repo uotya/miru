@@ -1,5 +1,6 @@
 import * as functions from 'firebase-functions';
 import * as Twitter from 'twitter';
+import { UserData } from './interfaces/user';
 
 const admin = require('firebase-admin');
 admin.initializeApp();
@@ -38,9 +39,14 @@ export const createUser = functions
   .region('asia-northeast1')
   .auth.user()
   .onCreate(user => {
-    db.doc(`users/${user.uid}`).set({
-      uid: user.uid,
-      userName: user.displayName,
-      avatarURL: user.photoURL?.replace('_normal', '')
-    });
+    if (user.displayName && user.photoURL) {
+      const sendUserData: UserData = {
+        uid: user.uid,
+        userName: user.displayName,
+        avatarURL: user.photoURL?.replace('_normal', '')
+      };
+      db.doc(`users/${user.uid}`).set(sendUserData);
+    } else {
+      db.doc(`users/${user.uid}`).set({ uid: user.uid });
+    }
   });

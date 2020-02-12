@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ArticleWithUser } from 'src/app/interfaces/article-with-user';
+import { ArticleWithUser } from '@interfaces/article-with-user';
 import { Observable } from 'rxjs';
 import { ArticleService } from 'src/app/services/article.service';
 import { take, tap } from 'rxjs/operators';
