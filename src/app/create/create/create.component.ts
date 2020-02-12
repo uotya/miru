@@ -8,15 +8,13 @@ import { LoadingService } from 'src/app/services/loading.service';
   styleUrls: ['./create.component.scss']
 })
 export class CreateComponent implements OnInit {
-  @ViewChild('formElement', { static: false }) formElement: FormComponent;
+  @ViewChild('formElement') formElement: FormComponent;
   created: boolean;
   deleted: boolean;
 
   constructor(private loadingService: LoadingService) {}
 
   ngOnInit() {
-    setTimeout(() => {
-      this.loadingService.toggleLoading(false);
-    }, 50);
+    this.loadingService.toggleLoading(false);
   }
 }

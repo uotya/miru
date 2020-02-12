@@ -16,9 +16,7 @@ export class WelcomeComponent implements OnInit {
     private loadingService: LoadingService
   ) {}
   ngOnInit() {
-    setTimeout(() => {
-      this.loadingService.toggleLoading(false);
-    }, 50);
+    this.loadingService.toggleLoading(false);
   }
 
   login() {

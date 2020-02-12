@@ -79,7 +79,9 @@ export class ArticleComponent implements OnInit {
       this.favorite--;
       this.isLiked = false;
     } else {
-      this.dialog.open(LoginDialogComponent);
+      this.dialog.open(LoginDialogComponent, {
+        restoreFocus: false
+      });
     }
   }
 
