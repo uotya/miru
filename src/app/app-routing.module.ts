@@ -47,6 +47,13 @@ const routes: Routes = [
       import('./article/article.module').then(m => m.ArticleModule)
   },
   {
+    path: 'settings',
+    loadChildren: () =>
+      import('./settings/settings.module').then(m => m.SettingsModule),
+    canLoad: [AuthGuard],
+    canActivate: [AuthGuard]
+  },
+  {
     path: '**',
     component: NotFoundComponent
   }
