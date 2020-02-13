@@ -53,6 +53,5 @@
     "use-lifecycle-interface": true,
     "use-pipe-transform-interface": true
   },
-  "rulesDirectory": ["codelyzer"],
-  "no-implicit-dependencies": [true, ["@interfaces"]]
+  "rulesDirectory": ["codelyzer"]
 }
