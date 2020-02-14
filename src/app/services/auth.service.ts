@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireFunctions } from '@angular/fire/functions';
+import { UserData } from 'functions/src/interfaces/user';
 @Injectable({
   providedIn: 'root'
 })
@@ -49,6 +50,10 @@ export class AuthService {
       });
   }
 
+  deleteUser() {
+    return this.afAuth.auth.currentUser.delete();
+  }
+
   updateAvatar(userId: string) {
     const updateFn = this.fns.httpsCallable('updateTwitterAvatar');
     return updateFn({
@@ -67,5 +72,13 @@ export class AuthService {
       });
     });
     this.router.navigateByUrl('/');
+  }
+
+  getUserData(userId: string) {
+    return this.db.doc<UserData>(`users/${userId}`).valueChanges();
+  }
+
+  changeUserName(userId: string, name: string) {
+    return this.db.doc<UserData>(`users/${userId}`).update({ userName: name });
   }
 }

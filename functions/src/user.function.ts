@@ -50,3 +50,10 @@ export const createUser = functions
       db.doc(`users/${user.uid}`).set({ uid: user.uid });
     }
   });
+
+export const deleteUserData = functions
+  .region('asia-northeast1')
+  .auth.user()
+  .onDelete(user => {
+    db.doc(`users/${user.uid}`).delete();
+  });

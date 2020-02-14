@@ -4,6 +4,7 @@ import { ArticleWithUser } from '@interfaces/article-with-user';
 import { take } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
 import { firestore } from 'firebase';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-user',
@@ -19,6 +20,7 @@ export class UserComponent implements OnInit {
 
   constructor(
     private articleService: ArticleService,
+    private authService: AuthService,
     private route: ActivatedRoute
   ) {}
 
@@ -26,7 +28,7 @@ export class UserComponent implements OnInit {
     this.route.queryParamMap.pipe(take(1)).subscribe(params => {
       this.userId = params.get('id');
       this.getArticles();
-      this.articleService
+      this.authService
         .getUserData(this.userId)
         .pipe(take(1))
         .subscribe(data => {

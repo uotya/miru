@@ -17,7 +17,6 @@ import {
 import { environment } from '../environments/environment';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AuthGuard } from './guards/auth.guard';
 import { MatTooltipModule } from '@angular/material/tooltip';
@@ -45,7 +44,6 @@ registerLocaleData(localeJa);
     AngularFireFunctionsModule,
     MatToolbarModule,
     MatMenuModule,
-    MatSnackBarModule,
     MatTooltipModule,
     SharedModule,
     MatProgressSpinnerModule

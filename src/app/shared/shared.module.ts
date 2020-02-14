@@ -12,6 +12,7 @@ import { LoginDialogComponent } from '../welcome/login-dialog/login-dialog.compo
 import { UserComponent } from './user/user.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { MatDividerModule } from '@angular/material/divider';
     MatCardModule,
     MatDialogModule,
     InfiniteScrollModule,
-    MatDividerModule
+    MatDividerModule,
+    MatSnackBarModule
   ],
   exports: [
     ItemCardComponent,
@@ -38,7 +40,8 @@ import { MatDividerModule } from '@angular/material/divider';
     MatIconModule,
     MatDialogModule,
     MatDividerModule,
-    MatCardModule
+    MatCardModule,
+    MatSnackBarModule
   ],
   entryComponents: [LoginDialogComponent]
 })

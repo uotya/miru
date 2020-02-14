@@ -67,8 +67,8 @@ export class ArticleService {
             })
             .map(article => article.authorId);
           return combineLatest(
-            authorIds.map(uid => {
-              return this.db.doc<UserData>(`users/${uid}`).valueChanges();
+            authorIds.map(authorId => {
+              return this.db.doc<UserData>(`users/${authorId}`).valueChanges();
             })
           );
         } else {
@@ -150,10 +150,6 @@ export class ArticleService {
       }
     });
     return this.getArticles(sorted);
-  }
-
-  getUserData(userId: string) {
-    return this.db.doc<UserData>(`users/${userId}`).valueChanges();
   }
 
   getDiscreteArticle(articleId: string): Observable<ArticleWithUser> {
