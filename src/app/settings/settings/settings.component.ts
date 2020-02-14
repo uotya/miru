@@ -5,6 +5,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { Validators, FormControl } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { DeleteAccountDialogComponent } from '../delete-account-dialog/delete-account-dialog.component';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-settings',
@@ -13,7 +14,8 @@ import { DeleteAccountDialogComponent } from '../delete-account-dialog/delete-ac
 })
 export class SettingsComponent implements OnInit {
   userId = this.authService.user.uid;
-  user$ = this.authService.getUserData(this.userId);
+  user$ = this.userService.getUserData(this.userId);
+  newAvatar: File;
 
   nameForm = new FormControl('', [
     Validators.required,
@@ -24,7 +26,8 @@ export class SettingsComponent implements OnInit {
     private loadingService: LoadingService,
     private authService: AuthService,
     private snackBar: MatSnackBar,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private userService: UserService
   ) {}
 
   ngOnInit(): void {
@@ -33,10 +36,22 @@ export class SettingsComponent implements OnInit {
 
   changeUserName() {
     const newName: string = this.nameForm.value;
-    this.authService.changeUserName(this.userId, newName);
+    this.userService.changeUserName(this.userId, newName);
     this.snackBar.open('変更されました！', null, {
       duration: 2000
     });
+  }
+
+  saveAvatar(event) {
+    if (event.target.files.length) {
+      this.newAvatar = event.target.files[0];
+    }
+  }
+
+  changeAvatar() {
+    if (this.newAvatar) {
+      this.userService.changeUserAvatar(this.userId, this.newAvatar);
+    }
   }
 
   deleteAccount() {

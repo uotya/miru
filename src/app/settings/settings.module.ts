@@ -17,6 +17,7 @@ import { DeleteAccountDialogComponent } from './delete-account-dialog/delete-acc
     SettingsRoutingModule,
     MatTabsModule,
     SharedModule,
+    ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule
   ]
