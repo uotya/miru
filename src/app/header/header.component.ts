@@ -1,3 +1,4 @@
+import { UserService } from './../services/user.service';
 import { Component, OnInit, NgZone } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
@@ -16,10 +17,10 @@ export class HeaderComponent implements OnInit {
     tap(user => {
       this.isUser = true;
       if (user) {
-        this.authService.getUserData(user.uid).subscribe(result => {
+        this.userService.getUserData(user.uid).subscribe(result => {
           this.avatarURL = result && result.avatarURL;
         });
-        this.authService.createUser(user.uid);
+        this.userService.createUser(user.uid);
       }
     })
   );
@@ -27,7 +28,8 @@ export class HeaderComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private ngZone: NgZone
+    private ngZone: NgZone,
+    private userService: UserService
   ) {}
 
   ngOnInit() {}

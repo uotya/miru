@@ -1,4 +1,4 @@
-import { AuthService } from 'src/app/services/auth.service';
+import { UserService } from './../../services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
@@ -11,16 +11,16 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class DeleteAccountDialogComponent implements OnInit {
   constructor(
-    private authService: AuthService,
     private snackBar: MatSnackBar,
     private router: Router,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private userService: UserService
   ) {}
 
   ngOnInit(): void {}
 
   deleteAccount() {
-    this.authService
+    this.userService
       .deleteUser()
       .then(() => {
         this.dialog.closeAll();

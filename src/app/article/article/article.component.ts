@@ -1,3 +1,4 @@
+import { UserService } from './../../services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ArticleService } from 'src/app/services/article.service';
@@ -26,7 +27,8 @@ export class ArticleComponent implements OnInit {
     private likeService: LikeService,
     private authService: AuthService,
     private dialog: MatDialog,
-    private loadingService: LoadingService
+    private loadingService: LoadingService,
+    private userService: UserService
   ) {}
 
   ngOnInit() {
@@ -86,6 +88,6 @@ export class ArticleComponent implements OnInit {
   }
 
   updateAvatar() {
-    this.authService.updateAvatar(this.article.authorId);
+    this.userService.updateAvatar(this.article.authorId);
   }
 }

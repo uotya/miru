@@ -4,7 +4,8 @@ import { ArticleWithUser } from '@interfaces/article-with-user';
 import { take } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
 import { firestore } from 'firebase';
-import { AuthService } from 'src/app/services/auth.service';
+import { UserService } from 'src/app/services/user.service';
+import { LoadingService } from 'src/app/services/loading.service';
 
 @Component({
   selector: 'app-user',
@@ -20,15 +21,16 @@ export class UserComponent implements OnInit {
 
   constructor(
     private articleService: ArticleService,
-    private authService: AuthService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private userService: UserService,
+    private loadingService: LoadingService
   ) {}
 
   ngOnInit() {
     this.route.queryParamMap.pipe(take(1)).subscribe(params => {
       this.userId = params.get('id');
       this.getArticles();
-      this.authService
+      this.userService
         .getUserData(this.userId)
         .pipe(take(1))
         .subscribe(data => {
@@ -38,7 +40,9 @@ export class UserComponent implements OnInit {
   }
 
   getArticles() {
+    this.loadingService.toggleLoading(true);
     if (this.isComplete) {
+      this.loadingService.toggleLoading(false);
       return;
     }
     this.articleService
@@ -48,10 +52,12 @@ export class UserComponent implements OnInit {
         if (ArticlesData) {
           if (!ArticlesData.length) {
             this.isComplete = true;
+            this.loadingService.toggleLoading(false);
             return;
           }
           this.latestDoc = latestDoc;
           ArticlesData.map(doc => this.articles.push(doc));
+          this.loadingService.toggleLoading(false);
         }
       });
   }
