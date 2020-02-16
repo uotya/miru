@@ -59,8 +59,10 @@ export class UserService {
     return this.db.doc<UserData>(`users/${userId}`).update({ userName: name });
   }
 
-  async changeUserAvatar(userId: string, image: File) {
-    const result = await this.storage.ref(`users/${userId}`).put(image);
+  async changeUserAvatar(userId: string, message: string) {
+    const result = await this.storage
+      .ref(`users/${userId}`)
+      .putString(message, 'data_url');
     const avatarURL = await result.ref.getDownloadURL();
 
     this.db.doc(`users/${userId}`).update({

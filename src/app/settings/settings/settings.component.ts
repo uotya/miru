@@ -6,6 +6,7 @@ import { Validators, FormControl } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { DeleteAccountDialogComponent } from '../delete-account-dialog/delete-account-dialog.component';
 import { UserService } from 'src/app/services/user.service';
+import { ImageCroppedEvent } from 'ngx-image-cropper';
 
 @Component({
   selector: 'app-settings',
@@ -15,7 +16,8 @@ import { UserService } from 'src/app/services/user.service';
 export class SettingsComponent implements OnInit {
   userId = this.authService.user.uid;
   user$ = this.userService.getUserData(this.userId);
-  newAvatar: File;
+  imageChangedEvent = '';
+  croppedImage = '';
 
   nameForm = new FormControl('', [
     Validators.required,
@@ -42,15 +44,31 @@ export class SettingsComponent implements OnInit {
     });
   }
 
-  saveAvatar(event) {
-    if (event.target.files.length) {
-      this.newAvatar = event.target.files[0];
-    }
+  fileChangeEvent(event) {
+    this.imageChangedEvent = event;
+  }
+  imageCropped(event: ImageCroppedEvent) {
+    this.croppedImage = event.base64;
+  }
+  loadImageFailed() {
+    alert('画像の読み込みに失敗しました');
+  }
+  resetInput(imageSelecter) {
+    this.imageChangedEvent = '';
+    imageSelecter.value = '';
   }
 
-  changeAvatar() {
-    if (this.newAvatar) {
-      this.userService.changeUserAvatar(this.userId, this.newAvatar);
+  changeAvatar(imageSelecter) {
+    if (this.croppedImage) {
+      this.userService
+        .changeUserAvatar(this.userId, this.croppedImage)
+        .then(() => {
+          this.snackBar.open('変更されました！', null, {
+            duration: 2000
+          });
+          this.imageChangedEvent = '';
+          imageSelecter.value = '';
+        });
     }
   }
 

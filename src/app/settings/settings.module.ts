@@ -9,6 +9,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { DeleteAccountDialogComponent } from './delete-account-dialog/delete-account-dialog.component';
+import { ImageCropperModule } from 'ngx-image-cropper';
 
 @NgModule({
   declarations: [SettingsComponent, DeleteAccountDialogComponent],
@@ -19,7 +20,8 @@ import { DeleteAccountDialogComponent } from './delete-account-dialog/delete-acc
     SharedModule,
     ReactiveFormsModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    ImageCropperModule
   ]
 })
 export class SettingsModule {}

@@ -28,9 +28,7 @@ h3 {
     margin: 24px auto 0;
     display: block;
   }
-}
-.name {
-  .user-name {
+  &__name {
     margin-top: 24px;
     display: inline-block;
     padding: 8px;
@@ -42,9 +40,7 @@ h3 {
     display: block;
     width: 300px;
   }
-}
-.avatar {
-  img {
+  &__avatar {
     margin: 16px auto 0;
     display: block;
     border-radius: 50%;
@@ -53,8 +49,15 @@ h3 {
       width: 160px;
     }
   }
-  input {
-    width: 200px;
+  &__selecter {
     margin: 16px auto 0;
+  }
+  image-cropper {
+    display: none;
+  }
+  image-cropper.active {
+    display: block;
+    margin: 24px auto 0;
+    width: 280px;
   }
 }
