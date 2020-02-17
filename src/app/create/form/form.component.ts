@@ -15,6 +15,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { take } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';
 import { DeleteDialogComponent } from 'src/app/create/delete-dialog/delete-dialog.component';
+import { combineLatest } from 'rxjs';
 
 const API = 'https://ogp-api.appspot.com/?url=';
 @Component({
@@ -112,6 +113,7 @@ export class FormComponent implements OnInit {
       description: formData.description,
       favorite: 0
     };
+
     const create = () => {
       const articleId = this.articleService.createArticle(sendData);
       this.createComponent.created = true;
@@ -121,20 +123,30 @@ export class FormComponent implements OnInit {
       scrollTo({ top: 0, behavior: 'smooth' });
     };
 
+    const observables = [];
     for (let i = 0; formData.links[i]; i++) {
       const link = formData.links[i].link;
       if (link.match(/http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w-.\/?%&=]*)?/)) {
-        this.http.get(API + link).subscribe(ogp => {
-          this.ogp = ogp as OGP;
-          if (this.ogp.ogImage.url && !this.createComponent.created) {
-            sendData.thumbnailURL = this.ogp.ogImage.url;
-            create();
-          }
-        });
-      } else if (!this.createComponent.created) {
-        create();
+        observables.push(this.http.get(API + link));
       }
     }
+
+    if (!observables.length) {
+      create();
+    }
+
+    combineLatest(observables).subscribe(result => {
+      result.some(ogp => {
+        this.ogp = ogp as OGP;
+        if (this.ogp.ogImage.url) {
+          sendData.thumbnailURL = this.ogp.ogImage.url;
+          create();
+          return true;
+        } else {
+          create();
+        }
+      });
+    });
   }
 
   updataArticle() {
