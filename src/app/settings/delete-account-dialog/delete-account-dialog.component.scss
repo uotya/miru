@@ -1,0 +1,14 @@
+@import 'mixins';
+
+h1 {
+  text-align: center;
+  margin-top: 10px;
+  color: #d32f2f;
+  font-weight: bold;
+  font-size: 1.8rem;
+}
+.buttons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}

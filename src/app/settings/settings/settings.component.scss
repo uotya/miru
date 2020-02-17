@@ -1,0 +1,63 @@
+@import 'mixins';
+
+.settings {
+  max-width: 600px;
+  margin: 100px auto 0;
+  line-height: 1.8;
+  letter-spacing: 0.01em;
+  font-size: 1.8rem;
+}
+.tab-container {
+  margin-top: 48px;
+  text-align: center;
+}
+h3 {
+  font-size: 2.4rem;
+}
+.section {
+  margin-top: 40px;
+  &__title {
+    font-size: 1.8rem;
+    font-weight: bold;
+  }
+  &__description {
+    margin-top: 16px;
+    font-size: 1.6rem;
+  }
+  button {
+    margin: 24px auto 0;
+    display: block;
+  }
+  &__name {
+    margin-top: 24px;
+    display: inline-block;
+    padding: 8px;
+    background-color: #eceff1;
+    border-radius: 5px;
+  }
+  mat-form-field {
+    margin: 16px auto 0;
+    display: block;
+    width: 300px;
+  }
+  &__avatar {
+    margin: 16px auto 0;
+    display: block;
+    border-radius: 50%;
+    width: 200px;
+    @include sp {
+      width: 160px;
+    }
+  }
+  &__selecter {
+    margin: 16px auto 0;
+  }
+  image-cropper {
+    display: none;
+  }
+  image-cropper.active {
+    display: block;
+    margin: 24px auto 0;
+    width: 280px;
+  }
+}

@@ -7,10 +7,12 @@
   letter-spacing: 0.01em;
   font-size: 1.8rem;
 }
-h3 {
+.tab-container {
   margin-top: 48px;
-  font-size: 2.4rem;
   text-align: center;
+}
+h3 {
+  font-size: 2.4rem;
 }
 img {
   width: 50%;
@@ -22,8 +24,4 @@ img {
 }
 p {
   margin-top: 32px;
-  text-align: center;
-}
-.tap-container {
-  margin-top: 40px;
 }

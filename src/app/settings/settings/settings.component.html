@@ -1,0 +1,98 @@
+<div class="container">
+  <h2 class="heading">設定</h2>
+  <div class="settings" *ngIf="user$ | async as user">
+    <mat-tab-group mat-align-tabs="center">
+      <mat-tab label="プロフィール">
+        <div class="tab-container">
+          <h3>プロフィール</h3>
+          <div class="section">
+            <p class="section__title">名前の変更</p>
+            <p class="section__name">{{ user.userName }}</p>
+            <mat-form-field appearance="fill">
+              <mat-label>新しい名前</mat-label>
+              <input matInput [formControl]="nameForm" required />
+              <mat-error *ngIf="nameForm.hasError('required')"
+                >必須入力です</mat-error
+              >
+              <mat-error *ngIf="nameForm.hasError('maxlength')">
+                長すぎます
+              </mat-error>
+            </mat-form-field>
+            <button
+              (click)="changeUserName()"
+              mat-flat-button
+              color="primary"
+              [disabled]="nameForm.invalid"
+            >
+              変更する
+            </button>
+          </div>
+          <div class="section">
+            <p class="section__title">アバターの変更</p>
+            <img class="section__avatar" [src]="user.avatarURL" alt="" />
+            <input
+              (change)="fileChangeEvent($event)"
+              type="file"
+              class="section__selecter"
+              accept=".png, .jpg, .jpeg"
+              #imageSelecter
+            />
+            <image-cropper
+              [imageChangedEvent]="imageChangedEvent"
+              [maintainAspectRatio]="true"
+              [aspectRatio]="1 / 1"
+              format="png"
+              (imageCropped)="imageCropped($event)"
+              (loadImageFailed)="loadImageFailed()"
+              width="300px"
+              height="300px"
+              [class.active]="imageChangedEvent"
+            ></image-cropper>
+            <button
+              [disabled]="!croppedImage"
+              (click)="changeAvatar(imageSelecter)"
+              mat-flat-button
+              color="primary"
+            >
+              変更する
+            </button>
+            <button
+              *ngIf="imageChangedEvent"
+              mat-button
+              (click)="resetInput(imageSelecter)"
+            >
+              キャンセル
+            </button>
+          </div>
+        </div>
+      </mat-tab>
+      <mat-tab label="決済情報">
+        <div class="tab-container">
+          <h3>決済情報</h3>
+          <div class="section">
+            <p class="section__title">クレジットカード</p>
+            <p class="section__description">
+              クレジットカードは世界的な決済サービスStripeによって厳重に保管されており、漏洩の心配はありません。
+            </p>
+            <button mat-flat-button color="primary">
+              カードを登録する
+            </button>
+          </div>
+        </div>
+      </mat-tab>
+      <mat-tab label="退会">
+        <div class="tab-container">
+          <h3>退会</h3>
+          <div class="section">
+            <p class="section__description">
+              退会するとすべてのデータが削除されます
+            </p>
+            <button (click)="deleteAccount()" mat-flat-button color="primary">
+              退会する
+            </button>
+          </div>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>

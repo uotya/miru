@@ -5,6 +5,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { take } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';
 import { LoginDialogComponent } from 'src/app/welcome/login-dialog/login-dialog.component';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-item-card',
@@ -19,7 +20,8 @@ export class ItemCardComponent implements OnInit {
   constructor(
     private likeService: LikeService,
     private authService: AuthService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private userService: UserService
   ) {}
 
   ngOnInit() {
@@ -54,6 +56,6 @@ export class ItemCardComponent implements OnInit {
   }
 
   updateAvatar() {
-    this.authService.updateAvatar(this.card.authorId);
+    this.userService.updateAvatar(this.card.authorId);
   }
 }
