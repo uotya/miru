@@ -1,0 +1,36 @@
+<ais-instantsearch [config]="config">
+  <div class="container">
+    <ais-configure [searchParameters]="resultParams"></ais-configure>
+    <ais-hits>
+      <ng-template let-hits="hits">
+        <ol class="ais-Hits-list">
+          <li *ngFor="let hit of hits" class="ais-Hits-item">
+            タイトル: {{ hit.title }}
+          </li>
+        </ol>
+        <!-- <div class="cards">
+          <app-item-card *ngFor="let hit of hits" [card]="hit"> </app-item-card>
+        </div> -->
+      </ng-template>
+    </ais-hits>
+
+    <ais-stats>
+      <ng-template let-state="state">
+        <p>{{ state.nbHits }}件ヒットしました</p>
+        <p>合計で{{ state.nbPages }}ページあります</p>
+        <p>{{ resultParams.page + 1 }}ページ目をみてます</p>
+        <button mat-button *ngIf="resultParams.page > 0" (click)="prevPage()">
+          前へ
+        </button>
+        <button
+          mat-flat-button
+          color="primary"
+          *ngIf="resultParams.page + 1 < state.nbPages"
+          (click)="nextPage()"
+        >
+          次へ
+        </button>
+      </ng-template>
+    </ais-stats>
+  </div>
+</ais-instantsearch>

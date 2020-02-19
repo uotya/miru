@@ -5,8 +5,9 @@
       matInput
       [matAutocomplete]="autoComplete"
       [formControl]="inputControl"
+      #input
     />
-    <button class="search__btn">
+    <button class="search__btn" [class.inputted]="input.value">
       <mat-icon>search</mat-icon>
     </button>
     <mat-autocomplete
@@ -18,7 +19,7 @@
           class="search__option"
           *ngFor="let option of index.hits"
           [value]="option.title"
-          (click)="querySuggestionSelected.emit(option)"
+          (click)="querySuggestionSelected.emit(option.title)"
         >
           {{ option.title }}
         </mat-option>

@@ -63,11 +63,13 @@ export class HeaderComponent implements OnInit {
     this.authService.logout();
   }
 
-  search(q: string) {
-    this.router.navigate(['/search'], {
-      queryParams: {
-        q
-      }
-    });
+  search(word: string) {
+    if (word) {
+      this.router.navigate(['/search'], {
+        queryParams: {
+          q: word
+        }
+      });
+    }
   }
 }
