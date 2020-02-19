@@ -57,9 +57,6 @@
       mat-mini-fab
       [matMenuTriggerFor]="menu"
       [style.background-image]="avatarURL && 'url(' + avatarURL + ')'"
-      [style.background-image]="
-        !avatarURL && 'url(' + user.photoURL.replace('_normal', '') + ')'
-      "
     ></button>
     <mat-menu #menu="matMenu">
       <button (click)="logout()" mat-menu-item>
@@ -67,13 +64,13 @@
         <span>ログアウト</span>
       </button>
       <mat-divider></mat-divider>
-      <button mat-menu-item routerLink="/setting">
+      <button mat-menu-item routerLink="/settings">
         <mat-icon>settings</mat-icon>
         <span>設定</span>
       </button>
       <button mat-menu-item routerLink="/intl/help">
         <mat-icon>help</mat-icon>
-        <span>ヘルプ</span>
+        <span>使い方</span>
       </button>
     </mat-menu>
   </div>

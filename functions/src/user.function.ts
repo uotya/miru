@@ -1,6 +1,7 @@
 import * as functions from 'firebase-functions';
 import * as Twitter from 'twitter';
 import { UserData } from './interfaces/user';
+import { DocumentSnapshot } from 'firebase-functions/lib/providers/firestore';
 
 const admin = require('firebase-admin');
 admin.initializeApp();
@@ -49,4 +50,38 @@ export const createUser = functions
     } else {
       db.doc(`users/${user.uid}`).set({ uid: user.uid });
     }
+  });
+
+export const deleteUserData = functions
+  .region('asia-northeast1')
+  .runWith({
+    timeoutSeconds: 540,
+    memory: '2GB'
+  })
+  .auth.user()
+  .onDelete(async user => {
+    const firebase_tools = require('firebase-tools');
+    await firebase_tools.firestore.delete(`users/${user.uid}`, {
+      project: process.env.GCLOUD_PROJECT,
+      recursive: true,
+      yes: true,
+      token: functions.config().fb.token
+    });
+  });
+
+export const deleteUserArticles = functions
+  .region('asia-northeast1')
+  .auth.user()
+  .onDelete(async user => {
+    const articles = await db
+      .collection('articles')
+      .where('authorId', '==', user.uid)
+      .get();
+    const batch = db.batch();
+
+    articles.forEach((doc: DocumentSnapshot) => {
+      batch.delete(doc.ref);
+    });
+
+    await batch.commit();
   });
