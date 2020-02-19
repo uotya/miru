@@ -1,0 +1,28 @@
+<div class="search">
+  <form (ngSubmit)="querySuggestionSelected.emit(inputControl.value)">
+    <input
+      class="search__input"
+      matInput
+      [matAutocomplete]="autoComplete"
+      [formControl]="inputControl"
+    />
+    <button class="search__btn">
+      <mat-icon>search</mat-icon>
+    </button>
+    <mat-autocomplete
+      (optionSelected)="querySuggestionSelected.emit($event.option.value)"
+      #autoComplete="matAutocomplete"
+    >
+      <div *ngFor="let index of state.indices || []">
+        <mat-option
+          class="search__option"
+          *ngFor="let option of index.hits"
+          [value]="option.title"
+          (click)="querySuggestionSelected.emit(option)"
+        >
+          {{ option.title }}
+        </mat-option>
+      </div>
+    </mat-autocomplete>
+  </form>
+</div>

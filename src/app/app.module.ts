@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
@@ -14,6 +14,8 @@ import {
   AngularFireFunctionsModule,
   FUNCTIONS_REGION
 } from '@angular/fire/functions';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { environment } from '../environments/environment';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
@@ -24,6 +26,9 @@ import localeJa from '@angular/common/locales/ja';
 import { registerLocaleData } from '@angular/common';
 import { SharedModule } from './shared/shared.module';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { NgAisModule } from 'angular-instantsearch';
+import { SearchInputComponent } from './search-input/search-input.component';
+import { SearchResultComponent } from './search-result/search-result.component';
 
 registerLocaleData(localeJa);
 @NgModule({
@@ -31,7 +36,9 @@ registerLocaleData(localeJa);
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    SearchInputComponent,
+    SearchResultComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +53,8 @@ registerLocaleData(localeJa);
     MatMenuModule,
     MatTooltipModule,
     SharedModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    NgAisModule.forRoot()
   ],
   providers: [
     AuthGuard,

@@ -3,12 +3,12 @@
     ><img class="logo" src="/assets/images/logo.png" alt="リンク集メーカーMIRU"
   /></a>
   <div class="search">
-    <div class="search__wrap">
-      <input class="search__input" type="search" autocomplete="off" />
-      <button class="search__btn" routerLink="/search">
-        <mat-icon>search</mat-icon>
-      </button>
-    </div>
+    <ais-instantsearch [config]="config">
+      <ais-configure [searchParameters]="inputParams"></ais-configure>
+      <app-search-input
+        (querySuggestionSelected)="search($event)"
+      ></app-search-input>
+    </ais-instantsearch>
   </div>
   <div class="loggedIn" *ngIf="user$ | async as user; else default">
     <div class="icons">
