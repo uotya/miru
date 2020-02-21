@@ -152,6 +152,44 @@ export class ArticleService {
     return this.getArticles(sorted);
   }
 
+  getUsersArticles(articleIds: string[]): Observable<ArticleWithUser[]> {
+    let articles: Article[];
+    const observables = articleIds.map(id =>
+      this.db.doc<Article>(`articles/${id}`).valueChanges()
+    );
+    return combineLatest(observables).pipe(
+      switchMap((docs: Article[]) => {
+        articles = docs;
+        const authorIds: string[] = articles
+          .filter((article, index, self) => {
+            return (
+              self.findIndex(item => article.authorId === item.authorId) ===
+              index
+            );
+          })
+          .map(article => article.authorId);
+        return combineLatest(
+          authorIds.map(authorId => {
+            return this.db.doc<UserData>(`users/${authorId}`).valueChanges();
+          })
+        );
+      }),
+      map((users: UserData[]) => {
+        const ArticlesData = articles.map(article => {
+          const result: ArticleWithUser = {
+            ...article,
+            author: users.find(user => user.uid === article.authorId)
+          };
+          if (result.thumbnailURL == null) {
+            result.thumbnailURL = '/assets/images/thumbnail.png';
+          }
+          return result;
+        });
+        return ArticlesData;
+      })
+    );
+  }
+
   getDiscreteArticle(articleId: string): Observable<ArticleWithUser> {
     let result: ArticleWithUser;
     let articleData: Article;

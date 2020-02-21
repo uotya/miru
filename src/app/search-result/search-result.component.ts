@@ -16,7 +16,7 @@ const searchClient = algoliasearch(
 })
 export class SearchResultComponent implements OnInit {
   resultParams = {
-    hitsPerPage: 1,
+    hitsPerPage: 6,
     page: 0,
     query: ''
   };

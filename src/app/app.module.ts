@@ -29,6 +29,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { NgAisModule } from 'angular-instantsearch';
 import { SearchInputComponent } from './search-input/search-input.component';
 import { SearchResultComponent } from './search-result/search-result.component';
+import { ArticlePipe } from './pipes/article.pipe';
 
 registerLocaleData(localeJa);
 @NgModule({
@@ -38,7 +39,8 @@ registerLocaleData(localeJa);
     FooterComponent,
     NotFoundComponent,
     SearchInputComponent,
-    SearchResultComponent
+    SearchResultComponent,
+    ArticlePipe
   ],
   imports: [
     BrowserModule,
