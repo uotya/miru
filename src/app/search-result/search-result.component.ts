@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import * as algoliasearch from 'algoliasearch/lite/';
 import { ActivatedRoute } from '@angular/router';
 import { environment } from 'src/environments/environment';
-import { LoadingService } from '../services/loading.service';
 
 const searchClient = algoliasearch(
   environment.algolia.appId,
@@ -26,13 +25,9 @@ export class SearchResultComponent implements OnInit {
     searchClient
   };
 
-  constructor(
-    private route: ActivatedRoute,
-    private loadingService: LoadingService
-  ) {
+  constructor(private route: ActivatedRoute) {
     this.route.queryParamMap.subscribe(map => {
       this.resultParams.query = map.get('q');
-      this.loadingService.toggleLoading(false);
     });
   }
 

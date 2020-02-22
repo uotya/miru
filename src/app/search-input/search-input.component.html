@@ -1,5 +1,7 @@
 <div class="search">
-  <form (ngSubmit)="querySuggestionSelected.emit(inputControl.value)">
+  <form
+    (ngSubmit)="querySuggestionSelected.emit(inputControl.value); input.blur()"
+  >
     <input
       class="search__input"
       matInput
@@ -19,7 +21,7 @@
           class="search__option"
           *ngFor="let option of index.hits"
           [value]="option.title"
-          (click)="querySuggestionSelected.emit(option.title)"
+          (click)="querySuggestionSelected.emit(option.title); input.blur()"
         >
           {{ option.title }}
         </mat-option>
