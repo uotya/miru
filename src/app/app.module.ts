@@ -21,7 +21,6 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AuthGuard } from './guards/auth.guard';
-import { MatTooltipModule } from '@angular/material/tooltip';
 import localeJa from '@angular/common/locales/ja';
 import { registerLocaleData } from '@angular/common';
 import { SharedModule } from './shared/shared.module';
@@ -53,7 +52,6 @@ registerLocaleData(localeJa);
     AngularFireFunctionsModule,
     MatToolbarModule,
     MatMenuModule,
-    MatTooltipModule,
     SharedModule,
     MatProgressSpinnerModule,
     NgAisModule.forRoot()
