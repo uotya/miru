@@ -7,7 +7,7 @@
   display: grid;
   justify-content: space-between;
   align-items: center;
-  grid-template-columns: 100px 1fr 250px;
+  grid-template-columns: 108px 1fr 250px;
   z-index: 1000;
   top: 0;
   left: 0;
@@ -44,53 +44,6 @@ a {
     width: 100%;
     grid-column: 1 / 3;
     padding-top: 20px;
-  }
-  &__wrap {
-    max-width: 90%;
-    margin: 0 auto;
-    position: relative;
-    @include tab {
-      max-width: 100%;
-    }
-  }
-  &__input {
-    width: 100%;
-    height: 36px;
-    padding: 0 42px 0 16px;
-    border-radius: 12px;
-    border: 1px solid #ccc;
-    outline: none;
-    font-size: 18px;
-    color: $main;
-    font-weight: bold;
-    letter-spacing: 0.01em;
-    @include sp {
-      font-size: 14px;
-      padding-right: 38px;
-    }
-  }
-  &__btn {
-    position: absolute;
-    cursor: pointer;
-    top: 2px;
-    right: 6px;
-    outline: 0;
-    background: 0 0;
-    border: none;
-    width: 34px;
-    height: 34px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #ccc;
-    -webkit-tap-highlight-color: transparent;
-    &.inputted {
-      color: $black;
-    }
-    @include sp {
-      top: 2px;
-      right: 4px;
-    }
   }
 }
 .loggedIn {

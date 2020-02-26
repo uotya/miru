@@ -1,0 +1,14 @@
+.container {
+  font-size: 18px;
+  text-align: center;
+}
+ais-stats {
+  display: block;
+  margin-top: 64px;
+  button {
+    margin-top: 24px;
+    &.prev {
+      margin-right: 8px;
+    }
+  }
+}

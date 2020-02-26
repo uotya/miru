@@ -3,6 +3,14 @@ import { Component, OnInit, NgZone } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 import { tap } from 'rxjs/operators';
+import * as algoliasearch from 'algoliasearch/lite/';
+import { environment } from 'src/environments/environment';
+import { SearchParameters } from 'angular-instantsearch/instantsearch/instantsearch';
+
+const searchClient = algoliasearch(
+  environment.algolia.appId,
+  environment.algolia.apiKey
+);
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -12,7 +20,6 @@ export class HeaderComponent implements OnInit {
   isUser: boolean;
   avatarURL: string;
   isLoading: boolean;
-
   user$ = this.authService.afUser$.pipe(
     tap(user => {
       this.isUser = true;
@@ -24,6 +31,14 @@ export class HeaderComponent implements OnInit {
       }
     })
   );
+
+  inputParams: SearchParameters = {
+    hitsPerPage: 5
+  };
+  config = {
+    indexName: 'articles',
+    searchClient
+  };
 
   constructor(
     private authService: AuthService,
@@ -46,5 +61,15 @@ export class HeaderComponent implements OnInit {
 
   logout() {
     this.authService.logout();
+  }
+
+  search(word: string) {
+    if (word) {
+      this.router.navigate(['/search'], {
+        queryParams: {
+          q: word
+        }
+      });
+    }
   }
 }

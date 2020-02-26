@@ -4,9 +4,7 @@ import { CommonModule } from '@angular/common';
 import { CreateRoutingModule } from './create-routing.module';
 import { CreateComponent } from './create/create.component';
 import { SharedModule } from '../shared/shared.module';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
-import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { FormComponent } from './form/form.component';
 import { CreatedComponent } from './created/created.component';
@@ -26,10 +24,7 @@ import { DeletedComponent } from './deleted/deleted.component';
     CommonModule,
     CreateRoutingModule,
     SharedModule,
-    ReactiveFormsModule,
-    FormsModule,
     MatInputModule,
-    MatFormFieldModule,
     MatTooltipModule,
     HttpClientModule
   ],

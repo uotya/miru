@@ -5,6 +5,7 @@ import { GuestGuard } from './guards/guest.guard';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { UserComponent } from './shared/user/user.component';
 import { RankingComponent } from './shared/ranking/ranking.component';
+import { SearchResultComponent } from './search-result/search-result.component';
 
 const routes: Routes = [
   {
@@ -52,6 +53,10 @@ const routes: Routes = [
       import('./settings/settings.module').then(m => m.SettingsModule),
     canLoad: [AuthGuard],
     canActivate: [AuthGuard]
+  },
+  {
+    path: 'search',
+    component: SearchResultComponent
   },
   {
     path: '**',
