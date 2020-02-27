@@ -27,7 +27,12 @@
     </div>
     <p class="update">
       <mat-icon>update</mat-icon>
-      <span>{{ article.createdAt.toDate() | date: 'yyyy年MM月dd日' }}</span>
+      <ng-container *ngIf="article.updatedAt; else created">
+        <span>{{ article.updatedAt.toDate() | date: 'yyyy年MM月dd日' }}</span>
+      </ng-container>
+      <ng-template #created>
+        <span>{{ article.createdAt.toDate() | date: 'yyyy年MM月dd日' }}</span>
+      </ng-template>
     </p>
   </div>
   <mat-divider></mat-divider>

@@ -13,6 +13,10 @@ import { UserComponent } from './user/user.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -30,7 +34,12 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatDialogModule,
     InfiniteScrollModule,
     MatDividerModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatAutocompleteModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    FormsModule,
+    MatTooltipModule
   ],
   exports: [
     ItemCardComponent,
@@ -41,7 +50,12 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatDialogModule,
     MatDividerModule,
     MatCardModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatAutocompleteModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    FormsModule,
+    MatTooltipModule
   ],
   entryComponents: [LoginDialogComponent]
 })

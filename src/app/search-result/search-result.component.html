@@ -1,0 +1,38 @@
+<ais-instantsearch [config]="config">
+  <div class="container">
+    <ais-configure [searchParameters]="resultParams"></ais-configure>
+    <h2 class="heading">{{ resultParams.query }}</h2>
+    <ais-hits>
+      <ng-template let-hits="hits">
+        <div class="cards">
+          <app-item-card
+            *ngFor="let hit of hits | article | async"
+            [card]="hit"
+          >
+          </app-item-card>
+        </div>
+      </ng-template>
+    </ais-hits>
+    <ais-stats>
+      <ng-template let-state="state">
+        <p>{{ state.nbHits }}件見つかりました</p>
+        <button
+          class="prev"
+          *ngIf="resultParams.page > 0"
+          mat-button
+          (click)="prevPage()"
+        >
+          前へ
+        </button>
+        <button
+          *ngIf="resultParams.page + 1 < state.nbPages"
+          mat-flat-button
+          color="primary"
+          (click)="nextPage()"
+        >
+          次へ
+        </button>
+      </ng-template>
+    </ais-stats>
+  </div>
+</ais-instantsearch>

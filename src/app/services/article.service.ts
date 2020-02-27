@@ -17,12 +17,15 @@ import { firestore } from 'firebase/app';
 export class ArticleService {
   constructor(private db: AngularFirestore, private authService: AuthService) {}
 
-  createArticle(article: Omit<Article, 'articleId' | 'createdAt'>) {
+  createArticle(
+    article: Omit<Article, 'articleId' | 'createdAt' | 'updatedAt'>
+  ) {
     const articleId = this.db.createId();
     this.db.doc(`articles/${articleId}`).set({
       articleId,
       ...article,
-      createdAt: firestore.Timestamp.now()
+      createdAt: firestore.Timestamp.now(),
+      updatedAt: firestore.Timestamp.now()
     });
     return articleId;
   }
@@ -32,7 +35,7 @@ export class ArticleService {
   ): Promise<void> {
     return this.db.doc(`articles/${article.articleId}`).update({
       ...article,
-      createdAt: firestore.Timestamp.now()
+      updatedAt: firestore.Timestamp.now()
     });
   }
 
@@ -115,13 +118,13 @@ export class ArticleService {
       if (startAt) {
         return ref
           .where('authorId', '==', this.authService.user.uid)
-          .orderBy('createdAt', 'desc')
+          .orderBy('updatedAt', 'desc')
           .startAfter(startAt)
           .limit(6);
       } else {
         return ref
           .where('authorId', '==', this.authService.user.uid)
-          .orderBy('createdAt', 'desc')
+          .orderBy('updatedAt', 'desc')
           .limit(6);
       }
     });
@@ -139,17 +142,55 @@ export class ArticleService {
       if (startAt) {
         return ref
           .where('authorId', '==', userId)
-          .orderBy('createdAt', 'desc')
+          .orderBy('updatedAt', 'desc')
           .startAfter(startAt)
           .limit(6);
       } else {
         return ref
           .where('authorId', '==', userId)
-          .orderBy('createdAt', 'desc')
+          .orderBy('updatedAt', 'desc')
           .limit(6);
       }
     });
     return this.getArticles(sorted);
+  }
+
+  getUsersArticles(articleIds: string[]): Observable<ArticleWithUser[]> {
+    let articles: Article[];
+    const observables = articleIds.map(id =>
+      this.db.doc<Article>(`articles/${id}`).valueChanges()
+    );
+    return combineLatest(observables).pipe(
+      switchMap((docs: Article[]) => {
+        articles = docs;
+        const authorIds: string[] = articles
+          .filter((article, index, self) => {
+            return (
+              self.findIndex(item => article.authorId === item.authorId) ===
+              index
+            );
+          })
+          .map(article => article.authorId);
+        return combineLatest(
+          authorIds.map(authorId => {
+            return this.db.doc<UserData>(`users/${authorId}`).valueChanges();
+          })
+        );
+      }),
+      map((users: UserData[]) => {
+        const ArticlesData = articles.map(article => {
+          const result: ArticleWithUser = {
+            ...article,
+            author: users.find(user => user.uid === article.authorId)
+          };
+          if (result.thumbnailURL == null) {
+            result.thumbnailURL = '/assets/images/thumbnail.png';
+          }
+          return result;
+        });
+        return ArticlesData;
+      })
+    );
   }
 
   getDiscreteArticle(articleId: string): Observable<ArticleWithUser> {

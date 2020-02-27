@@ -108,7 +108,7 @@ export class FormComponent implements OnInit {
   createArticle() {
     this.creating = true;
     const formData = this.form.value;
-    const sendData: Omit<Article, 'articleId' | 'createdAt'> = {
+    const sendData: Omit<Article, 'articleId' | 'createdAt' | 'updatedAt'> = {
       authorId: this.authService.user.uid,
       title: formData.title,
       links: this.form.get('links').valid ? formData.links : [],
