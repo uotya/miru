@@ -52,12 +52,9 @@
         >
       </a>
     </div>
-    <button
-      class="avatar"
-      mat-mini-fab
-      [matMenuTriggerFor]="menu"
-      [style.background-image]="avatarURL && 'url(' + avatarURL + ')'"
-    ></button>
+    <button class="avatar" mat-mini-fab [matMenuTriggerFor]="menu">
+      <img [src]="avatarURL && avatarURL" alt="" (error)="updateAvatar()" />
+    </button>
     <mat-menu #menu="matMenu">
       <button (click)="logout()" mat-menu-item>
         <mat-icon> exit_to_app</mat-icon>

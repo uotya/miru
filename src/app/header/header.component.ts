@@ -17,6 +17,7 @@ const searchClient = algoliasearch(
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+  user;
   isUser: boolean;
   avatarURL: string;
   isLoading: boolean;
@@ -24,6 +25,7 @@ export class HeaderComponent implements OnInit {
     tap(user => {
       this.isUser = true;
       if (user) {
+        this.user = user;
         this.userService.getUserData(user.uid).subscribe(result => {
           this.avatarURL = result && result.avatarURL;
         });
@@ -71,5 +73,9 @@ export class HeaderComponent implements OnInit {
         }
       });
     }
+  }
+
+  updateAvatar() {
+    this.userService.updateAvatar(this.user.uid);
   }
 }
