@@ -127,7 +127,7 @@
   <ng-template #defaultButton>
     <button
       class="submit"
-      [disabled]="form.invalid"
+      [disabled]="form.invalid || creating"
       mat-raised-button
       color="primary"
     >

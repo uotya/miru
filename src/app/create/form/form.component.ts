@@ -32,6 +32,7 @@ export class FormComponent implements OnInit {
 
   ogp: OGP;
   id: string;
+  creating: boolean;
   editing: boolean;
 
   @HostListener('window:beforeunload', ['$event'])
@@ -81,7 +82,7 @@ export class FormComponent implements OnInit {
     if (!index) {
       this.links.push(linkFormGroup);
     } else {
-      this.links.insert(index + 1, linkFormGroup);
+      this.links.insert(index, linkFormGroup);
       if (matchMedia('(max-width: 559px)').matches) {
         scrollBy({ top: 288, behavior: 'smooth' });
       } else if (matchMedia('(max-width: 959px)').matches) {
@@ -105,6 +106,7 @@ export class FormComponent implements OnInit {
   }
 
   createArticle() {
+    this.creating = true;
     const formData = this.form.value;
     const sendData: Omit<Article, 'articleId' | 'createdAt' | 'updatedAt'> = {
       authorId: this.authService.user.uid,
@@ -121,6 +123,7 @@ export class FormComponent implements OnInit {
         queryParams: { id: articleId }
       });
       scrollTo({ top: 0, behavior: 'smooth' });
+      this.creating = false;
     };
 
     const observables = [];
