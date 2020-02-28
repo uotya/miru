@@ -97,6 +97,12 @@ a {
     }
   }
 }
+.donate {
+  color: #64b5f6;
+  mat-icon {
+    color: #64b5f6;
+  }
+}
 .default {
   margin-left: auto;
   @include tab {
