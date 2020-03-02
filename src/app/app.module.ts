@@ -29,6 +29,7 @@ import { NgAisModule } from 'angular-instantsearch';
 import { SearchInputComponent } from './search-input/search-input.component';
 import { SearchResultComponent } from './search-result/search-result.component';
 import { ArticlePipe } from './pipes/article.pipe';
+import { NgxStripeModule } from 'ngx-stripe';
 
 registerLocaleData(localeJa);
 @NgModule({
@@ -54,7 +55,8 @@ registerLocaleData(localeJa);
     MatMenuModule,
     SharedModule,
     MatProgressSpinnerModule,
-    NgAisModule.forRoot()
+    NgAisModule.forRoot(),
+    NgxStripeModule.forRoot('pk_test_Yf2x5GaBCKZJoR4NDrjHQ08100VogK81dh')
   ],
   providers: [
     AuthGuard,
