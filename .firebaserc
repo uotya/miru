@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "miru-2ac6c"
+    "release": "miru-prod",
+    "develop": "miru-2ac6c"
   }
 }
