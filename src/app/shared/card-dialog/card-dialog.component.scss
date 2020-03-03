@@ -1,0 +1,39 @@
+h1 {
+  font-size: 2rem;
+  color: #90caf9;
+}
+
+.form {
+  .field {
+    padding: 8px 0;
+  }
+  mat-form-field {
+    display: block;
+    font-size: 14px;
+  }
+  &__name {
+    margin-top: 16px;
+  }
+  &__badge {
+    margin-top: 8px;
+    text-align: right;
+  }
+  &__note {
+    margin-top: 16px;
+    li {
+      color: #b0bec5;
+      line-height: 1.5;
+      font-size: 1.4rem;
+    }
+  }
+}
+
+.actions {
+  &__close {
+    color: #b0bec5;
+  }
+  &__submit {
+    color: #fff;
+    background-color: #90caf9;
+  }
+}
