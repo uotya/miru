@@ -5,3 +5,4 @@ export {
   updateArticle,
   deleteArticle
 } from './article.function';
+export { createCustomer } from './stripe.function';
