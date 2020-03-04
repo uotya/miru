@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireFunctions } from '@angular/fire/functions';
+import { Card } from '@interfaces/card';
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +22,10 @@ export class PaymentService {
     );
   }
 
+  getCard(userId: string) {
+    return this.db.doc<Card>(`users/${userId}/private/payment`).valueChanges();
+  }
+
   createCustomer(params: {
     source: string;
     name: string;
@@ -28,5 +33,23 @@ export class PaymentService {
   }): Promise<void> {
     const callable = this.fns.httpsCallable('createCustomer');
     return callable(params).toPromise();
+  }
+
+  updateCustomer(
+    customerId: string,
+    params: {
+      source: string;
+      name: string;
+      email: string;
+    }
+  ): Promise<void> {
+    const callable = this.fns.httpsCallable('updateCustomer');
+    return callable({ customerId, params }).toPromise();
+  }
+
+  getCustomer(userId: string) {
+    return this.db
+      .doc<{ customerId: string; userId: string }>(`customers/${userId}`)
+      .valueChanges();
   }
 }

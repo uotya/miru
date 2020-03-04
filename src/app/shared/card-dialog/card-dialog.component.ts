@@ -3,7 +3,7 @@ import {
   OnInit,
   AfterViewInit,
   OnDestroy,
-  inject
+  Inject
 } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import {
@@ -16,7 +16,7 @@ import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 import { PaymentService } from 'src/app/services/payment.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 @Component({
   selector: 'app-card-dialog',
   templateUrl: './card-dialog.component.html',
@@ -49,10 +49,13 @@ export class CardDialogComponent implements OnInit, AfterViewInit, OnDestroy {
     private authService: AuthService,
     private paymentService: PaymentService,
     private snackBar: MatSnackBar,
-    private dialogRef: MatDialogRef<CardDialogComponent>
+    private dialogRef: MatDialogRef<CardDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data?
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.isEdit = !!this.data.customerId;
+  }
 
   ngAfterViewInit(): void {
     const sub = this.stripeService
@@ -85,7 +88,42 @@ export class CardDialogComponent implements OnInit, AfterViewInit, OnDestroy {
 
   submit() {
     this.creating = true;
-    this.createCustomer(this.authService.user.uid);
+    if (this.data.customerId) {
+      this.updateCustomer(this.authService.user.uid, this.data.customerId);
+    } else {
+      this.createCustomer(this.authService.user.uid);
+    }
+  }
+
+  updateCustomer(userId: string, customerId: string) {
+    const name = this.stripeForm.get('name').value;
+    const email = this.stripeForm.get('email').value;
+    const sub = this.stripeService
+      .createToken(this.card, { name })
+      .subscribe(result => {
+        if (result.token) {
+          this.paymentService.setCard(userId, result.token.card);
+          this.paymentService
+            .updateCustomer(customerId, {
+              source: result.token.id,
+              name,
+              email
+            })
+            .then(() => {
+              this.saved();
+            })
+            .catch(error => {
+              console.log(error);
+              this.saved();
+            });
+        } else if (result.error) {
+          this.snackBar.open('カード情報が不正です', null, {
+            duration: 2000
+          });
+          this.creating = false;
+        }
+      });
+    this.subscription.add(sub);
   }
 
   createCustomer(userId: string) {
@@ -109,8 +147,10 @@ export class CardDialogComponent implements OnInit, AfterViewInit, OnDestroy {
           this.snackBar.open('カード情報が不正です', null, {
             duration: 2000
           });
+          this.creating = false;
         }
       });
+    this.subscription.add(sub);
   }
 
   saved() {

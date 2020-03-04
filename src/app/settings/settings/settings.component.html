@@ -19,6 +19,7 @@
               </mat-error>
             </mat-form-field>
             <button
+              class="section__button"
               (click)="changeUserName()"
               mat-flat-button
               color="primary"
@@ -49,6 +50,7 @@
               [class.active]="imageChangedEvent"
             ></image-cropper>
             <button
+              class="section__button"
               [disabled]="!croppedImage"
               (click)="changeAvatar(imageSelecter)"
               mat-flat-button
@@ -57,6 +59,7 @@
               変更する
             </button>
             <button
+              class="section__button"
               *ngIf="imageChangedEvent"
               mat-button
               (click)="resetInput(imageSelecter)"
@@ -74,9 +77,24 @@
             <p class="section__description">
               クレジットカードは世界的な決済サービスStripeによって厳重に保管されており、漏洩の心配はありません。
             </p>
-            <button mat-flat-button color="primary">
-              カードを登録する
-            </button>
+            <ng-container *ngIf="card$ | async as card; else register">
+              <div class="user-card">
+                <p>**** **** **** {{ card.card.last4 }}</p>
+                <button mat-icon-button (click)="registerCard()">
+                  <mat-icon>edit</mat-icon>
+                </button>
+              </div>
+            </ng-container>
+            <ng-template #register>
+              <button
+                class="section__button"
+                (click)="registerCard()"
+                mat-flat-button
+                color="primary"
+              >
+                カードを登録する
+              </button>
+            </ng-template>
           </div>
         </div>
       </mat-tab>
@@ -87,7 +105,12 @@
             <p class="section__description">
               退会するとすべてのデータが削除されます
             </p>
-            <button (click)="deleteAccount()" mat-flat-button color="primary">
+            <button
+              class="section__button"
+              (click)="deleteAccount()"
+              mat-flat-button
+              color="primary"
+            >
               退会する
             </button>
           </div>

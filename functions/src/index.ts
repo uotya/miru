@@ -10,4 +10,4 @@ export {
   updateArticle,
   deleteArticle
 } from './article.function';
-export { createCustomer } from './stripe.function';
+export { createCustomer, updateCustomer } from './stripe.function';

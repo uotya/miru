@@ -1,3 +1,4 @@
+import { take } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';
 import { Component, OnInit } from '@angular/core';
 import { LoadingService } from 'src/app/services/loading.service';
@@ -7,6 +8,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { DeleteAccountDialogComponent } from '../delete-account-dialog/delete-account-dialog.component';
 import { UserService } from 'src/app/services/user.service';
 import { ImageCroppedEvent } from 'ngx-image-cropper';
+import { CardDialogComponent } from 'src/app/shared/card-dialog/card-dialog.component';
+import { PaymentService } from 'src/app/services/payment.service';
 
 @Component({
   selector: 'app-settings',
@@ -15,7 +18,9 @@ import { ImageCroppedEvent } from 'ngx-image-cropper';
 })
 export class SettingsComponent implements OnInit {
   userId = this.authService.user.uid;
+  customerId: string;
   user$ = this.userService.getUserData(this.userId);
+  card$ = this.paymentService.getCard(this.userId);
   imageChangedEvent = '';
   croppedImage = '';
 
@@ -29,11 +34,16 @@ export class SettingsComponent implements OnInit {
     private authService: AuthService,
     private snackBar: MatSnackBar,
     private dialog: MatDialog,
-    private userService: UserService
+    private userService: UserService,
+    private paymentService: PaymentService
   ) {}
 
   ngOnInit(): void {
     this.loadingService.toggleLoading(false);
+    this.paymentService
+      .getCustomer(this.userId)
+      .pipe(take(1))
+      .subscribe(result => (this.customerId = result?.customerId));
   }
 
   changeUserName() {
@@ -70,6 +80,13 @@ export class SettingsComponent implements OnInit {
           imageSelecter.value = '';
         });
     }
+  }
+
+  registerCard() {
+    this.dialog.open(CardDialogComponent, {
+      data: { customerId: this.customerId },
+      restoreFocus: false
+    });
   }
 
   deleteAccount() {

@@ -13,7 +13,14 @@
     </mat-form-field>
     <mat-form-field>
       <mat-label>メールアドレス</mat-label>
-      <input formControlName="email" matInput autocomplete="off" />
+      <input
+        type="email"
+        formControlName="email"
+        matInput
+        autocomplete="off"
+        ngModel
+        email
+      />
     </mat-form-field>
 
     <p class="form__badge">
@@ -42,6 +49,6 @@
     mat-button
     mat-flat-button
   >
-    登録する
+    {{ isEdit ? '変更' : '登録' }}する
   </button>
 </div>
