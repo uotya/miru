@@ -16,7 +16,6 @@ export const createCustomer = functions
 
     const customer = await stripe.customers.create(data);
 
-    console.log(context.auth.uid);
     return db.doc(`customers/${context.auth.uid}`).set({
       userId: context.auth.uid,
       customerId: customer.id
