@@ -79,26 +79,6 @@
         <span>{{ favorite }}</span>
       </ng-template>
     </button>
-    <ng-container *ngIf="isMyArticle; else money">
-      <button
-        [routerLink]="['/article/edit']"
-        [queryParams]="{ id: article.articleId }"
-        mat-raised-button
-        class="actions__bottom actions__bottom--edit"
-      >
-        この記事を編集する
-      </button>
-    </ng-container>
-    <ng-template #money>
-      <button
-        mat-raised-button
-        color="primary"
-        class="actions__bottom"
-        matTooltip="50円からOK"
-      >
-        記事を作った人にお金を渡す 😊
-      </button>
-    </ng-template>
     <button mat-icon-button class="actions__share" matTooltip="Twitterでシェア">
       <a
         href="https://twitter.com/share?url=https://miru-2ac6c.web.app/article/{{
@@ -111,4 +91,13 @@
       </a>
     </button>
   </div>
+  <button
+    *ngIf="isMyArticle"
+    [routerLink]="['/article/edit']"
+    [queryParams]="{ id: article.articleId }"
+    mat-raised-button
+    class="edit"
+  >
+    この記事を編集する
+  </button>
 </div>

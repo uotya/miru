@@ -1,0 +1,47 @@
+<h1 mat-dialog-title>クレジットカードの{{ isEdit ? '変更' : '登録' }}</h1>
+<div mat-dialog-content>
+  <form (ngSubmit)="submit()" [formGroup]="stripeForm" class="form" id="form">
+    <div id="card-element" class="field"></div>
+    <mat-form-field class="form__name">
+      <mat-label>カードの名義</mat-label>
+      <input
+        formControlName="name"
+        matInput
+        placeholder="TARO YAMADA"
+        autocomplete="off"
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>メールアドレス</mat-label>
+      <input formControlName="email" matInput autocomplete="off" />
+    </mat-form-field>
+
+    <p class="form__badge">
+      <a href="https://stripe.com/ja-us" target="_blank" rel="noopener">
+        <img
+          src="/assets/images/powered_by_stripe.svg"
+          alt="powered by stripe"
+        />
+      </a>
+    </p>
+
+    <ul class="form__note">
+      <li>カード情報は世界的に信頼が厚いStripeで厳重に管理されます。</li>
+      <li>
+        サービスではクレジットカード情報を保持しないので漏洩の心配はありません。
+      </li>
+    </ul>
+  </form>
+</div>
+<div mat-dialog-actions class="actions">
+  <button class="actions__close" mat-button mat-dialog-close>キャンセル</button>
+  <button
+    class="actions__submit"
+    [disabled]="invalid || creating"
+    form="form"
+    mat-button
+    mat-flat-button
+  >
+    登録する
+  </button>
+</div>

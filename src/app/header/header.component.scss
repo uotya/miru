@@ -47,6 +47,8 @@ a {
   }
 }
 .loggedIn {
+  display: flex;
+  align-items: center;
   margin-left: auto;
   @include tab {
     grid-row: 1 / 1;
@@ -84,9 +86,24 @@ a {
       }
     }
   }
+  .header-avatar {
+    height: 40px;
+  }
   .avatar {
     background: center / contain no-repeat #cfd8dc;
     box-shadow: none;
+    img {
+      display: block;
+      border-radius: 50%;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+.donate {
+  color: #64b5f6;
+  mat-icon {
+    color: #64b5f6;
   }
 }
 .default {

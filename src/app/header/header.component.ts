@@ -6,6 +6,8 @@ import { tap } from 'rxjs/operators';
 import * as algoliasearch from 'algoliasearch/lite/';
 import { environment } from 'src/environments/environment';
 import { SearchParameters } from 'angular-instantsearch/instantsearch/instantsearch';
+import { MatDialog } from '@angular/material/dialog';
+import { CardDialogComponent } from '../shared/card-dialog/card-dialog.component';
 
 const searchClient = algoliasearch(
   environment.algolia.appId,
@@ -17,6 +19,7 @@ const searchClient = algoliasearch(
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+  user;
   isUser: boolean;
   avatarURL: string;
   isLoading: boolean;
@@ -24,6 +27,7 @@ export class HeaderComponent implements OnInit {
     tap(user => {
       this.isUser = true;
       if (user) {
+        this.user = user;
         this.userService.getUserData(user.uid).subscribe(result => {
           this.avatarURL = result && result.avatarURL;
         });
@@ -44,7 +48,8 @@ export class HeaderComponent implements OnInit {
     private authService: AuthService,
     private router: Router,
     private ngZone: NgZone,
-    private userService: UserService
+    private userService: UserService,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit() {}
@@ -71,5 +76,13 @@ export class HeaderComponent implements OnInit {
         }
       });
     }
+  }
+
+  updateAvatar() {
+    this.userService.updateAvatar(this.user.uid);
+  }
+
+  donate() {
+    this.dialog.open(CardDialogComponent);
   }
 }

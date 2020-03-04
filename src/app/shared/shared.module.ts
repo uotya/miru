@@ -17,13 +17,16 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { CardDialogComponent } from './card-dialog/card-dialog.component';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
     ItemCardComponent,
     RankingComponent,
     LoginDialogComponent,
-    UserComponent
+    UserComponent,
+    CardDialogComponent
   ],
   imports: [
     CommonModule,
@@ -39,7 +42,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatFormFieldModule,
     ReactiveFormsModule,
     FormsModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatInputModule
   ],
   exports: [
     ItemCardComponent,
@@ -55,7 +59,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatFormFieldModule,
     ReactiveFormsModule,
     FormsModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatInputModule
   ],
   entryComponents: [LoginDialogComponent]
 })

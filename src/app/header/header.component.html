@@ -52,12 +52,11 @@
         >
       </a>
     </div>
-    <button
-      class="avatar"
-      mat-mini-fab
-      [matMenuTriggerFor]="menu"
-      [style.background-image]="avatarURL && 'url(' + avatarURL + ')'"
-    ></button>
+    <div class="header-avatar">
+      <button class="avatar" mat-mini-fab [matMenuTriggerFor]="menu">
+        <img [src]="avatarURL && avatarURL" alt="" (error)="updateAvatar()" />
+      </button>
+    </div>
     <mat-menu #menu="matMenu">
       <button (click)="logout()" mat-menu-item>
         <mat-icon> exit_to_app</mat-icon>
@@ -71,6 +70,10 @@
       <button mat-menu-item routerLink="/intl/help">
         <mat-icon>help</mat-icon>
         <span>使い方</span>
+      </button>
+      <button class="donate" mat-menu-item (click)="donate()">
+        <mat-icon>redeem</mat-icon>
+        <span>開発者に寄付する</span>
       </button>
     </mat-menu>
   </div>

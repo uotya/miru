@@ -4,8 +4,6 @@ import { CommonModule } from '@angular/common';
 import { CreateRoutingModule } from './create-routing.module';
 import { CreateComponent } from './create/create.component';
 import { SharedModule } from '../shared/shared.module';
-import { MatInputModule } from '@angular/material/input';
-import { MatTooltipModule } from '@angular/material/tooltip';
 import { FormComponent } from './form/form.component';
 import { CreatedComponent } from './created/created.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -20,14 +18,7 @@ import { DeletedComponent } from './deleted/deleted.component';
     DeleteDialogComponent,
     DeletedComponent
   ],
-  imports: [
-    CommonModule,
-    CreateRoutingModule,
-    SharedModule,
-    MatInputModule,
-    MatTooltipModule,
-    HttpClientModule
-  ],
+  imports: [CommonModule, CreateRoutingModule, SharedModule, HttpClientModule],
   entryComponents: [DeleteDialogComponent]
 })
 export class CreateModule {}
