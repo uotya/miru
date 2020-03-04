@@ -2,7 +2,8 @@ export {
   createUser,
   updateTwitterAvatar,
   deleteUserData,
-  deleteUserArticles
+  deleteUserArticles,
+  deleteCustomer
 } from './user.function';
 export { countUpFavorite, countDownFavorite } from './like.function';
 export {

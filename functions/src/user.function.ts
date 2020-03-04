@@ -6,6 +6,7 @@ import { DocumentSnapshot } from 'firebase-functions/lib/providers/firestore';
 const admin = require('firebase-admin');
 admin.initializeApp();
 const db = admin.firestore();
+const stripe = require('stripe')(functions.config().stripe.key);
 
 export const updateTwitterAvatar = functions
   .region('asia-northeast1')
@@ -84,4 +85,13 @@ export const deleteUserArticles = functions
     });
 
     await batch.commit();
+  });
+
+export const deleteCustomer = functions
+  .region('asia-northeast1')
+  .auth.user()
+  .onDelete(async user => {
+    const customer = (await db.doc(`customers/${user.uid}`).get()).data();
+    stripe.customers.del(customer.customerId);
+    return db.doc(`customers/${user.uid}`).delete();
   });
