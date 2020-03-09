@@ -1,0 +1,51 @@
+.donate {
+  max-width: 600px;
+  margin: 100px auto 0;
+  line-height: 1.8;
+  letter-spacing: 0.01em;
+  font-size: 1.8rem;
+}
+.customer {
+  margin-top: 16px;
+  &__card {
+    margin-top: 24px;
+    display: block;
+    padding: 16px;
+    background-color: #eceff1;
+    border-radius: 5px;
+  }
+  &__actions {
+    margin-top: 16px;
+    button:not(first-child) {
+      margin-left: 8px;
+    }
+  }
+}
+.register {
+  margin-top: 16px;
+  button {
+    margin-top: 16px;
+  }
+  ul {
+    margin-top: 16px;
+    li {
+      color: #b0bec5;
+      line-height: 1.5;
+      font-size: 1.4rem;
+    }
+  }
+}
+.form {
+  margin-top: 16px;
+  button {
+    display: block;
+    margin-top: 24px;
+  }
+}
+.complete {
+  text-align: center;
+  button {
+    display: block;
+    margin: 24px auto 0;
+  }
+}

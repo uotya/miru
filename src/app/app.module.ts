@@ -30,6 +30,8 @@ import { SearchInputComponent } from './search-input/search-input.component';
 import { SearchResultComponent } from './search-result/search-result.component';
 import { ArticlePipe } from './pipes/article.pipe';
 import { NgxStripeModule } from 'ngx-stripe';
+import { DonateComponent } from './donate/donate.component';
+import { MatStepperModule } from '@angular/material/stepper';
 
 registerLocaleData(localeJa);
 @NgModule({
@@ -40,7 +42,8 @@ registerLocaleData(localeJa);
     NotFoundComponent,
     SearchInputComponent,
     SearchResultComponent,
-    ArticlePipe
+    ArticlePipe,
+    DonateComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +59,8 @@ registerLocaleData(localeJa);
     SharedModule,
     MatProgressSpinnerModule,
     NgAisModule.forRoot(),
-    NgxStripeModule.forRoot('pk_test_Yf2x5GaBCKZJoR4NDrjHQ08100VogK81dh')
+    NgxStripeModule.forRoot('pk_test_Yf2x5GaBCKZJoR4NDrjHQ08100VogK81dh'),
+    MatStepperModule
   ],
   providers: [
     AuthGuard,
