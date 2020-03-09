@@ -96,8 +96,7 @@ export class CardDialogComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   updateCustomer(userId: string, customerId: string) {
-    const name = this.stripeForm.get('name').value;
-    const email = this.stripeForm.get('email').value;
+    const { name, email } = this.stripeForm.value;
     const sub = this.stripeService
       .createToken(this.card, { name })
       .subscribe(result => {
