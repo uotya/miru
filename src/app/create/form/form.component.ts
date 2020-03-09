@@ -14,7 +14,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { take, catchError, tap } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';
 import { DeleteDialogComponent } from 'src/app/create/delete-dialog/delete-dialog.component';
-import { combineLatest } from 'rxjs';
+import { combineLatest, of } from 'rxjs';
 import { OgpService } from 'src/app/services/ogp.service';
 import { HttpResponse } from '@angular/common/http';
 @Component({
@@ -129,7 +129,14 @@ export class FormComponent implements OnInit {
     for (let i = 0; formData.links[i]; i++) {
       const link = formData.links[i].link;
       if (link.match(/http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w-.\/?%&=]*)?/)) {
-        observables.push(this.ogpService.getOGP(link));
+        observables.push(
+          this.ogpService.getOGP(link).pipe(
+            catchError(() => {
+              this.creating = false;
+              return of(null);
+            })
+          )
+        );
       }
     }
 
@@ -138,16 +145,17 @@ export class FormComponent implements OnInit {
     }
 
     combineLatest(observables).subscribe(result => {
-      result.some((ogp: HttpResponse<OGP>) => {
+      const isThumbnail = result.some((ogp: HttpResponse<OGP>) => {
         this.ogp = ogp.body as OGP;
         if (this.ogp.ogImage?.url) {
           sendData.thumbnailURL = this.ogp.ogImage.url;
           create();
           return true;
-        } else {
-          create();
         }
       });
+      if (!isThumbnail) {
+        create();
+      }
     });
   }
 
