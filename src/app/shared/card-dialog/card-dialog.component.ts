@@ -28,7 +28,7 @@ export class CardDialogComponent implements OnInit, AfterViewInit, OnDestroy {
 
   stripeForm = this.fb.group({
     name: ['', [Validators.required]],
-    email: ['', [Validators.required]]
+    email: ['', [Validators.required, Validators.email]]
   });
   elements: Elements;
   card: StripeElement;

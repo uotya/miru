@@ -49,6 +49,7 @@ import { MatInputModule } from '@angular/material/input';
     ItemCardComponent,
     RankingComponent,
     LoginDialogComponent,
+    CardDialogComponent,
     MatButtonModule,
     MatIconModule,
     MatDialogModule,
