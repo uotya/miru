@@ -6,7 +6,6 @@ import { CreateComponent } from './create/create.component';
 import { SharedModule } from '../shared/shared.module';
 import { FormComponent } from './form/form.component';
 import { CreatedComponent } from './created/created.component';
-import { HttpClientModule } from '@angular/common/http';
 import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component';
 import { DeletedComponent } from './deleted/deleted.component';
 
@@ -18,7 +17,7 @@ import { DeletedComponent } from './deleted/deleted.component';
     DeleteDialogComponent,
     DeletedComponent
   ],
-  imports: [CommonModule, CreateRoutingModule, SharedModule, HttpClientModule],
+  imports: [CommonModule, CreateRoutingModule, SharedModule],
   entryComponents: [DeleteDialogComponent]
 })
 export class CreateModule {}

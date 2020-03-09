@@ -32,6 +32,7 @@ import { ArticlePipe } from './pipes/article.pipe';
 import { NgxStripeModule } from 'ngx-stripe';
 import { DonateComponent } from './donate/donate.component';
 import { MatStepperModule } from '@angular/material/stepper';
+import { HttpClientModule } from '@angular/common/http';
 
 registerLocaleData(localeJa);
 @NgModule({
@@ -60,7 +61,8 @@ registerLocaleData(localeJa);
     MatProgressSpinnerModule,
     NgAisModule.forRoot(),
     NgxStripeModule.forRoot('pk_test_Yf2x5GaBCKZJoR4NDrjHQ08100VogK81dh'),
-    MatStepperModule
+    MatStepperModule,
+    HttpClientModule
   ],
   providers: [
     AuthGuard,

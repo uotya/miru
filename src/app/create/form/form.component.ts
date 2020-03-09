@@ -10,14 +10,13 @@ import { AuthService } from 'src/app/services/auth.service';
 import { Article } from '@interfaces/article';
 import { OGP } from '@interfaces/ogp';
 import { CreateComponent } from 'src/app/create/create/create.component';
-import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
-import { take } from 'rxjs/operators';
+import { take, catchError, tap } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';
 import { DeleteDialogComponent } from 'src/app/create/delete-dialog/delete-dialog.component';
 import { combineLatest } from 'rxjs';
-
-const API = 'https://ogp-api.appspot.com/?url=';
+import { OgpService } from 'src/app/services/ogp.service';
+import { HttpResponse } from '@angular/common/http';
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
@@ -48,10 +47,10 @@ export class FormComponent implements OnInit {
     private articleService: ArticleService,
     private authService: AuthService,
     private createComponent: CreateComponent,
-    private http: HttpClient,
     private route: ActivatedRoute,
     private dialog: MatDialog,
-    private router: Router
+    private router: Router,
+    private ogpService: OgpService
   ) {}
 
   ngOnInit() {
@@ -130,7 +129,7 @@ export class FormComponent implements OnInit {
     for (let i = 0; formData.links[i]; i++) {
       const link = formData.links[i].link;
       if (link.match(/http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w-.\/?%&=]*)?/)) {
-        observables.push(this.http.get(API + link));
+        observables.push(this.ogpService.getOGP(link));
       }
     }
 
@@ -139,9 +138,9 @@ export class FormComponent implements OnInit {
     }
 
     combineLatest(observables).subscribe(result => {
-      result.some(ogp => {
-        this.ogp = ogp as OGP;
-        if (this.ogp.ogImage.url) {
+      result.some((ogp: HttpResponse<OGP>) => {
+        this.ogp = ogp.body as OGP;
+        if (this.ogp.ogImage?.url) {
           sendData.thumbnailURL = this.ogp.ogImage.url;
           create();
           return true;
