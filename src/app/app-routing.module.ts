@@ -6,6 +6,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { UserComponent } from './shared/user/user.component';
 import { RankingComponent } from './shared/ranking/ranking.component';
 import { SearchResultComponent } from './search-result/search-result.component';
+import { DonateComponent } from './donate/donate.component';
 
 const routes: Routes = [
   {
@@ -51,6 +52,12 @@ const routes: Routes = [
     path: 'settings',
     loadChildren: () =>
       import('./settings/settings.module').then(m => m.SettingsModule),
+    canLoad: [AuthGuard],
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'donate',
+    component: DonateComponent,
     canLoad: [AuthGuard],
     canActivate: [AuthGuard]
   },

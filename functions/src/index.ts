@@ -2,7 +2,8 @@ export {
   createUser,
   updateTwitterAvatar,
   deleteUserData,
-  deleteUserArticles
+  deleteUserArticles,
+  deleteCustomer
 } from './user.function';
 export { countUpFavorite, countDownFavorite } from './like.function';
 export {
@@ -10,4 +11,4 @@ export {
   updateArticle,
   deleteArticle
 } from './article.function';
-export { createCustomer } from './stripe.function';
+export { createCustomer, updateCustomer, donateMoney } from './stripe.function';

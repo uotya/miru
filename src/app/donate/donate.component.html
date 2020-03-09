@@ -1,0 +1,89 @@
+<div class="container">
+  <h2 class="heading">開発者へ寄付</h2>
+  <div class="donate" *ngIf="!isLoading">
+    <ng-container *ngIf="!donated; else complete">
+      <mat-vertical-stepper linear="true">
+        <mat-step editable="false">
+          <ng-template matStepLabel>クレジットカード</ng-template>
+          <ng-container *ngIf="card$ | async as card; else register">
+            <div class="customer">
+              <p>こちらのカードを使用します</p>
+              <p class="customer__card">**** **** **** {{ card.card.last4 }}</p>
+              <div class="customer__actions">
+                <button mat-flat-button color="primary" matStepperNext>
+                  OK
+                </button>
+                <button mat-button color="primary" (click)="registerCard()">
+                  変更する
+                </button>
+              </div>
+            </div>
+          </ng-container>
+          <ng-template #register>
+            <div class="register">
+              <p>支払いに使用するカードを登録してください</p>
+              <button (click)="registerCard()" mat-flat-button color="primary">
+                登録する
+              </button>
+              <ul>
+                <li>
+                  カード情報は世界的に信頼が厚いStripeで厳重に管理されます。
+                </li>
+                <li>
+                  サービスではクレジットカード情報を保持しないので漏洩の心配はありません。
+                </li>
+              </ul>
+            </div>
+          </ng-template>
+        </mat-step>
+        <mat-step editable="false" [stepControl]="donateForm">
+          <ng-template matStepLabel>金額の指定</ng-template>
+          <form class="form" (ngSubmit)="submit()" [formGroup]="donateForm">
+            <mat-form-field>
+              <mat-label>寄付する金額</mat-label>
+              <input
+                formControlName="amount"
+                matInput
+                autocomplete="off"
+                required
+                type="number"
+                step="100"
+              />
+              <mat-hint align="start"
+                ><span>税込み {{ includeTax | number }}円</span></mat-hint
+              >
+              <mat-error *ngIf="amountControl.hasError('required')"
+                >必須入力です</mat-error
+              >
+              <mat-error *ngIf="amountControl.hasError('pattern')"
+                >金額を入力してください</mat-error
+              >
+              <mat-error *ngIf="amountControl.hasError('min')"
+                >50円以上でお願いします</mat-error
+              >
+              <mat-error *ngIf="amountControl.hasError('max')"
+                >100万円以下でお願いします</mat-error
+              >
+            </mat-form-field>
+            <button
+              [disabled]="donateForm.invalid || donating"
+              mat-flat-button
+              color="primary"
+              matStepperNext
+            >
+              寄付する
+            </button>
+          </form>
+        </mat-step>
+      </mat-vertical-stepper>
+    </ng-container>
+    <ng-template #complete>
+      <div class="complete">
+        <p>ありがとうございました😊</p>
+        <button routerLink="/" mat-flat-button color="primary">
+          トップへ戻る
+        </button>
+      </div>
+    </ng-template>
+  </div>
+</div>
