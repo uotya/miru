@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LoadingService } from '../services/loading.service';
 
 @Component({
   selector: 'app-not-found',
@@ -6,7 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./not-found.component.scss']
 })
 export class NotFoundComponent implements OnInit {
-  constructor() {}
+  constructor(private loadingService: LoadingService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.loadingService.toggleLoading(false);
+  }
 }
