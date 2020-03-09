@@ -25,15 +25,15 @@
         >{{ article.author.userName }}</a
       >
     </div>
-    <p class="update">
+    <div
+      class="update"
+      matTooltip="{{
+        article.createdAt.toDate() | date: 'yyyy年MM月dd日'
+      }}に投稿"
+    >
       <mat-icon>update</mat-icon>
-      <ng-container *ngIf="article.updatedAt; else created">
-        <span>{{ article.updatedAt.toDate() | date: 'yyyy年MM月dd日' }}</span>
-      </ng-container>
-      <ng-template #created>
-        <span>{{ article.createdAt.toDate() | date: 'yyyy年MM月dd日' }}</span>
-      </ng-template>
-    </p>
+      <p>{{ article.updatedAt.toDate() | date: 'yyyy年MM月dd日' }}に更新</p>
+    </div>
   </div>
   <mat-divider></mat-divider>
   <div class="contents" *ngFor="let content of article.links; let i = index">
