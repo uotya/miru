@@ -11,4 +11,4 @@ export {
   updateArticle,
   deleteArticle
 } from './article.function';
-export { createCustomer, updateCustomer } from './stripe.function';
+export { createCustomer, updateCustomer, donateMoney } from './stripe.function';

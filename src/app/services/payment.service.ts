@@ -52,4 +52,9 @@ export class PaymentService {
       .doc<{ customerId: string; userId: string }>(`customers/${userId}`)
       .valueChanges();
   }
+
+  donateMoney(customerId: string, amount: number): Promise<void> {
+    const callable = this.fns.httpsCallable('donateMoney');
+    return callable({ customerId, amount }).toPromise();
+  }
 }
