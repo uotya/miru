@@ -2,7 +2,7 @@
   <h1>公開されました 🎉</h1>
   <div class="share">
     <a
-      mat-flat-button
+      mat-raised-button
       href="https://twitter.com/share?url=https://miru-2ac6c.web.app/article/{{
         articleId
       }}/&text={{ title }}"
@@ -11,7 +11,11 @@
       >Twitterでシェアする</a
     >
   </div>
-  <button routerLink="/article/{{ articleId }}" mat-flat-button color="primary">
+  <button
+    routerLink="/article/{{ articleId }}"
+    mat-raised-button
+    color="primary"
+  >
     記事を見てみる
   </button>
 </div>
