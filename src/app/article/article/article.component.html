@@ -17,13 +17,13 @@
       >
         <img [src]="article.author.avatarURL" alt="" (error)="updateAvatar()" />
       </a>
-      <button mat-button class="user__name">
-        <a
-          [routerLink]="['/user']"
-          [queryParams]="{ id: article.author.uid }"
-          >{{ article.author.userName }}</a
-        >
-      </button>
+      <a
+        mat-button
+        class="user__name"
+        [routerLink]="['/user']"
+        [queryParams]="{ id: article.author.uid }"
+        >{{ article.author.userName }}</a
+      >
     </div>
     <p class="update">
       <mat-icon>update</mat-icon>
