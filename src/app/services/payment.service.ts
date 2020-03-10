@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireFunctions } from '@angular/fire/functions';
 import { Card } from '@interfaces/card';
+import { AuthService } from './auth.service';
+import { PaymentHistory } from '@interfaces/payment-history';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +11,8 @@ import { Card } from '@interfaces/card';
 export class PaymentService {
   constructor(
     private db: AngularFirestore,
-    private fns: AngularFireFunctions
+    private fns: AngularFireFunctions,
+    private authService: AuthService
   ) {}
 
   setCard(userId: string, card: any): Promise<void> {
@@ -56,5 +59,11 @@ export class PaymentService {
   donateMoney(customerId: string, amount: number): Promise<void> {
     const callable = this.fns.httpsCallable('donateMoney');
     return callable({ customerId, amount }).toPromise();
+  }
+
+  getPaymentHistories(customerId: string) {
+    return this.db
+      .collection<PaymentHistory>(`payment/${customerId}/history`)
+      .valueChanges();
   }
 }

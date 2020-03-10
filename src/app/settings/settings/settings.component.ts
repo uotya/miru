@@ -10,6 +10,8 @@ import { UserService } from 'src/app/services/user.service';
 import { ImageCroppedEvent } from 'ngx-image-cropper';
 import { CardDialogComponent } from 'src/app/shared/card-dialog/card-dialog.component';
 import { PaymentService } from 'src/app/services/payment.service';
+import { Observable } from 'rxjs';
+import { PaymentHistory } from '@interfaces/payment-history';
 
 @Component({
   selector: 'app-settings',
@@ -21,6 +23,7 @@ export class SettingsComponent implements OnInit {
   customerId: string;
   user$ = this.userService.getUserData(this.userId);
   card$ = this.paymentService.getCard(this.userId);
+  histories$: Observable<PaymentHistory[]>;
   imageChangedEvent = '';
   croppedImage = '';
 
@@ -43,7 +46,12 @@ export class SettingsComponent implements OnInit {
     this.paymentService
       .getCustomer(this.userId)
       .pipe(take(1))
-      .subscribe(result => (this.customerId = result?.customerId));
+      .subscribe(result => {
+        this.customerId = result?.customerId;
+        this.histories$ = this.paymentService.getPaymentHistories(
+          this.customerId
+        );
+      });
   }
 
   changeUserName() {

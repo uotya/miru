@@ -23,9 +23,13 @@ service cloud.firestore {
       allow read: if request.auth.uid == userId;
       allow write: if request.auth.uid == userId;
     }
-    match /customers/{customerId} {
+    match /customers/{userId} {
+      allow read: if request.auth.uid == userId;
+      allow write: if request.auth.uid == userId;
+    }
+    match /payment/{customerId}/history/{id} {
       allow read: if true;
-      allow write: if request.auth.uid == customerId;
+      allow write: if false;
     }
   }
 }

@@ -48,3 +48,21 @@ export const donateMoney = functions
       customer: data.customerId
     });
   });
+
+export const paymentSucceeded = functions
+  .region('asia-northeast1')
+  .https.onRequest(async (request: any, response: any) => {
+    const event = request.body;
+    if (event.type === 'charge.succeeded') {
+      const paymentIntent = event.data.object;
+      return db
+        .doc(`payment/${paymentIntent.customer}/history/${paymentIntent.id}`)
+        .set({
+          id: paymentIntent.id,
+          amount: paymentIntent.amount,
+          paymentDate: admin.firestore.FieldValue.serverTimestamp()
+        });
+    } else {
+      return response.status(400).end();
+    }
+  });
