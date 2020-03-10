@@ -8,7 +8,16 @@
           <ng-container *ngIf="card$ | async as card; else register">
             <div class="customer">
               <p>こちらのカードを使用します</p>
-              <p class="customer__card">**** **** **** {{ card.card.last4 }}</p>
+              <p class="customer__card">
+                <i
+                  class="fab fa-cc-{{
+                    card.card.brand.toLowerCase() === 'american express'
+                      ? 'amex'
+                      : card.card.brand.toLowerCase()
+                  }}"
+                ></i>
+                **** **** **** {{ card.card.last4 }}
+              </p>
               <div class="customer__actions">
                 <button mat-flat-button color="primary" matStepperNext>
                   OK

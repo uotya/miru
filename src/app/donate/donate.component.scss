@@ -9,10 +9,13 @@
   margin-top: 16px;
   &__card {
     margin-top: 24px;
-    display: block;
-    padding: 16px;
+    display: inline-block;
+    padding: 8px 24px;
     background-color: #eceff1;
     border-radius: 5px;
+    i {
+      margin-right: 8px;
+    }
   }
   &__actions {
     margin-top: 16px;
