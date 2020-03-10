@@ -1,29 +1,30 @@
 <mat-card class="card">
-  <div class="user">
-    <a
-      mat-card-avatar
-      mat-icon-button
-      class="user__avatar"
-      [routerLink]="['/user']"
-      [queryParams]="{ id: card.author.uid }"
-    >
-      <img [src]="card.author.avatarURL" alt="" (error)="updateAvatar()" />
-    </a>
-    <a
-      mat-button
-      class="user__name"
-      [routerLink]="['/user']"
-      [queryParams]="{ id: card.author.uid }"
-      >{{ card.author.userName }}</a
-    >
-  </div>
   <a routerLink="/article/{{ card.articleId }}">
+    <div class="user">
+      <a
+        mat-card-avatar
+        mat-icon-button
+        class="user__avatar"
+        [routerLink]="['/user']"
+        [queryParams]="{ id: card.author.uid }"
+      >
+        <img [src]="card.author.avatarURL" alt="" (error)="updateAvatar()" />
+      </a>
+      <a
+        mat-button
+        class="user__name"
+        [routerLink]="['/user']"
+        [queryParams]="{ id: card.author.uid }"
+        >{{ card.author.userName }}</a
+      >
+    </div>
     <p class="title">{{ card.title }}</p>
     <img class="thumb" [src]="card.thumbnailURL" mat-card-image alt="" />
-  </a>
-  <div class="actions">
-    <button mat-icon-button class="actions__action actions__action--share">
+    <div class="actions">
       <a
+        (click)="$event.stopPropagation()"
+        mat-icon-button
+        class="actions__action actions__action--share"
         href="https://twitter.com/share?url=https://miru-2ac6c.web.app/article/{{
           card.articleId
         }}/&text={{ card.title }}"
@@ -32,20 +33,22 @@
       >
         <mat-icon>share</mat-icon></a
       >
-    </button>
-    <button
-      (click)="clickedLike(card)"
-      [class.liked]="isLiked"
-      mat-icon-button
-      class="actions__action actions__action--favorite"
-    >
-      <ng-container *ngIf="isLiked; else default">
-        <mat-icon class="liked">favorite</mat-icon>
-      </ng-container>
-      <ng-template #default>
-        <mat-icon class="default">favorite_border</mat-icon>
-      </ng-template>
-      <span>{{ favorite }}</span>
-    </button>
-  </div>
+      <button
+        (click)="
+          clickedLike(card); $event.stopPropagation(); $event.preventDefault()
+        "
+        [class.liked]="isLiked"
+        mat-icon-button
+        class="actions__action actions__action--favorite"
+      >
+        <ng-container *ngIf="isLiked; else default">
+          <mat-icon class="liked">favorite</mat-icon>
+        </ng-container>
+        <ng-template #default>
+          <mat-icon class="default">favorite_border</mat-icon>
+        </ng-template>
+        <span>{{ favorite }}</span>
+      </button>
+    </div>
+  </a>
 </mat-card>

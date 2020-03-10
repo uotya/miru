@@ -77,14 +77,11 @@ a {
       margin-right: 70px;
     }
     &--share {
-      transition: all 0.4s;
-      a {
-        padding-top: 7px;
-        display: block;
-        color: #fafafa;
-        &:hover {
-          color: #75c4ff;
-        }
+      transition: all 0.2s;
+      display: block;
+      color: #fafafa;
+      &:hover {
+        color: #75c4ff;
       }
     }
     &--favorite {
