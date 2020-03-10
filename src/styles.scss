@@ -80,10 +80,10 @@ body {
 }
 .cards {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 300px));
+  grid-template-columns: repeat(auto-fill, min(288px));
   justify-content: center;
-  margin: 90px auto 0;
-  gap: 30px;
+  margin: 88px auto 0;
+  gap: 32px;
   text-align: center;
 }
 mat-card.empty-card {
