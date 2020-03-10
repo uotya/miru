@@ -9,7 +9,6 @@ import { Router, NavigationStart } from '@angular/router';
 })
 export class AppComponent {
   isLoading$ = this.loadingService.isLoading$;
-  title = 'miru';
 
   constructor(private loadingService: LoadingService, private router: Router) {
     this.router.events.subscribe(event => {

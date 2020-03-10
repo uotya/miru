@@ -78,7 +78,7 @@
     text-align: right;
     font-size: 1.4rem;
     mat-icon {
-      margin-right: 6px;
+      margin-right: 8px;
     }
   }
 }
@@ -151,7 +151,6 @@ mat-divider {
   display: flex;
   justify-content: space-between;
   &__favorite {
-    padding-left: 5px;
     &:hover {
       color: #e53935;
     }
@@ -168,7 +167,6 @@ mat-divider {
     }
   }
   &__share {
-    padding-right: 8px;
     transition: all 0.4s;
     a {
       padding-top: 7px;

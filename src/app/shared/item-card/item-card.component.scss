@@ -3,7 +3,8 @@
 
 .card {
   font-weight: bold;
-  max-width: 300px;
+  height: 344px;
+  width: 256px;
   cursor: pointer;
   background-color: #b0bec5;
   color: #fafafa;
@@ -49,8 +50,9 @@ a {
   color: #fafafa;
 }
 .title {
+  height: 48px;
   font-size: 16px;
-  padding-top: 20px;
+  padding-top: 16px;
   line-height: 1.3;
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -60,10 +62,10 @@ a {
   text-justify: inter-ideograph;
 }
 .thumb {
-  padding-top: 20px;
-  min-width: 280px;
-  height: 200px;
-  object-fit: contain;
+  padding-top: 16px;
+  width: 288px;
+  height: 160px;
+  object-fit: cover;
 }
 .actions {
   padding-right: 30px;
