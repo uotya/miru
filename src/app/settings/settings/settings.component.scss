@@ -79,3 +79,24 @@ h3 {
     display: block;
   }
 }
+.payment-history {
+  margin-top: 40px;
+  mat-lits {
+    width: 100%;
+  }
+  mat-list-item {
+    width: auto;
+    margin-top: 16px;
+    text-align: left;
+    background-color: #eceff1;
+    padding: 8px 24px;
+    border-radius: 5px;
+  }
+  .none {
+    display: inline-block;
+    margin-top: 16px;
+    background-color: #eceff1;
+    padding: 8px 24px;
+    border-radius: 5px;
+  }
+}

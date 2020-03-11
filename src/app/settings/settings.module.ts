@@ -8,6 +8,7 @@ import { SharedModule } from '../shared/shared.module';
 import { MatInputModule } from '@angular/material/input';
 import { DeleteAccountDialogComponent } from './delete-account-dialog/delete-account-dialog.component';
 import { ImageCropperModule } from 'ngx-image-cropper';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
   declarations: [SettingsComponent, DeleteAccountDialogComponent],
@@ -17,7 +18,8 @@ import { ImageCropperModule } from 'ngx-image-cropper';
     MatTabsModule,
     SharedModule,
     MatInputModule,
-    ImageCropperModule
+    ImageCropperModule,
+    MatListModule
   ]
 })
 export class SettingsModule {}
