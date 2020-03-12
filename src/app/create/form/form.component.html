@@ -105,7 +105,7 @@
     <div class="buttons">
       <button
         class="buttons__button"
-        [disabled]="form.invalid"
+        [disabled]="form.invalid || creating"
         mat-raised-button
         color="primary"
         type="button"

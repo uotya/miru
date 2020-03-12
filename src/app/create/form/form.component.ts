@@ -1,3 +1,4 @@
+import { Favicon } from './../../../../functions/src/interfaces/favicon';
 import { Component, OnInit, HostListener } from '@angular/core';
 import {
   FormBuilder,
@@ -11,12 +12,14 @@ import { Article } from '@interfaces/article';
 import { OGP } from '@interfaces/ogp';
 import { CreateComponent } from 'src/app/create/create/create.component';
 import { ActivatedRoute, Router } from '@angular/router';
-import { take, catchError, tap } from 'rxjs/operators';
+import { take, catchError, tap, map } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';
 import { DeleteDialogComponent } from 'src/app/create/delete-dialog/delete-dialog.component';
 import { combineLatest, of } from 'rxjs';
 import { OgpService } from 'src/app/services/ogp.service';
 import { HttpResponse } from '@angular/common/http';
+import { OgpWithFavicon } from '@interfaces/ogp-with-favicon';
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
@@ -29,7 +32,6 @@ export class FormComponent implements OnInit {
     links: this.fb.array([])
   });
 
-  ogp: OGP;
   id: string;
   creating: boolean;
   editing: boolean;
@@ -50,7 +52,8 @@ export class FormComponent implements OnInit {
     private route: ActivatedRoute,
     private dialog: MatDialog,
     private router: Router,
-    private ogpService: OgpService
+    private ogpService: OgpService,
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit() {
@@ -126,9 +129,11 @@ export class FormComponent implements OnInit {
     };
 
     const observables = [];
+    const linkIndexes = [];
     for (let i = 0; formData.links[i]; i++) {
       const link = formData.links[i].link;
       if (link.match(/http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w-.\/?%&=]*)?/)) {
+        linkIndexes.push(i);
         observables.push(
           this.ogpService.getOGP(link).pipe(
             catchError(() => {
@@ -145,10 +150,21 @@ export class FormComponent implements OnInit {
     }
 
     combineLatest(observables).subscribe(result => {
-      const isThumbnail = result.some((ogp: HttpResponse<OGP>) => {
-        this.ogp = ogp.body as OGP;
-        if (this.ogp.ogImage?.url) {
-          sendData.thumbnailURL = this.ogp.ogImage.url;
+      result.forEach((res: HttpResponse<OgpWithFavicon>, i) => {
+        const index = linkIndexes[i];
+        const ogp = res.body[0] as OGP;
+        const favicon = res.body[1] as Favicon;
+        if (ogp?.ogTitle) {
+          sendData.links[index].ogTitle = ogp.ogTitle;
+        }
+        if (favicon?.src) {
+          sendData.links[index].faviconURL = favicon.src;
+        }
+      });
+      const isThumbnail = result.some((res: HttpResponse<OgpWithFavicon>) => {
+        const ogp = res.body[0] as OGP;
+        if (ogp.ogImage?.url) {
+          sendData.thumbnailURL = ogp.ogImage.url;
           create();
           return true;
         }
@@ -160,19 +176,71 @@ export class FormComponent implements OnInit {
   }
 
   updataArticle() {
+    this.creating = true;
     const formData = this.form.value;
     const sendData: Pick<
       Article,
-      'articleId' | 'title' | 'links' | 'description'
+      'articleId' | 'title' | 'links' | 'description' | 'thumbnailURL'
     > = {
       articleId: this.id,
       title: formData.title,
       links: this.form.get('links').valid ? formData.links : [],
       description: formData.description
     };
-    this.articleService.updateArticle(sendData).then(() => {
-      this.createComponent.created = true;
-      this.router.navigateByUrl('/mylist');
+    const update = () => {
+      this.articleService.updateArticle(sendData).then(() => {
+        this.createComponent.created = true;
+        this.router.navigateByUrl('/mylist');
+        this.snackBar.open('編集が適用されました', null, {
+          duration: 2000
+        });
+      });
+    };
+
+    const observables = [];
+    const linkIndexes = [];
+    for (let i = 0; formData.links[i]; i++) {
+      const link = formData.links[i].link;
+      if (link.match(/http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w-.\/?%&=]*)?/)) {
+        linkIndexes.push(i);
+        observables.push(
+          this.ogpService.getOGP(link).pipe(
+            catchError(() => {
+              this.creating = false;
+              return of(null);
+            })
+          )
+        );
+      }
+    }
+
+    if (!observables.length) {
+      update();
+    }
+
+    combineLatest(observables).subscribe(result => {
+      result.forEach((res: HttpResponse<OgpWithFavicon>, i) => {
+        const index = linkIndexes[i];
+        const ogp = res.body[0] as OGP;
+        const favicon = res.body[1] as Favicon;
+        if (ogp?.ogTitle) {
+          sendData.links[index].ogTitle = ogp.ogTitle;
+        }
+        if (favicon?.src) {
+          sendData.links[index].faviconURL = favicon.src;
+        }
+      });
+      const isThumbnail = result.some((res: HttpResponse<OgpWithFavicon>) => {
+        const ogp = res.body[0] as OGP;
+        if (ogp.ogImage?.url) {
+          sendData.thumbnailURL = ogp.ogImage.url;
+          update();
+          return true;
+        }
+      });
+      if (!isThumbnail) {
+        update();
+      }
     });
   }
 

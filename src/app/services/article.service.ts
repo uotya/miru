@@ -31,7 +31,10 @@ export class ArticleService {
   }
 
   updateArticle(
-    article: Pick<Article, 'articleId' | 'title' | 'links' | 'description'>
+    article: Pick<
+      Article,
+      'articleId' | 'title' | 'links' | 'description' | 'thumbnailURL'
+    >
   ): Promise<void> {
     return this.db.doc(`articles/${article.articleId}`).update({
       ...article,
