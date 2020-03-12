@@ -6,7 +6,9 @@ export interface Article {
   updatedAt: firestore.Timestamp;
   title: string;
   description?: string;
-  links: [{ link: string; comment: string }];
+  links: [
+    { link: string; comment: string; ogTitle: string; faviconURL: string }
+  ];
   thumbnailURL?: string;
   favorite: number;
 }

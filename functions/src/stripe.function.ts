@@ -55,13 +55,14 @@ export const paymentSucceeded = functions
     const event = request.body;
     if (event.type === 'charge.succeeded') {
       const paymentIntent = event.data.object;
-      return db
+      await db
         .doc(`payment/${paymentIntent.customer}/history/${paymentIntent.id}`)
         .set({
           id: paymentIntent.id,
           amount: paymentIntent.amount,
           paymentDate: admin.firestore.FieldValue.serverTimestamp()
         });
+      return response.status(200).send('success');
     } else {
       return response.status(400).end();
     }

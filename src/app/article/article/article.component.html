@@ -40,21 +40,42 @@
     <div class="contents__content">
       <div class="flex">
         <span class="number">{{ i + 1 }}.</span>
-        <div
-          class="contents__content--link"
-          *ngIf="isLink(content.link); else notLink"
-          [class.isLink]="isLink(content.link)"
-        >
-          <a [href]="content.link" target="_blank">
-            {{ content.link }}
-          </a>
-        </div>
+        <ng-container *ngIf="isLink(content.link); else notLink">
+          <mat-card class="contents__content--link isLink">
+            <a [href]="content.link" target="_blank">
+              <div
+                *ngIf="content.faviconURL; else defaultIcon"
+                class="favicon"
+                [style.background-image]="'url(' + content.faviconURL + ')'"
+              ></div>
+              <ng-template #defaultIcon>
+                <mat-icon class="default-icon">find_in_page</mat-icon>
+              </ng-template>
+              <p *ngIf="content.ogTitle; else defaultTitle" class="og-title">
+                {{ content.ogTitle }}
+              </p>
+              <ng-template #defaultTitle>
+                <p class="og-title">{{ content.link }}</p>
+              </ng-template>
+            </a>
+          </mat-card>
+          <button
+            matTooltip="リンクのコピー"
+            class="copy"
+            mat-icon-button
+            ngxClipboard
+            [cbContent]="content.link"
+            (cbOnSuccess)="copied()"
+          >
+            <mat-icon>link</mat-icon>
+          </button>
+        </ng-container>
+        <ng-template #notLink>
+          <mat-card class="contents__content--link">
+            <p>{{ content.link }}</p>
+          </mat-card>
+        </ng-template>
       </div>
-      <ng-template #notLink>
-        <div class="contents__content--link">
-          <p>{{ content.link }}</p>
-        </div>
-      </ng-template>
       <div *ngIf="content.comment" class="contents__content--comment pre-wrap">
         <p>{{ content.comment }}</p>
       </div>
@@ -68,7 +89,7 @@
       class="actions__favorite"
       (click)="clickedLike(article)"
       [class.liked]="isLiked"
-      matTooltip="いいねする"
+      matTooltip="いいね"
     >
       <ng-container *ngIf="isLiked; else default">
         <mat-icon class="liked">favorite</mat-icon>
@@ -79,17 +100,30 @@
         <span>{{ favorite }}</span>
       </ng-template>
     </button>
-    <button mat-icon-button class="actions__share" matTooltip="Twitterでシェア">
+    <div class="actions__share">
+      <button
+        matTooltip="記事のリンクをコピー"
+        class="actions__share--copy"
+        mat-icon-button
+        ngxClipboard
+        cbContent="https://miru-2ac6c.web.app/article/{{ article.articleId }}"
+        (cbOnSuccess)="copied()"
+      >
+        <mat-icon>link</mat-icon>
+      </button>
       <a
+        mat-icon-button
+        class="actions__share--twitter"
+        matTooltip="Twitterでシェア"
         href="https://twitter.com/share?url=https://miru-2ac6c.web.app/article/{{
           article.articleId
         }}/&text={{ article.title }}"
         rel="nofollow"
         target="_blank"
       >
-        <mat-icon>share</mat-icon>
+        <i class="fab fa-twitter"></i>
       </a>
-    </button>
+    </div>
   </div>
   <button
     *ngIf="isMyArticle"
