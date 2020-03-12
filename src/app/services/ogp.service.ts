@@ -5,8 +5,8 @@ import {
   HttpClient
 } from '@angular/common/http';
 import { throwError, Observable } from 'rxjs';
-import { OGP } from '@interfaces/ogp';
 import { catchError } from 'rxjs/operators';
+import { OgpWithFavicon } from '@interfaces/ogp-with-favicon';
 
 @Injectable({
   providedIn: 'root'
@@ -14,10 +14,10 @@ import { catchError } from 'rxjs/operators';
 export class OgpService {
   constructor(private http: HttpClient) {}
 
-  getOGP(link: any): Observable<HttpResponse<OGP>> {
-    const API = 'https://ogp-api.appspot.com/?url=';
+  getOGP(link: string): Observable<HttpResponse<OgpWithFavicon>> {
+    const API = 'https://ogp-scraper.appspot.com/?url=';
     return this.http
-      .get<OGP>(API + link, { observe: 'response' })
+      .get<any>(API + link, { observe: 'response' })
       .pipe(catchError(this.handleError));
   }
 

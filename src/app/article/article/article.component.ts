@@ -9,6 +9,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { LoginDialogComponent } from 'src/app/welcome/login-dialog/login-dialog.component';
 import { take } from 'rxjs/operators';
 import { LoadingService } from 'src/app/services/loading.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-article',
@@ -28,7 +29,8 @@ export class ArticleComponent implements OnInit {
     private authService: AuthService,
     private dialog: MatDialog,
     private loadingService: LoadingService,
-    private userService: UserService
+    private userService: UserService,
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit() {
@@ -89,5 +91,11 @@ export class ArticleComponent implements OnInit {
 
   updateAvatar() {
     this.userService.updateAvatar(this.article.authorId);
+  }
+
+  copied() {
+    this.snackBar.open('コピーされました', null, {
+      duration: 2000
+    });
   }
 }
