@@ -20,6 +20,7 @@ import { OgpService } from 'src/app/services/ogp.service';
 import { HttpResponse } from '@angular/common/http';
 import { OgpWithFavicon } from '@interfaces/ogp-with-favicon';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { LoadingService } from 'src/app/services/loading.service';
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
@@ -53,7 +54,8 @@ export class FormComponent implements OnInit {
     private dialog: MatDialog,
     private router: Router,
     private ogpService: OgpService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private loadingService: LoadingService
   ) {}
 
   ngOnInit() {
@@ -266,6 +268,7 @@ export class FormComponent implements OnInit {
           .getDiscreteArticle(this.id)
           .pipe(take(1))
           .subscribe(article => {
+            this.loadingService.toggleLoading(false);
             this.form.patchValue({
               title: article.title,
               description: article.description
@@ -276,6 +279,7 @@ export class FormComponent implements OnInit {
             scrollTo({ top: 0, behavior: 'smooth' });
           });
       } else {
+        this.loadingService.toggleLoading(false);
         this.addLink();
       }
     });

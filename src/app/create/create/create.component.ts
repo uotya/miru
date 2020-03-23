@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormComponent } from '../form/form.component';
-import { LoadingService } from 'src/app/services/loading.service';
 
 @Component({
   selector: 'app-create',
@@ -12,9 +11,7 @@ export class CreateComponent implements OnInit {
   created: boolean;
   deleted: boolean;
 
-  constructor(private loadingService: LoadingService) {}
+  constructor() {}
 
-  ngOnInit() {
-    this.loadingService.toggleLoading(false);
-  }
+  ngOnInit() {}
 }

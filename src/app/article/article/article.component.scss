@@ -7,8 +7,6 @@
 .thumbnail {
   width: 100%;
   height: 400px;
-  max-height: 500px;
-  background-color: #fff;
   background: center / contain no-repeat #fff;
   @include sp {
     height: 200px;
@@ -196,6 +194,7 @@ mat-divider {
       color: #e53935;
     }
     mat-icon {
+      padding-left: 4px;
       font-size: 30px;
     }
     span {
