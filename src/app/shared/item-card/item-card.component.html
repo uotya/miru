@@ -5,14 +5,21 @@
         mat-card-avatar
         mat-icon-button
         class="user__avatar"
+        (click)="$event.stopPropagation()"
         [routerLink]="['/user']"
         [queryParams]="{ id: card.author.uid }"
       >
-        <img [src]="card.author.avatarURL" alt="" (error)="updateAvatar()" />
+        <img
+          *ngIf="card.author.avatarURL"
+          [src]="card.author.avatarURL"
+          alt=""
+          (error)="updateAvatar()"
+        />
       </a>
       <a
         mat-button
         class="user__name"
+        (click)="$event.stopPropagation()"
         [routerLink]="['/user']"
         [queryParams]="{ id: card.author.uid }"
         >{{ card.author.userName }}</a

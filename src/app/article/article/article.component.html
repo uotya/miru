@@ -15,7 +15,12 @@
         [routerLink]="['/user']"
         [queryParams]="{ id: article.author.uid }"
       >
-        <img [src]="article.author.avatarURL" alt="" (error)="updateAvatar()" />
+        <img
+          *ngIf="article.author.avatarURL"
+          [src]="article.author.avatarURL"
+          alt=""
+          (error)="updateAvatar()"
+        />
       </a>
       <a
         mat-button
@@ -39,7 +44,7 @@
   <div class="contents" *ngFor="let content of article.links; let i = index">
     <div class="contents__content">
       <div class="flex">
-        <span class="number">{{ i + 1 }}.</span>
+        <span class="number">{{ i + 1 }}</span>
         <ng-container *ngIf="isLink(content.link); else notLink">
           <mat-card class="contents__content--link isLink">
             <a [href]="content.link" target="_blank">
@@ -71,9 +76,9 @@
           </button>
         </ng-container>
         <ng-template #notLink>
-          <mat-card class="contents__content--link">
+          <div class="contents__content--link text">
             <p>{{ content.link }}</p>
-          </mat-card>
+          </div>
         </ng-template>
       </div>
       <div *ngIf="content.comment" class="contents__content--comment pre-wrap">

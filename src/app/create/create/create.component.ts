@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormComponent } from '../form/form.component';
-import { LoadingService } from 'src/app/services/loading.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-create',
@@ -12,9 +12,13 @@ export class CreateComponent implements OnInit {
   created: boolean;
   deleted: boolean;
 
-  constructor(private loadingService: LoadingService) {}
+  constructor(private title: Title) {}
 
   ngOnInit() {
-    this.loadingService.toggleLoading(false);
+    this.title.setTitle('記事の作成 | MIRU');
+  }
+
+  changeTitle() {
+    this.title.setTitle('記事の編集 | MIRU');
   }
 }

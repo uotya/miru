@@ -45,10 +45,18 @@ export class UserService {
   }
 
   updateAvatar(userId: string) {
-    const updateFn = this.fns.httpsCallable('updateTwitterAvatar');
-    return updateFn({
-      uid: userId
-    });
+    this.db
+      .doc<UserData>(`users/${userId}`)
+      .valueChanges()
+      .subscribe(doc => {
+        const avatarURL = doc.avatarURL;
+        if (!avatarURL.match('firebasestorage')) {
+          const updateFn = this.fns.httpsCallable('updateTwitterAvatar');
+          return updateFn({
+            uid: userId
+          });
+        }
+      });
   }
 
   getUserData(userId: string) {

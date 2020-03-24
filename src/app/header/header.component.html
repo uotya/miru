@@ -54,7 +54,12 @@
     </div>
     <div class="header-avatar">
       <button class="avatar" mat-mini-fab [matMenuTriggerFor]="menu">
-        <img [src]="avatarURL && avatarURL" alt="" (error)="updateAvatar()" />
+        <img
+          *ngIf="avatarURL"
+          [src]="avatarURL"
+          alt=""
+          (error)="updateAvatar()"
+        />
       </button>
     </div>
     <mat-menu #menu="matMenu">

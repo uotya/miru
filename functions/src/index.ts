@@ -17,3 +17,4 @@ export {
   donateMoney,
   paymentSucceeded
 } from './stripe.function';
+export { render } from './render.function';
