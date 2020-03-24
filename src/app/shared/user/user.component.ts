@@ -6,6 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 import { firestore } from 'firebase';
 import { UserService } from 'src/app/services/user.service';
 import { LoadingService } from 'src/app/services/loading.service';
+import { Title, Meta } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-user',
@@ -23,7 +24,9 @@ export class UserComponent implements OnInit {
     private articleService: ArticleService,
     private route: ActivatedRoute,
     private userService: UserService,
-    private loadingService: LoadingService
+    private loadingService: LoadingService,
+    private title: Title,
+    private meta: Meta
   ) {}
 
   ngOnInit() {
@@ -34,6 +37,15 @@ export class UserComponent implements OnInit {
         .getUserData(this.userId)
         .pipe(take(1))
         .subscribe(data => {
+          this.title.setTitle(`${data.userName}の記事一覧 | MIRU`);
+          this.meta.updateTag({
+            property: 'og:title',
+            content: `${data.userName}の記事一覧 | MIRU`
+          });
+          this.meta.updateTag({
+            property: 'og:url',
+            content: `https://miru-2ac6c.web.app/user?id=${data.uid}`
+          });
           this.userName = data.userName;
         });
     });

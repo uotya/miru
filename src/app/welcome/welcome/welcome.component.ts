@@ -15,6 +15,7 @@ export class WelcomeComponent implements OnInit {
     private ngZone: NgZone,
     private loadingService: LoadingService
   ) {}
+
   ngOnInit() {
     this.loadingService.toggleLoading(false);
   }

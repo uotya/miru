@@ -4,6 +4,7 @@ import { ArticleService } from 'src/app/services/article.service';
 import { take } from 'rxjs/operators';
 import { firestore } from 'firebase';
 import { LoadingService } from 'src/app/services/loading.service';
+import { Title, Meta } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-mylist',
@@ -17,11 +18,14 @@ export class MylistComponent implements OnInit {
 
   constructor(
     private articleService: ArticleService,
-    private loadingService: LoadingService
+    private loadingService: LoadingService,
+    private title: Title,
+    private meta: Meta
   ) {}
 
   ngOnInit() {
     this.getArticles();
+    this.title.setTitle('自分の投稿 | MIRU');
   }
 
   getArticles() {

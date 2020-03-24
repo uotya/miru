@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormComponent } from '../form/form.component';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-create',
@@ -11,7 +12,13 @@ export class CreateComponent implements OnInit {
   created: boolean;
   deleted: boolean;
 
-  constructor() {}
+  constructor(private title: Title) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.title.setTitle('記事の作成 | MIRU');
+  }
+
+  changeTitle() {
+    this.title.setTitle('記事の編集 | MIRU');
+  }
 }

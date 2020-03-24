@@ -264,6 +264,7 @@ export class FormComponent implements OnInit {
       this.id = params.get('id');
       if (this.id) {
         this.editing = true;
+        this.createComponent.changeTitle();
         this.articleService
           .getDiscreteArticle(this.id)
           .pipe(take(1))

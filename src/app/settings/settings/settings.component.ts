@@ -12,6 +12,7 @@ import { CardDialogComponent } from 'src/app/shared/card-dialog/card-dialog.comp
 import { PaymentService } from 'src/app/services/payment.service';
 import { Observable } from 'rxjs';
 import { PaymentHistory } from '@interfaces/payment-history';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-settings',
@@ -38,11 +39,13 @@ export class SettingsComponent implements OnInit {
     private snackBar: MatSnackBar,
     private dialog: MatDialog,
     private userService: UserService,
-    private paymentService: PaymentService
+    private paymentService: PaymentService,
+    private title: Title
   ) {}
 
   ngOnInit(): void {
     this.loadingService.toggleLoading(false);
+    this.title.setTitle('設定 | MIRU');
     this.paymentService
       .getCustomer(this.userId)
       .pipe(take(1))

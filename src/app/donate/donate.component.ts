@@ -9,6 +9,7 @@ import { AuthService } from '../services/auth.service';
 import { LoadingService } from '../services/loading.service';
 import { Observable } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-donate',
@@ -55,10 +56,12 @@ export class DonateComponent implements OnInit {
     private paymentService: PaymentService,
     private authService: AuthService,
     private loadingService: LoadingService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private title: Title
   ) {}
 
   ngOnInit(): void {
+    this.title.setTitle('開発者へ寄付 | MIRU');
     this.getCustomer();
   }
 

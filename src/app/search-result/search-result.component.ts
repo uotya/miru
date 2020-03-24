@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import * as algoliasearch from 'algoliasearch/lite/';
 import { ActivatedRoute } from '@angular/router';
 import { environment } from 'src/environments/environment';
+import { Title, Meta } from '@angular/platform-browser';
 
 const searchClient = algoliasearch(
   environment.algolia.appId,
@@ -25,13 +26,26 @@ export class SearchResultComponent implements OnInit {
     searchClient
   };
 
-  constructor(private route: ActivatedRoute) {
+  constructor(
+    private route: ActivatedRoute,
+    private title: Title,
+    private meta: Meta
+  ) {}
+
+  ngOnInit(): void {
     this.route.queryParamMap.subscribe(map => {
       this.resultParams.query = map.get('q');
+      this.title.setTitle(`「${this.resultParams.query}」の検索結果 | MIRU`);
+      this.meta.updateTag({
+        property: 'og:title',
+        content: `「${this.resultParams.query}」の検索結果 | MIRU`
+      });
+      this.meta.updateTag({
+        property: 'og:url',
+        content: `https://miru-2ac6c.web.app/search?q=${this.resultParams.query}`
+      });
     });
   }
-
-  ngOnInit(): void {}
 
   nextPage() {
     this.resultParams.page++;

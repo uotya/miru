@@ -10,6 +10,7 @@ import { LoginDialogComponent } from 'src/app/welcome/login-dialog/login-dialog.
 import { take } from 'rxjs/operators';
 import { LoadingService } from 'src/app/services/loading.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Title, Meta } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-article',
@@ -30,11 +31,37 @@ export class ArticleComponent implements OnInit {
     private dialog: MatDialog,
     private loadingService: LoadingService,
     private userService: UserService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private title: Title,
+    private meta: Meta
   ) {}
 
   ngOnInit() {
     this.getArticle();
+  }
+
+  setTag(article: ArticleWithUser) {
+    this.title.setTitle(`${article.title} | ${article.author.userName} | MIRU`);
+    this.meta.updateTag({
+      property: 'og:title',
+      content: `${article.title} | MIRU`
+    });
+    this.meta.updateTag({
+      property: 'og:url',
+      content: `https://miru-2ac6c.web.app/article/MQVgFFDcfogQqlJ8XvTd/${article.articleId}`
+    });
+    if (article.thumbnailURL) {
+      this.meta.updateTag({
+        property: 'og:image',
+        content: article.thumbnailURL
+      });
+    }
+    if (article.description) {
+      this.meta.updateTag({
+        property: 'og:description',
+        content: article.description
+      });
+    }
   }
 
   getArticle(): void {
@@ -45,6 +72,7 @@ export class ArticleComponent implements OnInit {
       .subscribe(article => {
         this.article = article;
         this.loadingService.toggleLoading(false);
+        this.setTag(article);
         this.favorite = this.article.favorite;
         if (
           this.authService.user &&
