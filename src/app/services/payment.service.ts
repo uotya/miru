@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireFunctions } from '@angular/fire/functions';
 import { Card } from '@interfaces/card';
-import { AuthService } from './auth.service';
 import { PaymentHistory } from '@interfaces/payment-history';
 
 @Injectable({
@@ -11,8 +10,7 @@ import { PaymentHistory } from '@interfaces/payment-history';
 export class PaymentService {
   constructor(
     private db: AngularFirestore,
-    private fns: AngularFireFunctions,
-    private authService: AuthService
+    private fns: AngularFireFunctions
   ) {}
 
   setCard(userId: string, card: any): Promise<void> {
