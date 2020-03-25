@@ -5,7 +5,7 @@ const url = require('url');
 const useragent = require('express-useragent');
 
 const appUrl =
-  functions.confing().env.mode === 'prod'
+  functions.config().env.mode === 'prod'
     ? 'miru-prod.web.app'
     : 'miru-2ac6c.web.app';
 
@@ -40,4 +40,4 @@ app.get('*', async (req: any, res: any) => {
   }
 });
 
-export const render = functions.https.onRequest(app);
+export const render = functions.region('asia-northeast1').https.onRequest(app);
