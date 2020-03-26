@@ -23,8 +23,7 @@
     "firebase-tools": "^7.13.0",
     "node-fetch": "^2.6.0",
     "stripe": "^8.24.1",
-    "twitter": "^1.7.1",
-    "url": "^0.11.0"
+    "twitter": "^1.7.1"
   },
   "devDependencies": {
     "@types/algoliasearch": "^3.34.10",
