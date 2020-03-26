@@ -23,7 +23,7 @@ app.use(useragent.express());
 
 app.get('*', async (req: any, res: any) => {
   if (req.useragent.isBot) {
-    const rendertronAppURL = 'https://rendertron-uotya.appspot.com/';
+    const rendertronAppURL = 'https://rendertron-uotya.appspot.com';
     const response = await fetch(
       `${rendertronAppURL}/render/${generateUrl(req)}`
     );
@@ -40,4 +40,4 @@ app.get('*', async (req: any, res: any) => {
   }
 });
 
-export const render = functions.region('asia-northeast1').https.onRequest(app);
+export const render = functions.https.onRequest(app);
