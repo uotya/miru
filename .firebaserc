@@ -1,6 +1,6 @@
 {
   "projects": {
-    "release": "miru-prod",
+    "production": "miru-prod",
     "develop": "miru-2ac6c"
   }
 }
