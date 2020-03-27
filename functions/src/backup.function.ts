@@ -9,11 +9,14 @@ export const scheduledFirestoreExport = functions
   .pubsub.schedule('1 of month 04:00')
   .timeZone('Asia/Tokyo')
   .onRun((context: any) => {
+    if (functions.config().env.mode === 'dev') {
+      return true;
+    }
+
     const databaseName = client.databasePath(
       process.env.GCP_PROJECT,
       '(default)'
     );
-
     return client
       .exportDocuments({
         name: databaseName,
