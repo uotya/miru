@@ -42,7 +42,7 @@ export class SearchResultComponent implements OnInit {
       });
       this.meta.updateTag({
         property: 'og:url',
-        content: `https://miru-2ac6c.web.app/search?q=${this.resultParams.query}`
+        content: `https://miru.page/search?q=${this.resultParams.query}`
       });
     });
   }

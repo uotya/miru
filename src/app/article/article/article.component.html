@@ -111,7 +111,7 @@
         class="actions__share--copy"
         mat-icon-button
         ngxClipboard
-        cbContent="https://miru-2ac6c.web.app/article/{{ article.articleId }}"
+        cbContent="https://miru.page/article/{{ article.articleId }}"
         (cbOnSuccess)="copied()"
       >
         <mat-icon>link</mat-icon>
@@ -120,7 +120,7 @@
         mat-icon-button
         class="actions__share--twitter"
         matTooltip="Twitterでシェア"
-        href="https://twitter.com/share?url=https://miru-2ac6c.web.app/article/{{
+        href="https://twitter.com/share?url=https://miru.page/article/{{
           article.articleId
         }}/&text={{ article.title }}"
         rel="nofollow"

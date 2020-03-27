@@ -18,3 +18,4 @@ export {
   paymentSucceeded
 } from './stripe.function';
 export { render } from './render.function';
+export { scheduledFirestoreExport } from './backup.function';
