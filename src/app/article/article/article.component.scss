@@ -175,7 +175,7 @@ mat-divider {
       border-left: solid 5px $black;
       @include mat-elevation(2);
       text-align: justify;
-      text-justify: inter-ideograph;
+      word-break: break-all;
     }
   }
   mat-divider {

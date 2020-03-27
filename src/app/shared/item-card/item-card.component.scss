@@ -59,7 +59,7 @@ a {
   -webkit-line-clamp: 2;
   overflow: hidden;
   text-align: justify;
-  text-justify: inter-ideograph;
+  word-break: break-all;
 }
 .thumb {
   padding-top: 16px;
