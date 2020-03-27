@@ -34,7 +34,7 @@ export class AppComponent {
         });
         this.meta.updateTag({
           property: 'og:url',
-          content: 'https://miru-2ac6c.web.app'
+          content: 'https://miru.page'
         });
       }
     });

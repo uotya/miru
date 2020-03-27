@@ -44,7 +44,7 @@ export class UserComponent implements OnInit {
           });
           this.meta.updateTag({
             property: 'og:url',
-            content: `https://miru-2ac6c.web.app/user?id=${data.uid}`
+            content: `https://miru.page/user?id=${data.uid}`
           });
           this.userName = data.userName;
         });

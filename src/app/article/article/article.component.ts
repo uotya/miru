@@ -48,7 +48,7 @@ export class ArticleComponent implements OnInit {
     });
     this.meta.updateTag({
       property: 'og:url',
-      content: `https://miru-2ac6c.web.app/article/MQVgFFDcfogQqlJ8XvTd/${article.articleId}`
+      content: `https://miru.page/article/MQVgFFDcfogQqlJ8XvTd/${article.articleId}`
     });
     if (article.thumbnailURL) {
       this.meta.updateTag({
