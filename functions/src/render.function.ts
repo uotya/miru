@@ -22,10 +22,8 @@ const app = express();
 app.use(useragent.express());
 
 app.get('*', async (req: any, res: any) => {
-  console.log(req);
   if (req.useragent.isBot) {
-    console.log('isBot');
-    const rendertronAppURL = 'https://rendertron-uotya.appspot.com';
+    const rendertronAppURL = 'https://uotya-rendertron.appspot.com';
     const response = await fetch(
       `${rendertronAppURL}/render/${generateUrl(req)}`
     );
@@ -34,7 +32,6 @@ app.get('*', async (req: any, res: any) => {
     res.set('Vary', 'User-Agent');
     res.send(body.toString());
   } else {
-    console.log('noBot');
     fetch(`https://${appUrl}`)
       .then((result: any) => result.text())
       .then((body: any) => {
