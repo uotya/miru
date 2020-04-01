@@ -23,7 +23,7 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "aot": true,
-            "assets": ["src/favicon.svg", "src/assets"],
+            "assets": ["src/favicon.svg", "src/favicon-dev.svg", "src/assets"],
             "styles": ["src/styles.scss", "src/mytheme.scss"],
             "scripts": [],
             "stylePreprocessorOptions": {
@@ -36,10 +36,6 @@
                 {
                   "replace": "src/environments/environment.ts",
                   "with": "src/environments/environment.prod.ts"
-                },
-                {
-                  "replace": "src/favicon.svg",
-                  "with": "src/favicon.prod.ico"
                 }
               ],
               "optimization": true,

@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { LoadingService } from './services/loading.service';
 import { Router, NavigationStart, NavigationEnd } from '@angular/router';
 import { Title, Meta } from '@angular/platform-browser';
+import { DOCUMENT } from '@angular/common';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -15,8 +17,14 @@ export class AppComponent {
     private loadingService: LoadingService,
     private router: Router,
     private title: Title,
-    private meta: Meta
+    private meta: Meta,
+    @Inject(DOCUMENT) private rootDocument: HTMLDocument
   ) {
+    if (!environment.production) {
+      this.rootDocument
+        .querySelector('[rel=icon]')
+        .setAttribute('href', 'favicon-dev.svg');
+    }
     this.router.events.subscribe(event => {
       if (event instanceof NavigationStart) {
         this.loadingService.toggleLoading(true);
