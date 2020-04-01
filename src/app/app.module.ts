@@ -33,6 +33,7 @@ import { NgxStripeModule } from 'ngx-stripe';
 import { DonateComponent } from './donate/donate.component';
 import { MatStepperModule } from '@angular/material/stepper';
 import { HttpClientModule } from '@angular/common/http';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 registerLocaleData(localeJa);
 @NgModule({
@@ -62,7 +63,10 @@ registerLocaleData(localeJa);
     NgAisModule.forRoot(),
     NgxStripeModule.forRoot('pk_test_Yf2x5GaBCKZJoR4NDrjHQ08100VogK81dh'),
     MatStepperModule,
-    HttpClientModule
+    HttpClientModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production
+    })
   ],
   providers: [
     AuthGuard,
