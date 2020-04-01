@@ -23,7 +23,7 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "aot": true,
-            "assets": ["src/favicon.svg", "src/favicon-dev.svg", "src/assets"],
+            "assets": ["src/favicon.ico", "src/favicon-dev.svg", "src/assets"],
             "styles": ["src/styles.scss", "src/mytheme.scss"],
             "scripts": [],
             "stylePreprocessorOptions": {
