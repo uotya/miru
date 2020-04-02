@@ -47,9 +47,9 @@ export const createUser = functions
         userName: user.displayName,
         avatarURL: user.photoURL?.replace('_normal', '')
       };
-      db.doc(`users/${user.uid}`).set(sendUserData);
+      return db.doc(`users/${user.uid}`).set(sendUserData);
     } else {
-      db.doc(`users/${user.uid}`).set({ uid: user.uid });
+      return db.doc(`users/${user.uid}`).set({ uid: user.uid });
     }
   });
 

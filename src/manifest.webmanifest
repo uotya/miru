@@ -1,9 +1,10 @@
 {
-  "name": "miru",
-  "short_name": "miru",
-  "theme_color": "#1976d2",
-  "background_color": "#fafafa",
+  "name": "リンク集メーカーMIRU",
+  "short_name": "MIRU",
+  "theme_color": "#37474f",
+  "background_color": "#fffff",
   "display": "standalone",
+  "orientation": "landscape",
   "scope": "./",
   "start_url": "./",
   "icons": [
