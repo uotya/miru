@@ -13,5 +13,6 @@ export const environment = {
   algolia: {
     appId: 'D1EI3EJXJE',
     apiKey: 'cc7a4b206f69429787601043ef18ca08'
-  }
+  },
+  stripeKey: 'pk_live_4aMbrmLGMsrmb460aHOkCBfe00rVUhrXfk'
 };

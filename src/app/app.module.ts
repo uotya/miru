@@ -61,7 +61,7 @@ registerLocaleData(localeJa);
     SharedModule,
     MatProgressSpinnerModule,
     NgAisModule.forRoot(),
-    NgxStripeModule.forRoot('pk_test_Yf2x5GaBCKZJoR4NDrjHQ08100VogK81dh'),
+    NgxStripeModule.forRoot(environment.stripeKey),
     MatStepperModule,
     HttpClientModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
