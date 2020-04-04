@@ -17,7 +17,8 @@ export const environment = {
   algolia: {
     appId: 'ZXJVROSG11',
     apiKey: '183ac007fd9e8970c7ae5e63d093f883'
-  }
+  },
+  stripeKey: 'pk_test_Yf2x5GaBCKZJoR4NDrjHQ08100VogK81dh'
 };
 
 /*
