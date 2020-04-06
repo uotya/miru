@@ -24,7 +24,6 @@ import { AuthGuard } from './guards/auth.guard';
 import localeJa from '@angular/common/locales/ja';
 import { registerLocaleData } from '@angular/common';
 import { SharedModule } from './shared/shared.module';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { NgAisModule } from 'angular-instantsearch';
 import { SearchInputComponent } from './search-input/search-input.component';
 import { SearchResultComponent } from './search-result/search-result.component';
@@ -59,7 +58,6 @@ registerLocaleData(localeJa);
     MatToolbarModule,
     MatMenuModule,
     SharedModule,
-    MatProgressSpinnerModule,
     NgAisModule.forRoot(),
     NgxStripeModule.forRoot(environment.stripeKey),
     MatStepperModule,
