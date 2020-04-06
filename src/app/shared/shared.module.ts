@@ -19,6 +19,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { CardDialogComponent } from './card-dialog/card-dialog.component';
 import { MatInputModule } from '@angular/material/input';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import { MatInputModule } from '@angular/material/input';
     ReactiveFormsModule,
     FormsModule,
     MatTooltipModule,
-    MatInputModule
+    MatInputModule,
+    MatProgressSpinnerModule
   ],
   entryComponents: [LoginDialogComponent]
 })
