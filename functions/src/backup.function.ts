@@ -26,7 +26,8 @@ export const scheduledFirestoreExport = functions
       .then((responses: any) => {
         const response = responses[0];
         console.log(`Operation Name: ${response['name']}`);
-        return response;
+        console.log(response);
+        return true;
       })
       .catch((err: any) => {
         console.error(err);
