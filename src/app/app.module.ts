@@ -14,6 +14,7 @@ import {
   AngularFireFunctionsModule,
   FUNCTIONS_REGION
 } from '@angular/fire/functions';
+import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { environment } from '../environments/environment';
@@ -55,6 +56,7 @@ registerLocaleData(localeJa);
     AngularFireStorageModule,
     AngularFireAuthModule,
     AngularFireFunctionsModule,
+    AngularFireAnalyticsModule,
     MatToolbarModule,
     MatMenuModule,
     SharedModule,

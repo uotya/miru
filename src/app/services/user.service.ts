@@ -54,7 +54,7 @@ export class UserService {
           const updateFn = this.fns.httpsCallable('updateTwitterAvatar');
           return updateFn({
             uid: userId
-          });
+          }).toPromise();
         }
       });
   }
