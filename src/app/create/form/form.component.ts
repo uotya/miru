@@ -165,7 +165,11 @@ export class FormComponent implements OnInit {
       });
       const isThumbnail = result.some((res: HttpResponse<OgpWithFavicon>) => {
         const ogp = res.body[0] as OGP;
-        if (ogp.ogImage?.url) {
+        if (
+          ogp.ogImage?.url.match(
+            /http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w-.\/?%&=]*)?/
+          )
+        ) {
           sendData.thumbnailURL = ogp.ogImage.url;
           create();
           return true;
