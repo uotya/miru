@@ -58,4 +58,8 @@ export class ItemCardComponent implements OnInit {
   updateAvatar() {
     this.userService.updateAvatar(this.card.authorId);
   }
+
+  setDefaultThumbnail() {
+    this.card.thumbnailURL = '/assets/images/thumbnail.png';
+  }
 }

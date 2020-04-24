@@ -1,8 +1,10 @@
 <div class="container" *ngIf="article">
-  <div
+  <img
+    [src]="article.thumbnailURL"
+    alt=""
     class="thumbnail"
-    [style.background-image]="'url(' + article.thumbnailURL + ')'"
-  ></div>
+    (error)="setDefaultThumbnail()"
+  />
   <div class="title">
     <h1>{{ article.title }}</h1>
     <p class="pre-wrap">{{ article.description }}</p>

@@ -26,7 +26,13 @@
       >
     </div>
     <p class="title">{{ card.title }}</p>
-    <img class="thumb" [src]="card.thumbnailURL" mat-card-image alt="" />
+    <img
+      (error)="setDefaultThumbnail()"
+      class="thumb"
+      [src]="card.thumbnailURL"
+      mat-card-image
+      alt=""
+    />
     <div class="actions">
       <a
         (click)="$event.stopPropagation()"
