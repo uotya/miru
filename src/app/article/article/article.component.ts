@@ -126,4 +126,8 @@ export class ArticleComponent implements OnInit {
       duration: 2000
     });
   }
+
+  setDefaultThumbnail() {
+    this.article.thumbnailURL = '/assets/images/thumbnail.png';
+  }
 }
