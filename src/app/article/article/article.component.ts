@@ -55,6 +55,13 @@ export class ArticleComponent implements OnInit {
         property: 'og:image',
         content: article.thumbnailURL
       });
+    } else {
+      this.meta.updateTag({
+        property: 'og:image',
+        // tslint:disable-next-line: max-line-length
+        content:
+          'https://firebasestorage.googleapis.com/v0/b/miru-2ac6c.appspot.com/o/service%2Fthumbnail2.png?alt=media&amp;token=21dfb85b-ff75-4632-b103-d6816f04944c'
+      });
     }
     if (article.description) {
       this.meta.updateTag({
