@@ -1,5 +1,7 @@
 :host {
-  min-height: 100%;
+  min-height: 100vh;
+  // mobile viewport bug fix
+  min-height: -webkit-fill-available;
   display: flex;
   flex-direction: column;
 }
