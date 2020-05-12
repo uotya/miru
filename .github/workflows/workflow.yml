@@ -31,6 +31,7 @@ jobs:
         uses: actions/download-artifact@master
         with:
           name: dist
+          path: dist
       - name: Install Dependencies
         run: cd functions && npm install
       - name: Deploy to Firebase
